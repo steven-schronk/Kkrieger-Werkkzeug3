@@ -1,0 +1,12 @@
+msbuild base/base.vcxproj -t:Clean
+msbuild base_console/base_console.vcxproj -t:Clean
+msbuild example_cube/example_cube.vcxproj -t:Clean
+msbuild fried/fried.vcxproj -t:Clean
+msbuild player_demo/player_demo.vcxproj -t:Clean
+msbuild player_intro/player_intro.vcxproj -t:Clean
+msbuild player_kkrieger/player_kkrieger.vcxproj -t:Clean
+msbuild player_mobile/player_mobile.vcxproj -t:Clean
+msbuild pngloader/pngloader.vcxproj -t:Clean
+msbuild shadercompile/shadercompile.vcxproj -t:Clean
+msbuild werkkzeug3.vcxproj -t:Clean
+msbuild wz_mobile/wz_mobile.vcxproj -t:Clean

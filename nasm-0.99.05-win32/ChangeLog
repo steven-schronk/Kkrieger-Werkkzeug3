@@ -1,0 +1,79 @@
+2007-04-10  Keith Kanios <keith@kanios.net>
+   * (insns.dat): updated x86-64 general+system instruction set.
+
+2007-04-09  Keith Kanios <keith@kanios.net>
+   * (outrdf.c): added support for 64-bit addressing.
+   * (outrdf2.c): added support for 64-bit addressing.
+
+2007-04-08  Keith Kanios <keith@kanios.net>
+   * (standard.mac): added entry for __BITS__ standard macro.
+   * (preproc.c): added __BITS__ to the standard macro processing.
+
+2007-04-05  Keith Kanios <keith@kanios.net>
+   * (nasm.c): added [BITS 64] for the x86-64 architecture extension.
+   * (nasm.h): added general flags to support the x86-64 architecture.
+   * (nasmlib.h): updated to support the x86-64 architecture.
+   * (nasmlib.c): revamped readnum/readlinenum to support 64-bit.
+   * (assemble.c): modified for the x86-64 architecture extension.
+   * (regs.dat): added x86-64 register extensions; revamped flags.
+   * (insns.dat): added AMD64 instruction set support.
+   * (outbin.c): added support for 64-bit addressing.
+   * (outcoff.c): added win64 (x86-64 COFF) support.
+   * (outform.h): added entry for win64.
+
+2007-03-15  Keith Kanios <keith@kanios.net>
+   * (*.c): added c99 data-type compliance and <inttypes.h> inclusion.
+   * (*.pl): added c99 data-type compliance and <inttypes.h> inclusion.
+   * (*.h): added c99 data-type compliance.
+   * (assemble.h): fixed procedure defintions to sync with respective
+   procedure declarations.
+
+2002-05-16  Ed Beroset <beroset@mindspring.com>
+   * (preproc.c): fixed unterminated macro bug error reporting
+   * (nasmlib.h): changed strdup's arg to const char *
+   * (nasmlib.c): changed strdup's arg to const char *
+
+2002-05-12  Debbie Wiles <debs@dwiles.demon.co.uk>
+   * (insns.dat): fixed incorrect processor flags
+   * (Mkfiles/Makefile.vc): added optimisation, and changed to work with 0.98.31
+   * (doc/nasmdoc.src): added %ifmacro, and tidied up format of code items.
+
+2002-05-03  H. Peter Anvin <hpa@zytor.com>
+   * (nasm.c): Change the NASM environment variable to NASMOPT.
+
+2002-05-03  H. Peter Anvin <hpa@zytor.com>
+   * (Makefile.in Mkfiles/*): use new version -> version.{h,mac}.
+   * (macros.pl): support multiple input files (standard.mac, version.mac).
+   * (standard.mac): use an explicit delimiter to end the TASM macros.
+   * (nasm-version): remove, no longer needed.
+   * (version.pl): script to produce version.h and version.mac from version.
+   * (version): contains the official NASM version.
+   * (nasm.h): include version.h.
+
+2002-05-03  H. Peter Anvin <hpa@zytor.com>
+
+   * (configure.in): create output directory.
+   * (Makefile.in): change cd ; to cd &&.
+   * (rdoff/Makefile.in): handle building in a separate obj directory
+     correctly.
+	
+2002-04-29  Stanislav Karchebny  <madfire@users.sourceforge.net>
+
+   * (Makefile.in): added 'strip' target to strip debug info.
+   * (INSTALL): added INSTALL file.
+   * (nasm.1): added -v option description.
+
+
+2002-04-29  Frank Kotler  <fbkotler@users.sourceforge.net>
+
+   * (parser.c): fixed INCBIN bug reported by Rebel.
+
+
+2002-04-11  Stanislav Karchebny  <madfire@users.sourceforge.net>
+
+   * Started ChangeLog for recording per-file changes in the project.
+     We could get away without ChangeLog at all (use CVS logs), but we
+     lose CVS so often its better to have log glued to the sources =)
+     You should record changes in CHANGES also, not for every change
+     but rather when making a release.
+

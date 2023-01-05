@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A5AABAC-000F-4CE5-9471-74C2C5746EF7}</ProjectGuid>
+    <RootNamespace>player_demo</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.31401.40</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..;../materials;../werkkzeug3_kkrieger;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ForcedIncludeFiles>$(SolutionDir)/player_demo/demo_config.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)player_demo.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)player_demo.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <IgnoreSpecificDefaultLibraries>libc.lib;libcd.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..;../materials;../werkkzeug3_kkrieger;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>$(SolutionDir)/player_demo/demo_config.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)player_demo.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <EntryPointSymbol />
+      <BaseAddress>0x800000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\engine.cpp" />
+    <ClCompile Include="..\genbitmap.cpp" />
+    <ClCompile Include="..\genblobspline.cpp" />
+    <ClCompile Include="..\geneffect.cpp" />
+    <ClCompile Include="..\geneffectdebris.cpp" />
+    <ClCompile Include="..\geneffectex.cpp" />
+    <ClCompile Include="..\geneffectipp.cpp" />
+    <ClCompile Include="..\genmaterial.cpp" />
+    <ClCompile Include="..\genmesh.cpp" />
+    <ClCompile Include="..\genminmesh.cpp" />
+    <ClCompile Include="..\genoverlay.cpp" />
+    <ClCompile Include="..\genscene.cpp" />
+    <ClCompile Include="..\kdoc.cpp" />
+    <ClCompile Include="..\mainplayer.cpp" />
+    <ClCompile Include="..\materials\material11.cpp" />
+    <ClCompile Include="..\materials\material20.cpp" />
+    <ClCompile Include="..\materials\materialdirect.cpp" />
+    <ClCompile Include="..\materials\rtmanager.cpp" />
+    <ClCompile Include="..\shadercodegen.cpp" />
+    <ClCompile Include="..\_iob.cpp" />
+    <ClCompile Include="..\_lekktor.cpp" />
+    <ClCompile Include="..\_ogg.cpp" />
+    <ClCompile Include="..\_start.cpp" />
+    <ClCompile Include="..\_types.cpp" />
+    <ClCompile Include="..\_viruz2.cpp" />
+    <ClCompile Include="demo_oplist.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\engine.hpp" />
+    <ClInclude Include="..\genbitmap.hpp" />
+    <ClInclude Include="..\genblobspline.hpp" />
+    <ClInclude Include="..\geneffect.hpp" />
+    <ClInclude Include="..\geneffectdebris.hpp" />
+    <ClInclude Include="..\geneffectex.hpp" />
+    <ClInclude Include="..\geneffectipp.hpp" />
+    <ClInclude Include="..\genmaterial.hpp" />
+    <ClInclude Include="..\genmesh.hpp" />
+    <ClInclude Include="..\genminmesh.hpp" />
+    <ClInclude Include="..\genoverlay.hpp" />
+    <ClInclude Include="..\genscene.hpp" />
+    <ClInclude Include="..\kdoc.hpp" />
+    <ClInclude Include="..\materials\material11.hpp" />
+    <ClInclude Include="..\materials\material20.hpp" />
+    <ClInclude Include="..\materials\materialdirect.hpp" />
+    <ClInclude Include="..\materials\rtmanager.hpp" />
+    <ClInclude Include="..\shadercodegen.hpp" />
+    <ClInclude Include="..\_iob.hpp" />
+    <ClInclude Include="..\_lekktor.hpp" />
+    <ClInclude Include="..\_ogg.hpp" />
+    <ClInclude Include="..\_start.hpp" />
+    <ClInclude Include="..\_startdx.hpp" />
+    <ClInclude Include="..\_types.hpp" />
+    <ClInclude Include="..\_viruz2.hpp" />
+    <ClInclude Include="demo_config.hpp" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\_viruz2a.asm">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"nasm.exe" -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)%(Extension)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="demo_resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fried\fried.vcxproj">
+      <Project>{d242f9bc-84b6-4757-8965-7a274cc88015}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\materials\materials.vcxproj">
+      <Project>{d945e86f-50eb-4d36-bd8b-cb2ffa167a1a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\pngloader\pngloader.vcxproj">
+      <Project>{b85f145b-0635-4ed9-8bb5-45c0cdf69cd3}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

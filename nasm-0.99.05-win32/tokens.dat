@@ -1,0 +1,52 @@
+#
+# Tokens other than instructions and registers
+#
+
+% TOKEN_PREFIX, 0, P_*
+a16
+a32
+lock
+o16
+o32
+rep
+repe
+repne
+repnz
+repz
+times
+
+% TOKEN_SPECIAL, 0, S_*
+abs
+byte
+dword
+far
+long
+near
+nosplit
+oword
+qword
+rel
+short
+strict
+to
+tword
+word
+
+% TOKEN_FLOAT, 0, 0
+__infinity__
+__nan__
+__qnan__
+__snan__
+
+% TOKEN_FLOATIZE, 0, FLOAT_{__float*__}
+__float16__
+__float32__
+__float64__
+__float80m__
+__float80e__
+__float128l__
+__float128h__
+
+% TOKEN_*, 0, 0
+seg
+wrt

@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="System">
+      <UniqueIdentifier>{4b444f34-a788-47a0-893b-8481e2c1a53e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apps">
+      <UniqueIdentifier>{b4e6c0d5-749d-4628-97c7-445bbb29185e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Werkkzeug3">
+      <UniqueIdentifier>{7079c11c-7b33-4ce6-9dd9-a713e3b9e7a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KKrunchy">
+      <UniqueIdentifier>{a9c566cf-e9f3-452a-a480-4c81152a27a4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_diskitem.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_gui.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_lekktor.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_mp3.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_ogg.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_start.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_startdx.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_types.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_util.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_viruz2.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="_xsi.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="ronan.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="appbrowser.hpp">
+      <Filter>Apps</Filter>
+    </ClInclude>
+    <ClInclude Include="appcube.hpp">
+      <Filter>Apps</Filter>
+    </ClInclude>
+    <ClInclude Include="appfractal.hpp">
+      <Filter>Apps</Filter>
+    </ClInclude>
+    <ClInclude Include="appprefs.hpp">
+      <Filter>Apps</Filter>
+    </ClInclude>
+    <ClInclude Include="apptext.hpp">
+      <Filter>Apps</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="genbitmap.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="geneffect.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="genmaterial.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="genmesh.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="genminmesh.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="genoverlay.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="genscene.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="kdoc.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="kkriegergame.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="main.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="material11.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="material20.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="materialdirect.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="novaplayer.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="script.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="shadercodegen.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="shadercompile.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="werkkzeug.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="wincalc.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="winnova.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="winnovaview.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="winpage.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="winpara.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="winspline.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="wintimeline.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="wintool.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="winview.hpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClInclude>
+    <ClInclude Include="depacker.hpp">
+      <Filter>KKrunchy</Filter>
+    </ClInclude>
+    <ClInclude Include="dis.hpp">
+      <Filter>KKrunchy</Filter>
+    </ClInclude>
+    <ClInclude Include="exepacker.hpp">
+      <Filter>KKrunchy</Filter>
+    </ClInclude>
+    <ClInclude Include="mapfile.hpp">
+      <Filter>KKrunchy</Filter>
+    </ClInclude>
+    <ClInclude Include="packer.hpp">
+      <Filter>KKrunchy</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_diskitem.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_gui.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_lekktor.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_mp3.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_ogg.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_start.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_types.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_util.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_viruz2.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="_xsi.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="ronan.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="appbrowser.cpp">
+      <Filter>Apps</Filter>
+    </ClCompile>
+    <ClCompile Include="appcube.cpp">
+      <Filter>Apps</Filter>
+    </ClCompile>
+    <ClCompile Include="appfractal.cpp">
+      <Filter>Apps</Filter>
+    </ClCompile>
+    <ClCompile Include="appprefs.cpp">
+      <Filter>Apps</Filter>
+    </ClCompile>
+    <ClCompile Include="apptext.cpp">
+      <Filter>Apps</Filter>
+    </ClCompile>
+    <ClCompile Include="engine.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="genbitmap.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="geneffect.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="genmaterial.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="genmesh.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="genminmesh.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="genoverlay.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="genscene.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="kdoc.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="kkriegergame.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="maindope.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="mainplayer.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="material11.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="material20.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="materialdirect.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="novaplayer.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="script.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="shadercodegen.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="shadercompile.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="werkkzeug.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="werkops.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="wincalc.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="winnova.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="winnovaview.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="winpage.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="winpara.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="winspline.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="wintimeline.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="wintool.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="winview.cpp">
+      <Filter>Werkkzeug3</Filter>
+    </ClCompile>
+    <ClCompile Include="depacker.cpp">
+      <Filter>KKrunchy</Filter>
+    </ClCompile>
+    <ClCompile Include="dis.cpp">
+      <Filter>KKrunchy</Filter>
+    </ClCompile>
+    <ClCompile Include="exepacker.cpp">
+      <Filter>KKrunchy</Filter>
+    </ClCompile>
+    <ClCompile Include="mapfile.cpp">
+      <Filter>KKrunchy</Filter>
+    </ClCompile>
+    <ClCompile Include="packer.cpp">
+      <Filter>KKrunchy</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_config.inc" />
+    <None Include="index.html" />
+    <None Include="makeinc.js" />
+    <None Include="script.kon" />
+    <None Include="VTune\werkkzeug3.vpj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="concept.txt" />
+    <Text Include="history.txt" />
+    <Text Include="todo.txt" />
+    <Text Include="todo_chaos.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="demo-resource.rc" />
+    <ResourceCompile Include="snowblind-resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="_config.hpp">
+      <Filter>System</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_viruz2a.asm">
+      <Filter>System</Filter>
+    </CustomBuild>
+    <CustomBuild Include="data.asm">
+      <Filter>Werkkzeug3</Filter>
+    </CustomBuild>
+    <CustomBuild Include="depack2.asm">
+      <Filter>KKrunchy</Filter>
+    </CustomBuild>
+    <CustomBuild Include="depacker.asm">
+      <Filter>KKrunchy</Filter>
+    </CustomBuild>
+    <CustomBuild Include="incdata.asm">
+      <Filter>KKrunchy</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

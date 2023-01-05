@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DoPE debug|Win32">
+      <Configuration>DoPE debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DoPE|Win32">
+      <Configuration>DoPE</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Player Debug|Win32">
+      <Configuration>Player Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Player Release|Win32">
+      <Configuration>Player Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{539D27AD-3957-43BF-96E9-C0CFB08E3A24}</ProjectGuid>
+    <RootNamespace>werkkzeug3</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.31401.40</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)werkkzeug3.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)werkkzeug3.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)werkkzeug3.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <BaseAddress>0x800000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+      <FixedBaseAddress />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_PLAYER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling />
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;dxguid.lib;dinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)werkkzeug3.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)werkkzeug3.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/QIfist %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_PLAYER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling />
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <AssemblerOutput>AssemblyCode</AssemblerOutput>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>FastCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/OPT:ICF=8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>winmm.lib;dxguid.lib;dinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)werkkzeug3.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <BaseAddress>0x800000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/QIfist %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MinSpace</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_DOPE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <AssemblerOutput>AssemblyCode</AssemblerOutput>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>FastCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/OPT:ICF=8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>winmm.lib;dxguid.lib;dinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)werkkzeug3.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <BaseAddress>0x800000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+      <FixedBaseAddress>false</FixedBaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/QIfist %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_DOPE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <AssemblerOutput>AssemblyCode</AssemblerOutput>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>FastCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/OPT:ICF=8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>winmm.lib;dxguid.lib;dinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)werkkzeug3.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <BaseAddress>0x800000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="appbrowser.hpp" />
+    <ClInclude Include="appcube.hpp" />
+    <ClInclude Include="appfractal.hpp" />
+    <ClInclude Include="appprefs.hpp" />
+    <ClInclude Include="apptext.hpp" />
+    <ClInclude Include="depacker.hpp" />
+    <ClInclude Include="dis.hpp" />
+    <ClInclude Include="engine.hpp" />
+    <ClInclude Include="exepacker.hpp" />
+    <ClInclude Include="genbitmap.hpp" />
+    <ClInclude Include="geneffect.hpp" />
+    <ClInclude Include="genmaterial.hpp" />
+    <ClInclude Include="genmesh.hpp" />
+    <ClInclude Include="genminmesh.hpp" />
+    <ClInclude Include="genoverlay.hpp" />
+    <ClInclude Include="genscene.hpp" />
+    <ClInclude Include="kdoc.hpp" />
+    <ClInclude Include="kkriegergame.hpp" />
+    <ClInclude Include="main.hpp" />
+    <ClInclude Include="mapfile.hpp" />
+    <ClInclude Include="material11.hpp" />
+    <ClInclude Include="material20.hpp" />
+    <ClInclude Include="materialdirect.hpp" />
+    <ClInclude Include="novaplayer.hpp" />
+    <ClInclude Include="packer.hpp" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ronan.h" />
+    <ClInclude Include="script.hpp" />
+    <ClInclude Include="shadercodegen.hpp" />
+    <ClInclude Include="shadercompile.hpp" />
+    <ClInclude Include="werkkzeug.hpp" />
+    <ClInclude Include="wincalc.hpp" />
+    <ClInclude Include="winnova.hpp" />
+    <ClInclude Include="winnovaview.hpp" />
+    <ClInclude Include="winpage.hpp" />
+    <ClInclude Include="winpara.hpp" />
+    <ClInclude Include="winspline.hpp" />
+    <ClInclude Include="wintimeline.hpp" />
+    <ClInclude Include="wintool.hpp" />
+    <ClInclude Include="winview.hpp" />
+    <CustomBuild Include="_config.hpp">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">
+      </Command>
+    </CustomBuild>
+    <ClInclude Include="_diskitem.hpp" />
+    <ClInclude Include="_gui.hpp" />
+    <ClInclude Include="_lekktor.hpp" />
+    <ClInclude Include="_mp3.hpp" />
+    <ClInclude Include="_ogg.hpp" />
+    <ClInclude Include="_start.hpp" />
+    <ClInclude Include="_startdx.hpp" />
+    <ClInclude Include="_types.hpp" />
+    <ClInclude Include="_util.hpp" />
+    <ClInclude Include="_viruz2.hpp" />
+    <ClInclude Include="_xsi.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="appbrowser.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="appcube.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="appfractal.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="appprefs.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="apptext.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="depacker.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="dis.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine.cpp" />
+    <ClCompile Include="exepacker.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="genbitmap.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <MinimalRebuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</MinimalRebuild>
+      <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Default</BasicRuntimeChecks>
+      <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ProgramDatabase</DebugInformationFormat>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">MaxSpeed</Optimization>
+      <InlineFunctionExpansion Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">Speed</FavorSizeOrSpeed>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">Disabled</Optimization>
+      <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">Default</BasicRuntimeChecks>
+      <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">ProgramDatabase</DebugInformationFormat>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Full</Optimization>
+    </ClCompile>
+    <ClCompile Include="geneffect.cpp" />
+    <ClCompile Include="genmaterial.cpp" />
+    <ClCompile Include="genmesh.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">MaxSpeed</Optimization>
+      <InlineFunctionExpansion Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">Speed</FavorSizeOrSpeed>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">Default</BasicRuntimeChecks>
+      <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ClCompile Include="genminmesh.cpp" />
+    <ClCompile Include="genoverlay.cpp">
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotSet</EnableEnhancedInstructionSet>
+      <AssemblerOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AssemblyAndSourceCode</AssemblerOutput>
+    </ClCompile>
+    <ClCompile Include="genscene.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+    </ClCompile>
+    <ClCompile Include="kdoc.cpp" />
+    <ClCompile Include="kkriegergame.cpp" />
+    <ClCompile Include="main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="maindope.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="mainplayer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="mapfile.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="material11.cpp" />
+    <ClCompile Include="material20.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="materialdirect.cpp" />
+    <ClCompile Include="novaplayer.cpp" />
+    <ClCompile Include="packer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="ronan.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="script.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="shadercodegen.cpp" />
+    <ClCompile Include="shadercompile.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="werkkzeug.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+      <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ExceptionHandling>
+    </ClCompile>
+    <ClCompile Include="werkops.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="wincalc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="winnova.cpp" />
+    <ClCompile Include="winnovaview.cpp" />
+    <ClCompile Include="winpage.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+      <AssemblerOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AssemblyCode</AssemblerOutput>
+    </ClCompile>
+    <ClCompile Include="winpara.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="winspline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="wintimeline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="wintool.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="winview.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="_diskitem.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="_gui.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="_lekktor.cpp" />
+    <ClCompile Include="_mp3.cpp" />
+    <ClCompile Include="_ogg.cpp" />
+    <ClCompile Include="_start.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">Disabled</Optimization>
+      <FavorSizeOrSpeed Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">Neither</FavorSizeOrSpeed>
+    </ClCompile>
+    <ClCompile Include="_types.cpp" />
+    <ClCompile Include="_util.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="_viruz2.cpp" />
+    <ClCompile Include="_xsi.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="data.asm">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cscript makeinc.js //nologo "$(OutDir)" &lt; _config.hpp &gt; _config.inc
+nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_config.h;makeinc.js;depacker.bin;depack2.bin;Player Release/werkkzeug3.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">cscript makeinc.js //nologo "$(OutDir)" &lt; _config.hpp &gt; _config.inc
+nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">_config.h;makeinc.js;depacker.bin;depack2.bin;Player Release/werkkzeug3.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">cscript makeinc.js //nologo "$(OutDir)" &lt; _config.hpp &gt; _config.inc
+nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">_config.h;makeinc.js;depacker.bin;depack2.bin;Player Release/werkkzeug3.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">cscript makeinc.js //nologo "$(OutDir)" &lt; _config.hpp &gt; _config.inc
+nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">_config.h;makeinc.js;depacker.bin;depack2.bin;Player Release/werkkzeug3.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">cscript makeinc.js //nologo "$(OutDir)" &lt; _config.hpp &gt; _config.inc
+nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">_config.h;makeinc.js;depacker.bin;depack2.bin;Player Release/werkkzeug3.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cscript makeinc.js //nologo "$(OutDir)" &lt; _config.hpp &gt; _config.inc
+nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_config.h;makeinc.js;depacker.bin;depack2.bin;Player Release/werkkzeug3.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="depack2.asm">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="depacker.asm">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">nasmw -f bin -o $(OutDir)%(Filename).bin %(FullPath)
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="incdata.asm">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)" -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)" -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)depacker.bin;$(OutDir)depack2.bin;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">nasmw -f win32 -o $(OutDir)%(Filename).obj %(FullPath) -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">nasmw -f win32 -o $(OutDir)%(Filename).obj %(FullPath) -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">$(OutDir)depacker.bin;$(OutDir)depack2.bin;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">nasmw -f win32 -o $(OutDir)%(Filename).obj %(FullPath) -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">nasmw -f win32 -o $(OutDir)%(Filename).obj %(FullPath) -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">$(OutDir)depacker.bin;$(OutDir)depack2.bin;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">nasmw -f win32 -o $(OutDir)%(Filename).obj %(FullPath) -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">nasmw -f win32 -o $(OutDir)%(Filename).obj %(FullPath) -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">$(OutDir)depacker.bin;$(OutDir)depack2.bin;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" %(FullPath) -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" %(FullPath) -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">$(OutDir)depacker.bin;$(OutDir)depack2.bin;$(OutDir)snowblind-resource.res;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)" -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)" -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)depacker.bin;$(OutDir)depack2.bin;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="index.html" />
+    <None Include="makeinc.js" />
+    <None Include="script.kon" />
+    <None Include="VTune\werkkzeug3.vpj" />
+    <None Include="_config.inc" />
+    <CustomBuild Include="_viruz2a.asm">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj ;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">nasmw -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">$(OutDir)%(Filename).obj ;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">nasmw -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">$(OutDir)%(Filename).obj ;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">nasmw -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">$(OutDir)%(Filename).obj ;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">nasmw -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">$(OutDir)%(Filename).obj ;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).obj ;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="concept.txt" />
+    <Text Include="history.txt" />
+    <Text Include="todo.txt" />
+    <Text Include="todo_chaos.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="demo-resource.rc" />
+    <ResourceCompile Include="snowblind-resource.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DoPE|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Player Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
