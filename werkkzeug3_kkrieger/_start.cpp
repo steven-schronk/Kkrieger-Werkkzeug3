@@ -6982,7 +6982,7 @@ sBool sSystem_::VideoStart(sChar *filename,sF32 fpsrate,sInt xRes,sInt yRes)
   asi.dwRate                = 10000*fpsrate + 0.5f;
   asi.dwSuggestedBufferSize = xRes * yRes * 3;
   SetRect(&asi.rcFrame,0,0,xRes,yRes);
-  strcpy(asi.szName,"Video");
+  strcpy_s(asi.szName, 16, "Video");
 
   // create video stream
   if(AVIFileCreateStream(aviFile,&aviVid,&asi) != AVIERR_OK)
