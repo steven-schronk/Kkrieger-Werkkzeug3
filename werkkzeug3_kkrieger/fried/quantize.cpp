@@ -35,7 +35,7 @@ namespace FRIED
     else
       prod += bias;
 
-    prod += 1 << (s - 1);
+    prod += 1i64 << (s - 1);
     return sInt(prod >> s);
   }
 
