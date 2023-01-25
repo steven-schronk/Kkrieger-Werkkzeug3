@@ -28,6 +28,8 @@ const sChar *sWindowTitle="fr-044: patient zero";
 
 //#define D3D_DEBUG_INFO
 
+#pragma warning (disable : 4644 )
+
 #include <windows.h>
 #include <d3d9.h>
 #include <dinput.h>
