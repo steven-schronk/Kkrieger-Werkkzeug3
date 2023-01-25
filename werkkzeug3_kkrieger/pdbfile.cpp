@@ -548,7 +548,8 @@ sBool PDBFileReader::ReadDebugInfo(sChar *fileName,DebugInfo &to)
   if(source)
   {
     wchar_t wideFileName[260];
-    mbstowcs(wideFileName,fileName,260);
+    size_t charsConverted;
+    mbstowcs_s(&charsConverted, wideFileName,fileName,260);
     if(SUCCEEDED(source->loadDataForExe(wideFileName,0,0)))
     {
       if(SUCCEEDED(source->openSession(&Session)))
