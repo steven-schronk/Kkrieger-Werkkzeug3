@@ -1,3 +1,5 @@
+[![build_werkkzeug3](https://github.com/steven-schronk/Kkrieger-Werkkzeug3/actions/workflows/build_werkkzeug3.yml/badge.svg)](https://github.com/steven-schronk/Kkrieger-Werkkzeug3/actions/workflows/build_werkkzeug3.yml)
+
 # .kkrieger & .werkkzeug3
 
 .kkrieger is a German first-person shooter video game created by German demogroup [.theprodukkt](http://www.theproduct.de/) (a former subdivision of Farbrausch).  The entire game compiles down to a 96kb executable that can be run on a Windows computer with a [DirectX 9](https://en.wikipedia.org/wiki/DirectX) or greater graphics card.
