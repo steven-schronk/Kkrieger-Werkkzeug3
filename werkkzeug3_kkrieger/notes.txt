@@ -1,0 +1,52 @@
+Werkkzeug 3 Project -------------------------------------
+
+Main window for Werkkzeug is in this class:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\appbrowser.cpp
+
+File selector class is:
+sBrowserTree
+
+Operators - Individual instructions for creating geometry, textures, etc.
+struct KOp
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
+
+Geometry is created and modified in Werkkzeug using WerkOp objects.
+These are a wrapper for the actual ops known as KOps.
+WerkOps stores the position in the grid, width, name, etc.
+
+Virtual Machine - Stack & stack operations, execution code.
+class sScriptVM
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\script.hpp
+
+Bytecode For Virtual Machine
+enum KBytecode2
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\script.hpp
+
+When the user clicks on a Cube operator this is called:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
+void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op);
+
+Each time a parameter for a cube us adjusted this is called:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genmesh.cpp
+GenMesh * __stdcall Mesh_Cube(sInt tx,sInt ty,sInt tz,sInt flags,sFSRT srt)
+
+Called each time the window is painted:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.cpp
+void sGuiManager::OnPaint();
+
+Paints (renders) the 3D window pane:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
+void WinView::OnPaint3d(sViewport &viewPort);
+
+Central point for handling different types of window actions:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug3\wz3_main.cpp
+sBool sAppHandler(sInt code,sDInt value);
+
+Glues everything together: logic, events, operators, splines, memory
+class KEnvironment;
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
+
+player_demo Project ---------------------------------------
+
+All opcodes used by a demo.
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_demo\demo_oplist.cpp
