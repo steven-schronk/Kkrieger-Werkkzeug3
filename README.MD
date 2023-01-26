@@ -1,6 +1,6 @@
 # .kkrieger & .werkkzeug3
 
-.kkrieger is a German first-person shooter video game created by German demogroup [.theprodukkt](http://www.theproduct.de/) (a former subdivision of Farbrausch).  The entire game compiles down to a 96kb executable that can be run on a Windows computer with a suitable graphics card.
+.kkrieger is a German first-person shooter video game created by German demogroup [.theprodukkt](http://www.theproduct.de/) (a former subdivision of Farbrausch).  The entire game compiles down to a 96kb executable that can be run on a Windows computer with a [DirectX 9](https://en.wikipedia.org/wiki/DirectX) or greater graphics card.
 
 .kkrieger makes extensive use of procedural generation methods. Textures are stored via their creation history instead of a per-pixel basis, thus only requiring the history data and the generator code to be compiled into the executable, producing a relatively small file size. Meshes are created from basic solids such as boxes and cylinders, which are then deformed to achieve the desired shape - essentially a special way of [box modeling](https://en.wikipedia.org/wiki/Box_modeling). These two generation processes account for the extensive loading time of the game — all assets of the gameplay are reproduced during the loading phase.
 
