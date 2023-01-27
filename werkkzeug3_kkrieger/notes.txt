@@ -1,5 +1,9 @@
 Werkkzeug 3 Project -------------------------------------
 
+.k   files open with Werkkzeug. Contains graphics.
+.kx  files open with the player executable. Contains graphics and sound.
+.v2m files are midi music files.
+
 Main window for Werkkzeug is in this class:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\appbrowser.cpp
 
@@ -48,5 +52,36 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
 player_demo Project ---------------------------------------
 
+Application starts here.
+int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show);
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
 All opcodes used by a demo.
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_demo\demo_oplist.cpp
+
+File for demo is opened here:
+sU8 *sSystem_::LoadFile(const sChar *name,sInt &size)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Opens up dialog box that asks for resolution, vsync, fullscreen, etc
+sBool ConfigDialog(sInt nr,const sChar *title)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+DirectX libraries are loaded here:
+void sSystem_::InitX()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Initialize Direct Sound:
+sBool sSystem_::InitDS()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Start DemoScene - Main Loop
+DXDev->BeginScene();
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+-------
+
+player_intro will open up and play a file only if you turn on compatibility with Windows 98.
+Only seems to work with debris_chaos.kx file.
+
+player_intro.exe C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\data\debris_chaos.kx
