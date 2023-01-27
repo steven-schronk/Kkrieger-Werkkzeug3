@@ -27,11 +27,9 @@ jobs:
 
       # - run: Get-ChildItem -Recurse
       
-      #- name: Get Short SHA of Commit
-      #  id: sha
-      #  run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      #- name: Echo Short SHA to Log
-      #  run: echo ${{ steps.sha.outputs.sha_short }}
+      - name: Get Short Git SHA For Artifact Name
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
         
       #- name: Get Current Date
       #  id: date
@@ -42,7 +40,7 @@ jobs:
       - name: Upload to GitHub Actions Artifact Storage
         uses: actions/upload-artifact@v3
         with:
-          name: Kkrieger-Werkkzeug-${{ github.sha }}
+          name: Kkrieger-Werkkzeug-#${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}
           path: |
             ${{ github.workspace }}/werkkzeug3_kkrieger/example_cube/Debug/example_cube.exe
             ${{ github.workspace }}/werkkzeug3_kkrieger/player_demo/Debug/player_demo.exe
