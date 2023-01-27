@@ -26,10 +26,6 @@ jobs:
           msbuild 'werkkzeug3_kkrieger/wz3projects.sln' /p:configuration=Debug /p:platform=x86;
 
       # - run: Get-ChildItem -Recurse
-      
-      - name: Get Short Git SHA For Artifact Name
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
         
       #- name: Get Current Date
       #  id: date
@@ -40,7 +36,7 @@ jobs:
       - name: Upload to GitHub Actions Artifact Storage
         uses: actions/upload-artifact@v3
         with:
-          name: Kkrieger-Werkkzeug-#${{ github.run_number }}-${{ steps.vars.outputs.sha_short }}
+          name: Kkrieger-Werkkzeug-#${{ github.run_number }}-${{ github.sha }}
           path: |
             ${{ github.workspace }}/werkkzeug3_kkrieger/example_cube/Debug/example_cube.exe
             ${{ github.workspace }}/werkkzeug3_kkrieger/player_demo/Debug/player_demo.exe
