@@ -82,6 +82,9 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 -------
 
 player_intro will open up and play a file only if you turn on compatibility with Windows 98.
-Only seems to work with debris_chaos.kx file.
+Only seems to work with debris_chaos.kx and intro.kx files.
 
 player_intro.exe C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\data\debris_chaos.kx
+player_intro.exe C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\data\intro.kx
+
+Keep default options. Wait until the progress bar has completed, then press the spacebar.
