@@ -88,3 +88,10 @@ player_intro.exe C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kk
 player_intro.exe C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\data\intro.kx
 
 Keep default options. Wait until the progress bar has completed, then press the spacebar.
+
+-------
+
+Compilation Notes:
+
+/01 	Minimal Size
+/GY[-]  Function level linking (only links in functions that are needed).
