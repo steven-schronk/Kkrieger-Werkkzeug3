@@ -28,7 +28,7 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\script.hpp
 
 When the user clicks on a Cube operator this is called:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
-void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op);
+void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op)
 
 Each time a parameter for a cube us adjusted this is called:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genmesh.cpp
@@ -36,15 +36,15 @@ GenMesh * __stdcall Mesh_Cube(sInt tx,sInt ty,sInt tz,sInt flags,sFSRT srt)
 
 Called each time the window is painted:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.cpp
-void sGuiManager::OnPaint();
+void sGuiManager::OnPaint()
 
 Paints (renders) the 3D window pane:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
-void WinView::OnPaint3d(sViewport &viewPort);
+void WinView::OnPaint3d(sViewport &viewPort)
 
 Central point for handling different types of window actions:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug3\wz3_main.cpp
-sBool sAppHandler(sInt code,sDInt value);
+sBool sAppHandler(sInt code,sDInt value)
 
 Glues everything together: logic, events, operators, splines, memory
 class KEnvironment;
@@ -53,7 +53,7 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 player_demo Project ---------------------------------------
 
 Application starts here.
-int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show);
+int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
 All opcodes used by a demo.
@@ -76,7 +76,24 @@ sBool sSystem_::InitDS()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
 Start DemoScene - Main Loop
-DXDev->BeginScene();
+DXDev->BeginScene()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Start DirectX Screens
+void sSystem_::InitScreens()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Create Buffers For Geometry (Verticies)
+One is a Vertex Buffer The Other Is An Index Buffer
+void sSystem_::CreateGeoBuffer(sInt i,sInt dyn,sInt index,sInt size)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Starting DirectSound - Sample Format - starts thread for sound
+sBool sSystem_::InitDS()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Load Textures Into DirectX
+sInt sSystem_::AddTexture(sInt xs,sInt ys,sInt format,sU16 *data,sInt mipcount,sInt miptresh)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
 -------
