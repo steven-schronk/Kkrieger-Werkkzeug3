@@ -1,4 +1,4 @@
-Werkkzeug 3 Project -------------------------------------
+Werkkzeug 3 & KKrieger Project Notes -------------------------------------
 
 .k   files open with Werkkzeug. Contains graphics.
 .kx  files open with the player executable. Contains graphics and sound.
@@ -53,8 +53,6 @@ Glues everything together: logic, events, operators, splines, memory
 class KEnvironment;
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
-player_demo Project ---------------------------------------
-
 System configuration is stored in this global variable:
 struct sSystem_
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.hpp
@@ -88,6 +86,14 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 Initialize Direct Sound:
 sBool sSystem_::InitDS()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Virtual machine written in assembly language for sound generation:
+Originally written for NASM assembler.
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_viruz2a.asm
+
+Debug build uses nasm.exe which is a 16bit DOS executable.
+Release build uses nasmw.exe which is a 32bit Windows console executable.
+NASM uses a variant of Intel assembly syntax instead of AT&T syntax.
 
 Start DemoScene - Main Loop
 DXDev->BeginScene()
