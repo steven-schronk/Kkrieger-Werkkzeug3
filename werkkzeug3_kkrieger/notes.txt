@@ -18,6 +18,9 @@ Geometry is created and modified in Werkkzeug using WerkOp objects.
 These are a wrapper for the actual ops known as KOps.
 WerkOps stores the position in the grid, width, name, etc.
 
+DirectX Overlay - A dedicated area of video memory that can be overlayed on the primary surface
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genoverlay.cpp
+
 Virtual Machine - Stack & stack operations, execution code.
 class sScriptVM
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\script.hpp
@@ -52,6 +55,14 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
 player_demo Project ---------------------------------------
 
+System configuration is stored in this global variable:
+struct sSystem_
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.hpp
+
+Logging - System has custom logging methods:
+void __cdecl sDPrintF(const sChar *format,...)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_types.cpp
+
 Application starts here.
 int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
@@ -62,6 +73,9 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_dem
 File for demo is opened here:
 sU8 *sSystem_::LoadFile(const sChar *name,sInt &size)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+File is made of an array of this type:
+typedef unsigned char sU8; /* 8 bits */
 
 Opens up dialog box that asks for resolution, vsync, fullscreen, etc
 sBool ConfigDialog(sInt nr,const sChar *title)
@@ -88,6 +102,14 @@ One is a Vertex Buffer The Other Is An Index Buffer
 void sSystem_::CreateGeoBuffer(sInt i,sInt dyn,sInt index,sInt size)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
+Geometry is loaded into the video card here:
+sInt sSystem_::GeoAdd(sInt fvf,sInt prim)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+Size of buffers is hard set to large number.
+#define MAX_DYNVBSIZE (64*0x8000)   /*    65,535 */
+#define MAX_DYNIBSIZE (3*2*0x40000) /* 1,572,864 */
+
 Starting DirectSound - Sample Format - starts thread for sound
 sBool sSystem_::InitDS()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
@@ -112,3 +134,21 @@ Compilation Notes:
 
 /01 	Minimal Size
 /GY[-]  Function level linking (only links in functions that are needed).
+
+------
+
+The build contains a forced Header file that is the System Configuration file.
+
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_intro\intro_config.hpp
+
+------
+
+I noticed something unusual in the code at this location:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp:1706
+
+#pragma lekktor(on)
+
+Everything after that is grayed out as though it is not part of the build.Couldn't figure out how the data from the .kx file makes it into player_intro.exe program.
+Turns out lekktor is a misspelled German word for lektor.  (Remember they add an extra 'k' to the names of things.) That word means lecturer which translates into techspeak as logger.
+
+When you turn that off, you can debug those lines after a rebuild.
