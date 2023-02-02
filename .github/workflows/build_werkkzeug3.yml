@@ -46,4 +46,3 @@ jobs:
             ${{ github.workspace }}/werkkzeug3_kkrieger/werkkzeug3/Debug/werkkzeug3.exe
             ${{ github.workspace }}/werkkzeug3_kkrieger/data/*
           if-no-files-found: warn
-          node-version: 18
