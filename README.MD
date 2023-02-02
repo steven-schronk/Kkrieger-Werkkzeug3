@@ -16,7 +16,7 @@ The game music and sounds are produced by a multifunctional synthesizer called V
   kkrunchy/             - Executable compression tool for Windows.
   ktg/                  - OpenKTG texture generation tool.
   nasm-0.99.05-win32/   - Netwide Assembler for x86 architecture.
-  v2                    - Multifunctional synthesizer produces music in realtime.
+  v2/                   - Multifunctional synthesizer produces music in realtime.
   werkkzeug3_kkrieger/
     fried/              - Farbrausch Image Encoder/Decoder
     materials/          - Direct Material System
@@ -25,7 +25,7 @@ The game music and sounds are produced by a multifunctional synthesizer called V
     player_kkrieger/    - Output from Kkrieger Werkkzeug files.
     pngloader/          - Portable Network Graphics library and header files.
     shadercompile/      - Farbrausch Shader Compiler converts shader code into either binary or C/C++ header.
-    werkkzeug3          - Demoscene creation tool - used to create Kkrieger.
+    werkkzeug3/         - Demoscene creation tool - used to create Kkrieger.
   yasm-1.3.0/           - YASM Assembler. Complete rewrite of NASM under BSD License.
 ```
 
