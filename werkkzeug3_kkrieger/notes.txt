@@ -29,6 +29,10 @@ Bytecode For Virtual Machine
 enum KBytecode2
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\script.hpp
 
+Any time an Op in the editor is clicked this function is called:
+void WinPara::SetOpNow(WerkOp *op)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
+
 When the user clicks on a Cube operator this is called:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
 void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op)
