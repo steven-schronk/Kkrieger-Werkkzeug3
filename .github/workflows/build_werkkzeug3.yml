@@ -15,10 +15,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@latest
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.0.3
+        uses: microsoft/setup-msbuild@latest
 
       - name: Build Solution
         run: |
@@ -34,7 +34,7 @@ jobs:
       #  run: echo ${{ env.CURRENT_DATE }}
 
       - name: Upload to GitHub Actions Artifact Storage
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@latest
         with:
           name: Kkrieger-Werkkzeug-#${{ github.run_number }}-${{ github.sha }}
           path: |
