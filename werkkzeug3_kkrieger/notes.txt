@@ -34,24 +34,24 @@ void WinPara::SetOpNow(WerkOp *op)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
 
 When the user clicks on a Cube operator this is called:
-C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
 void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
 
 Each time a parameter for a cube us adjusted this is called:
-C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genmesh.cpp
 GenMesh * __stdcall Mesh_Cube(sInt tx,sInt ty,sInt tz,sInt flags,sFSRT srt)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genmesh.cpp
 
 Called each time the window is painted:
-C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.cpp
 void sGuiManager::OnPaint()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.cpp
 
 Paints (renders) the 3D window pane:
-C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 void WinView::OnPaint3d(sViewport &viewPort)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
 Central point for handling different types of window actions:
-C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug3\wz3_main.cpp
 sBool sAppHandler(sInt code,sDInt value)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug3\wz3_main.cpp
 
 Glues everything together: logic, events, operators, splines, memory
 class KEnvironment;
@@ -72,12 +72,52 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 All opcodes used by a demo.
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_demo\demo_oplist.cpp
 
-File for demo is opened here:
+Configuration file for Werkkzeug is loaded here:
+sBool WerkkzeugApp::LoadConfig()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
+
+Werkkzeug config file is located in the same folder as the .exe with file name werkkzeug.config.
+The datatype for the file is sU32, so each entry is 32 bits.
+It starts with this magic number: 0x3c3c3c3c
+CID data is stored next.
+Followed by version number and then size.
+And ends with this magic number:  0x3e3e3e3e
+
+Configuration settings for the tool get set here:
+sBool WerkkzeugApp::LoadConfig()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
+
+File for demo is opened here in player_intro:
 sU8 *sSystem_::LoadFile(const sChar *name,sInt &size)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+All data contained in file is cast to a sU8 datatype before writing to disk.
+
+File for demo is opened here in werkkzeug3:
+sU8 *sDiskItem::Load()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_diskitem.cpp
 
 File is made of an array of this type:
 typedef unsigned char sU8; /* 8 bits */
+
+When a new project file is loaded the WerkkzeugApp class has to be cleared:
+void WerkkzeugApp::Clear()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
+
+The binary data from the (previously read) project file is loaded into the WerkDoc here:
+sBool WerkDoc::Read(sU32 *&data)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
+
+After all the WerkOps are setup they have to be connected together to form a tree:
+void WerkDoc::Connect()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
+
+Music for the project gets loaded here:
+void WerkkzeugApp::MusicLoad()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
+
+".k" file for demo is saved here:
+sBool WerkkzeugApp::Write(sU32 *&data)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
 
 Opens up dialog box that asks for resolution, vsync, fullscreen, etc
 sBool ConfigDialog(sInt nr,const sChar *title)
@@ -107,7 +147,7 @@ Start DirectX Screens
 void sSystem_::InitScreens()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
-Create Buffers For Geometry (Verticies)
+Create Buffers For Geometry (Vertices)
 One is a Vertex Buffer The Other Is An Index Buffer
 void sSystem_::CreateGeoBuffer(sInt i,sInt dyn,sInt index,sInt size)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
@@ -158,7 +198,37 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
 #pragma lekktor(on)
 
-Everything after that is grayed out as though it is not part of the build.Couldn't figure out how the data from the .kx file makes it into player_intro.exe program.
-Turns out lekktor is a misspelled German word for lektor.  (Remember they add an extra 'k' to the names of things.) That word means lecturer which translates into techspeak as logger.
+Everything after that is grayed out as though it is not part of the build. Couldn't figure out how the data from the .kx file makes it into player_intro.exe program.
+Turns out lekktor is a misspelled German word for lektor. (Remember they add an extra 'k' to the names of things.) That word means lecturer which translates into techspeak as logger.
 
 When you turn that off, you can debug those lines after a rebuild.
+
+------
+
+When reading the binary data from a project file some bit shift magic is happening:
+
+sInt inline OPC_GETDATA(sU32 x)   {return (x&0x000000ff);}
+sInt inline OPC_GETINPUT(sU32 x)  {return (x&0x00000f00)>>8;}
+sInt inline OPC_GETLINK(sU32 x)   {return (x&0x0000f000)>>12;}
+sInt inline OPC_GETSTRING(sU32 x) {return (x&0x00070000)>>16;}
+sInt inline OPC_GETSPLINE(sU32 x) {return (x&0x00700000)>>20;}
+
+sU32 *&data
+
+/* get a blob of data from a file */
+
+data += OPC_GETDATA(conv);
+
+------
+
+Reading sections of an sF32 (float type):
+
+void sVector::Read(sU32 *&p)
+{
+  x = ((sF32 *)p)[0];  // x, y, z, w is a float
+  y = ((sF32 *)p)[1];
+  z = ((sF32 *)p)[2];
+  w = ((sF32 *)p)[3];
+  p+=4;
+}
+
