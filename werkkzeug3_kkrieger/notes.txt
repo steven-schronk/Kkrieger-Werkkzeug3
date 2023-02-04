@@ -45,7 +45,7 @@ Red   - Top Operator is selected
 Black - Middle - Has been compiled in the past or has been selected in this session?
 Green - Bottom Operator is compiled and running OK
 
-When operators turn red it indicates that something is wrong with the operator.
+When an operator's background turns red it indicates that something is wrong with the operator.
 This happens when the operator above it is not compatible.
 
 Some operators have a filmstrip on the right side that moves downward.
@@ -107,6 +107,7 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
 All opcodes used by a demo.
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_demo\demo_oplist.cpp
+Note: These opcodes are listed in Hex but stored as a integer in the KOp and WerkOp classes.
 
 Configuration file for Werkkzeug is loaded here:
 sBool WerkkzeugApp::LoadConfig()
