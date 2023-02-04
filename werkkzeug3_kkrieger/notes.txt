@@ -14,12 +14,19 @@ Operators - Individual instructions for creating geometry, textures, etc.
 struct KOp
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
+KOp represents the internal operation that is run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
+WerkOp is only found in Werkkzeug.  It is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
+
 Geometry is created and modified in Werkkzeug using WerkOp objects.
 These are a wrapper for the actual ops known as KOps.
 WerkOps stores the position in the grid, width, name, etc.
 
 DirectX Overlay - A dedicated area of video memory that can be overlayed on the primary surface
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genoverlay.cpp
+
+Windows Parameters - Sliders to change numerical values in Werkkzeug
+class WinPara
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
 
 Virtual Machine - Stack & stack operations, execution code.
 class sScriptVM
@@ -245,3 +252,6 @@ void sVector::Read(sU32 *&p)
   p+=4;
 }
 
+------
+
+Double right clicking an object in the 3Dviewer shows the geometry in wireframe.
