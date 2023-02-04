@@ -73,9 +73,25 @@ Central point for handling different types of window actions:
 sBool sAppHandler(sInt code,sDInt value)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug3\wz3_main.cpp
 
-Glues everything together: logic, events, operators, splines, memory
+Glues everything together: logic, events, operators, splines, memory, time, camera
 class KEnvironment;
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
+
+Drawing specific Ops in UI is handled by this class:
+class WinView
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
+
+Display texture bitmap in the UI:
+void WinView::ShowBitmap(sViewport &view,class GenBitmap *tex)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
+
+Displaying a mesh such as a cylindar, sphere, etc in the UI:
+void WinView::ShowMesh(sViewport &view,GenMesh *mesh,KEnvironment *kenv)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
+
+Displaying finished materials in the UI:
+void WinView::ShowMaterial(sViewport &view,WerkOp *op,KEnvironment *kenv)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
 System configuration is stored in this global variable:
 struct sSystem_
