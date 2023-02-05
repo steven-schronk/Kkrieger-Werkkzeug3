@@ -1152,7 +1152,7 @@ sBool WerkkzeugApp::SaveConfig()
   sWriteEnd(data,hdr);
   if(sSystem->SaveFile("werkkzeug.config",mem,((sU8*)data)-mem))
   {
-    sDPrintF("Config Safed\n");
+    sDPrintF("Config Saved\n");
     return sTRUE;
   }
   else

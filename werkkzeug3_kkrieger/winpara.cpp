@@ -81,7 +81,7 @@ WinPara::WinPara()
 
 sBool WinPara::OnCommand(sU32 cmd)
 {
-  sDPrintF("OnCommand: ");
+  sDPrintF("WinPara::OnCommand: ");
   sInt result;
   sMenuFrame *mf;
   sDialogWindow *diag;
@@ -668,7 +668,7 @@ WinParaInfo *WinPara::FindInfo(sInt offset)
 
 void WinPara::SetOp(WerkOp *op)
 {
-  sDPrintF("SetOp: %s\n", &op->Name);
+  sDPrintF("WinPara::SetOp: %s\n", &op->Name);
   sVERIFY(SetThisOp==0);
   SetThisOp = op;
   sGui->Post(CMD_PARA_SETOP,this);
@@ -676,7 +676,7 @@ void WinPara::SetOp(WerkOp *op)
 
 void WinPara::SetOpNow(WerkOp *op)
 {
-  sDPrintF("SetOpNow: %s\n", &op->Name);
+  sDPrintF("WinPara::SetOpNow: %s\n", &op->Name);
   sInt i,j;
   sChar *names[8]={"X","Y","Z","W","R","G","B","A"};
 //  WerkAnim *anim;
@@ -1600,7 +1600,7 @@ void WinAnimPage::OnKey(sU32 key)
 
 void WinAnimPage::OnPaint()
 {
-  sDPrintF("OnPaint(): ");
+  sDPrintF("WinAnimPage::OnPaint(): ");
   sChar buffer[4096];
   sChar *d;
   sU8 *code;

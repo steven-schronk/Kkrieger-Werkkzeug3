@@ -48,6 +48,7 @@ public:
 
 sBrowserTree::sBrowserTree()
 {
+  sDPrintF("sBrowserTree()\n");
   Dir = 0;
   SelDir = 0;
   ScrollToSelection = 0;
@@ -168,6 +169,7 @@ void sBrowserTree::OnKey(sU32 key)
 
 void sBrowserTree::OnPaint()
 {
+  sDPrintF("sBrowserTree::OnPaint()\n");
   sInt pos;
   sRect r;
 
@@ -625,6 +627,7 @@ void sBrowserList::OnKey(sU32 key)
 
 void sBrowserList::OnPaint()
 {
+  sDPrintF("sBrowserList::OnPaint()\n");
   sDiskItem *di;
   sChar buffer[sDI_NAMESIZE];
   sInt i;
@@ -742,6 +745,7 @@ void sBrowserList::OnDrag(sDragData &dd)
 
 sBool sBrowserList::OnCommand(sU32 cmd)
 {
+  sDPrintF("sBrowserList::OnCommand(sU32 cmd)\n");
   sDiskItem *di,*dir;
   switch(cmd)
   {
@@ -803,6 +807,7 @@ void sBrowserList::Popup(sDiskItem *di)
 
 sBrowserApp::sBrowserApp()
 {
+  sDPrintF("sBrowserApp::sBrowserApp()\n");
   sGuiWindow *dummy;
 
   dummy = new sDummyFrame;
@@ -898,6 +903,7 @@ void sBrowserApp::TreeFocus()
 
 sBool sBrowserApp::OnCommand(sU32 cmd)
 {
+  sDPrintF("sBrowserApp::OnCommand(sU32 cmd)\n");
   switch(cmd)
   {
   case sBTCMD_SELDIR:
@@ -1090,11 +1096,13 @@ void sFileWindow::OnLayout()
 
 void sFileWindow::OnPaint()
 {
+  sDPrintF("sFileWindow::OnPaint()\n");
   sPainter->Paint(sGui->FlatMat,Client.x0,Client.y1-Height,Client.x1,Client.y1,sGui->Palette[sGC_BACK]);
 }
 
 sBool sFileWindow::OnCommand(sU32 cmd)
 {
+  sDPrintF("sFileWindow::OnCommand(sU32 cmd)\n");
   switch(cmd)
   {
   case 1:
@@ -1190,6 +1198,7 @@ void sFileWindow::OnDrag(sDragData &dd)
 
 sBool sImplementFileMenu(sU32 cmd,sGuiWindow *win,sObject *obj,sFileWindow *file,sBool dirty,sInt maxsave)
 {
+  sDPrintF("sImplementFileMenu(sU32 cmd...\n");
   sDiskItem *di;
   sBrowserApp *browser;
   sU32 *mem,*data;

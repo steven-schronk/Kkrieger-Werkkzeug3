@@ -672,6 +672,7 @@ static LRESULT WINAPI MainWndProc(HWND win,UINT msg,WPARAM wparam,LPARAM lparam)
 
 int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show)
 {
+  sDPrintF("WinMain()\n");
   WInst = inst;
   WCmdLine = cmdline;
 
@@ -698,6 +699,7 @@ int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show)
 
 void sSetConfig(sU32 flags,sInt xs,sInt ys)
 {
+  sDPrintF("sSetConfig(sU32 flags, sInt xs, sInt ys)\n");
   sSystem = new sSystem_;
   
   sSetMem(((sU8 *)sSystem)+4,0,sizeof(sSystem_)-4);

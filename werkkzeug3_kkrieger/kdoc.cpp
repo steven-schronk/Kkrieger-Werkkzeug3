@@ -51,22 +51,26 @@ extern "C" void __stdcall OutputDebugStringA(const char *str);
 /****************************************************************************/
 
 KObject::KObject() 
-{ 
+{
+  sDPrintF("KObject::KObject()\n");
   ClassId=KC_NULL; 
   RefCount = 1;
 }
 
 KObject::~KObject() 
 {
+  sDPrintF("KObject::~KObject()\n");
 }
 
 void KObject::Copy(KObject *o) 
 {
+  sDPrintF("KObject::Copy(KObject *o)\n");
   ClassId=o->ClassId;
 }
 
 KObject *KObject::Copy()
 {
+  sDPrintF("KObject::Copy()\n");
   KObject *r;
   r = new KObject;
   r->Copy(this);
@@ -87,6 +91,7 @@ static sInt OpPerf[256];
 
 sInt KOp::Calc(KEnvironment *env,sInt flags)
 {
+  sDPrintF("KOp::Calc(KEnvironment *env,sInt flags)\n");
   sInt i;
   sInt pops;
   sInt changed;
@@ -243,7 +248,7 @@ sInt KOp::Calc(KEnvironment *env,sInt flags)
 
 static sInt CallCode(sInt code,sInt *para,sInt count)
 {
-  sDPrintF("CallCode()\n");
+  sDPrintF("KDoc.cpp:CallCode(sInt %d,sInt *para,sInt %d)\n", code, count);
   sInt result;
 #ifdef __GNUC__
 #if defined(__i386__)
@@ -302,7 +307,7 @@ static sInt CallCode(sInt code,sInt *para,sInt count)
 
 KObject *KOp::Call(KEnvironment *kenv)
 {
-  sDPrintF("Call()\n");
+  sDPrintF("KOp::Call(KEnvironment *kenv)\n");
   sU32 data[KK_MAXINPUT+128];
   sInt p,pNoPara;
   sInt i,max;
@@ -489,7 +494,7 @@ KObject *KOp::Call(KEnvironment *kenv)
 
 void KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)
 {
-  sDPrintF("ExecWithNewMem()\n");
+  sDPrintF("KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)\n");
   KInstanceMem *oldnext,**oldlink;
 
   oldnext = kenv->NextInstance;
@@ -514,7 +519,7 @@ void KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)
 
 void KOp::Exec(KEnvironment *kenv)
 {
-  sDPrintF("Exec()\n");
+  sDPrintF("KOp::Exec(KEnvironment *kenv)\n");
   sU32 data[KK_MAXINPUT+128];
   sInt p;
   sInt i,max;
@@ -598,7 +603,7 @@ void KOp::Exec(KEnvironment *kenv)
 
 void KOp::ExecInputs(KEnvironment *kenv)
 {
-  sDPrintF("ExecInputs()\n");
+  sDPrintF("KOp::ExecInputs(KEnvironment *kenv)\n");
   sInt i,max;
   KOp *op;
   
@@ -623,7 +628,7 @@ void KOp::ExecInputs(KEnvironment *kenv)
 
 void KOp::ExecInput(KEnvironment *kenv,sInt i)
 {
-  sDPrintF("ExecInput()\n");
+  sDPrintF("KOp::ExecInput(KEnvironment *kenv,sInt %d)\n", i);
   KOp *op;
 
   op = GetInput(i);
@@ -634,7 +639,7 @@ void KOp::ExecInput(KEnvironment *kenv,sInt i)
 
 void KOp::ExecEvent(KEnvironment *kenv,KEvent *event,sBool)
 {
-  sDPrintF("ExecEvent()\n");
+  sDPrintF("KOp::ExecEvent(KEnvironment *kenv,KEvent *event,sBool)\n");
   sVector save[8];
   KEvent *ce;
   sInt i;
@@ -707,7 +712,7 @@ void KOp::ExecEvent(KEnvironment *kenv,KEvent *event,sBool)
 
 void KOp::Change(sInt input)
 {
-  sDPrintF("Change()\n");
+  sDPrintF("KOp::Change(sInt %d)\n", input);
   sInt i;
 
   if(Changed) return;
@@ -735,7 +740,7 @@ void KOp::Change(sInt input)
 
 sBool KOp::CheckOutput(sInt kc)
 {
-  sDPrintF("CheckOutput()\n");
+  sDPrintF("KOp::CheckOutput(sInt %d)\n", kc);
   if(!this) return sFALSE;
 #if sPLAYER
   if(!Cache || CacheFreed)
@@ -757,7 +762,7 @@ sBool KOp::CheckOutput(sInt kc)
 
 void KOp::UpdateVar(sInt start,sInt count)
 {
-  sDPrintF("UpdateVar()\n");
+  sDPrintF("KOp::UpdateVar(sInt %d,sInt %d)\n", start, count);
   sInt min,max;
   if(count)
   {
@@ -784,7 +789,7 @@ void KOp::UpdateVar(sInt start,sInt count)
 
 sBool AnimCodeWritesTo(sU8 *code,sInt offset)
 {
-  sDPrintF("AnimCodeWritesTo()\n");
+  sDPrintF("kdoc.cpp:AnimCodeWritesTo(sU8 *code,sInt %d)\n", offset);
   sU8 mask,val;
 
   while(*code!=KA_END)
@@ -806,7 +811,7 @@ sBool AnimCodeWritesTo(sU8 *code,sInt offset)
 #if sPLAYER
 void KOp::CalcUsed()
 {
-  sDPrintF("CalcUsed()\n");
+  sDPrintF("KOp::CalcUsed()\n");
   if(this && !--CacheCount && Cache && !CacheFreed)
   {
     if(Cache->ClassId == KC_BITMAP || Cache->ClassId == KC_MESH)
@@ -829,7 +834,7 @@ void KOp::CalcUsed()
 
 void KInstanceMem::DeleteChain()
 {
-  sDPrintF("DeleteChain()\n");
+  sDPrintF("KInstanceMem::DeleteChain()\n");
   KInstanceMem *next,*mem;
 
   next = this;
@@ -899,7 +904,7 @@ KEnvironment::~KEnvironment()
 
 void KEnvironment::InitView()
 {
-  sDPrintF("InitView()\n");
+  sDPrintF("KEnvironment::InitView()\n");
   sInt i;
 
   for(i=0;i<DynamicEvents.Count;i++)
@@ -932,7 +937,7 @@ void KEnvironment::InitView()
 
 void KEnvironment::InitFrame(sInt timebeat,sInt timems)
 {
-  sDPrintF("InitFrame( %d, %d)\n", &timebeat, &timems);
+  sDPrintF("KEnvironment::InitFrame(sInt  %d, sInt  %d)\n", &timebeat, &timems);
   sInt i;
 
   sSetMem(Var,0,sizeof(Var));
@@ -992,7 +997,7 @@ void KEnvironment::InitFrame(sInt timebeat,sInt timems)
 
 void KEnvironment::ExitFrame()
 {
-  sDPrintF("ExitFrame()\n");
+  sDPrintF("KEnvironment::ExitFrame()\n");
   sInt i;
   KEvent *ev;
 
@@ -1019,12 +1024,13 @@ void KEnvironment::ExitFrame()
 
 void KEnvironment::AddDynamicEvent(KEvent *event)
 {
-  sDPrintF("AddDynamicEvent()\n");
+  sDPrintF("KEnvironment::AddDynamicEvent()\n");
   *DynamicEvents.Add() = event;
 }
 
 void KEnvironment::AddStaticEvent(KEvent *event)
 {
+  sDPrintF("KEnvironment::AddStaticEvent(KEvent *event)\n");
   if(event->Start==event->End || (BeatTime>=event->Start && BeatTime<event->End))
   {
     if(ClearInstanceMem)
@@ -1049,7 +1055,7 @@ void KEnvironment::AddStaticEvent(KEvent *event)
 
 sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
 {
-  //sDPrintF("ExecuteAnim(\n", &op.);
+  sDPrintF("KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)\n");
   sInt pop;
   sInt cmd,cmd2;
   sInt index;
@@ -1071,7 +1077,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
   for(;;)
   {
     cmd2 = cmd = *bytecode++;
-    // sDPrintF("Bytecode: %d\n", cmd);
+    // sDPrintF("KEnvironment::Bytecode: %d\n", cmd);
     if(cmd2>=0x80)
       cmd2 &= 0xf0;
     // if you change something here, remember to also change KDoc::Init
@@ -1393,6 +1399,7 @@ ende:
 
 sInt CalcCmdSize(sU8 *bytecode)
 {
+  sDPrintF("CalcCmdSize(sU8 * bytecode)\n");
   static sU8 CmdSize[] =
   {
       0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 0x00-0x0f
@@ -1409,6 +1416,7 @@ sInt CalcCmdSize(sU8 *bytecode)
 
 sInt CalcCodeSize(sU8 *bytecode)
 {
+  sDPrintF("CalcCodeSize(sU8 *bytecode)\n");
   sU8 *data,j;
 
   data = bytecode;
@@ -1424,6 +1432,7 @@ sInt CalcCodeSize(sU8 *bytecode)
 
 void KEnvironment::Pop(sInt count)
 {
+  sDPrintF("KEnvironment::Pop(sInt %d)\n", count);
   while(count>0)
   {
     Index--;
@@ -1435,6 +1444,7 @@ void KEnvironment::Pop(sInt count)
 
 void *KEnvironment::GetInstImpl(KOp *me,sInt size)
 {
+  sDPrintF("KEnvironment::GetInstImpl(KOp *me,sInt %d)\n", size);
   KInstanceMem *mem;
   if(NextInstance)
   {
@@ -1459,6 +1469,7 @@ void *KEnvironment::GetInstImpl(KOp *me,sInt size)
 
 void KEnvironment::SetMatrix(sMatrix &mat,sMatrix &save)
 {
+  sDPrintF("KEnvironment::SetMatrix(sMatrix & mat, sMatrix & save)\n");
   sMatrix *var;
 
   var = (sMatrix *) &Var[KV_MATRIX_I];
@@ -1468,6 +1479,7 @@ void KEnvironment::SetMatrix(sMatrix &mat,sMatrix &save)
 
 void KEnvironment::RestoreMatrix(sMatrix &save)
 {
+  sDPrintF("KEnvironment::RestoreMatrix(sMatrix &save)\n");
   sMatrix *var;
 
   var = (sMatrix *) &Var[KV_MATRIX_I];
@@ -1482,6 +1494,7 @@ void KEnvironment::RestoreMatrix(sMatrix &save)
 
 sF32 KSplineChannel::Eval(sF32 time,sInt inter)
 {
+  sDPrintF("KSplineChannel::Eval(sF32 %f,sInt %d)\n", time, inter);
   //sF32 val;
   sInt k;
   //sF32 *keyp[4];
@@ -1543,6 +1556,7 @@ sF32 KSplineChannel::Eval(sF32 time,sInt inter)
 
 void KSpline::Eval(sF32 time,sVector &v)
 {
+  sDPrintF("KSpline::Eval(sF32 &f, sVector & v)\n", time);
   sInt i;
 
   for(i=0;i<Count;i++)
@@ -1553,6 +1567,7 @@ void KSpline::Eval(sF32 time,sVector &v)
 
 void KEvent::Init()
 {
+  sDPrintF("KEvent::Init()\n");
   sSetMem(this,0,sizeof(*this));
   Matrix.Init();
   EndInterval = 1.0f;
@@ -1560,6 +1575,7 @@ void KEvent::Init()
 
 void KEvent::Exit()
 {
+  sDPrintF("Exit()\n");
   if(FirstInstance)
   {
     FirstInstance->DeleteChain();
@@ -1569,6 +1585,7 @@ void KEvent::Exit()
 
 void KEvent::Stop()
 {
+  sDPrintF("Stop()\n");
   Start = 0;
   End = 1;
 }
@@ -1583,6 +1600,7 @@ static KClass KClasses[256];
 
 static sBool DistributeAnimR(KOp *start)
 {
+  sDPrintF("DistributeAnimR(KOp *start)\n");
   sInt i;
 
   sBool flag = start->GetAnimCode()[0] != KA_END;
@@ -1599,6 +1617,7 @@ static sBool DistributeAnimR(KOp *start)
 
 void KDoc::Init(const sU8 *&dataPtr)
 {
+  sDPrintF("KDoc::Init(const sU8 *&dataPtr)\n");
   const sU8 *data;
   sChar *pack;
   sInt i,j,k,in,nOps,nSplines,typeByte,delta,nClasses,max;
@@ -1863,6 +1882,7 @@ void KDoc::Init(const sU8 *&dataPtr)
 
 void KDoc::Exit()
 {
+  sDPrintF("KDoc::Exit()\n");
   sInt i,j;
   KOp *op;
 
@@ -1895,6 +1915,7 @@ void KDoc::Exit()
 
 void KDoc::Precalc(KEnvironment *kenv)
 {
+  sDPrintF("KDoc::Precalc(KEnvironment *kenv)\n");
 //  KOp *op;
 
 #if sOP_PERFORMANCE
@@ -1952,6 +1973,7 @@ void KDoc::Precalc(KEnvironment *kenv)
 
 void KDoc::AddEvents(KEnvironment *kenv)
 {
+  sDPrintF("KDoc::AddEvents(KEnvironment *kenv)\n");
   sInt i;
 
   for(i=0;i<Events.Count;i++)
@@ -1960,6 +1982,7 @@ void KDoc::AddEvents(KEnvironment *kenv)
 
 static sInt CountOpsR(KOp *op)
 {
+  sDPrintF("KDoc.cpp:CountOpsR(KOp *op)\n");
   sInt count = 1;
   op->Tag = 1;
 
@@ -1982,6 +2005,7 @@ static sInt CountOpsR(KOp *op)
 
 sInt KDoc::CountOps(KOp *start)
 {
+  sDPrintF("KDoc::CountOps(KOp *start)\n");
   for(sInt i=0;i<Ops.Count;i++)
     Ops[i].Tag = Ops[i].Cache && !Ops[i].Changed;
 
@@ -1996,6 +2020,7 @@ sInt KDoc::CountOps(KOp *start)
 
 void KOp::Init(sU32 convention)
 {
+  sDPrintF("KOp::Init(sU32 %d)\n", convention);
   sInt size;
   sU32 *mem;
   sInt i;
@@ -2044,6 +2069,7 @@ void KOp::Init(sU32 convention)
 
 void KOp::Exit()
 {
+  sDPrintF("KOp::Exit()\n");
 #if !sPLAYER
   KMemoryManager->Remove(this);
   if(BlobData)
@@ -2063,6 +2089,7 @@ void KOp::Exit()
 
 void KOp::ReAlloc(sInt inmax,sInt outmax)
 {
+  sDPrintF("KOp::ReAlloc(sInt %d,sInt %d)\n", inmax, outmax);
   sInt size,i;
   sU32 *mem;
   sU32 *oldmem,*olddata,*oldanim;
@@ -2207,6 +2234,7 @@ void KOp::Uncache()
 
 void KOp::SetBlob(const sU8 *data,sInt size)
 {
+  sDPrintF("KOp::SetBlob(const sU8 *data,sInt %d)\n", size);
 #if !sPLAYER
   if(BlobData)
     delete[] BlobData;
@@ -2226,6 +2254,7 @@ void KOp::SetBlob(const sU8 *data,sInt size)
 
 static sInt GetObjectSize(KObject *obj)
 {
+  sDPrintF("sInt GetObjectSize(KObject *obj)\n");
   GenMesh *mesh;
   sInt size;
   switch(obj->ClassId)
@@ -2258,6 +2287,7 @@ static sInt GetObjectSize(KObject *obj)
 
 KMemoryManager_::KMemoryManager_()
 {
+  sDPrintF("KMemoryManager_::KMemoryManager_()\n");
   sInt i;
 
   for(i=0;i<KC_COUNT;i++)
@@ -2270,6 +2300,7 @@ KMemoryManager_::KMemoryManager_()
 
 KMemoryManager_::~KMemoryManager_()
 {
+  sDPrintF("KMemoryManager_::~KMemoryManager_()\n");
   sInt i;
 
   for(i=0;i<KC_COUNT;i++)
@@ -2278,30 +2309,35 @@ KMemoryManager_::~KMemoryManager_()
 
 sInt KMemoryManager_::GetBudget(sInt type)
 {
+  sDPrintF("KMemoryManager_::GetBudget(sInt %d)\n", type);
   sVERIFY(type < KC_COUNT);
   return Objects[type].Budget;
 }
 
 void KMemoryManager_::SetBudget(sInt type,sInt size)
 {
+  sDPrintF("KMemoryManager_::SetBudget(sInt %d,sInt %d)\n", type, size);
   sVERIFY(type < KC_COUNT);
   Objects[type].Budget = size;
 }
 
 sInt KMemoryManager_::GetSize(sInt type)
 {
+  sDPrintF("KMemoryManager_::SetBudget(sInt %d)\n", type);
   sVERIFY(type < KC_COUNT);
   return Objects[type].Size;
 }
 
 sInt KMemoryManager_::GetCount(sInt type)
 {
+  sDPrintF("KMemoryManager_::GetCount(sInt %d)\n", type);
   sVERIFY(type < KC_COUNT);
   return Objects[type].Ops.Count;
 }
 
 void KMemoryManager_::Use(KOp *op)
 {
+  sDPrintF("KMemoryManager_::Use(KOp *op)\n");
   KObjectList *obj;
   sInt i,j,size,oldSize;
 
@@ -2343,6 +2379,7 @@ void KMemoryManager_::Use(KOp *op)
 
 void KMemoryManager_::Remove(KOp *op)
 {
+  sDPrintF("KMemoryManager_::Remove(KOp *op)\n");
   KObjectList *obj;
   sInt i;
 
@@ -2378,6 +2415,7 @@ void KMemoryManager_::Remove(KOp *op)
 
 void KMemoryManager_::Manage()
 {
+  sDPrintF("KMemoryManager_::Manage()\n");
   sInt cls,i;
   KObjectList *obj;
   static sU8 validateCounter = 0;
@@ -2414,6 +2452,7 @@ void KMemoryManager_::Manage()
 
 void KMemoryManager_::Validate()
 {
+  sDPrintF("KMemoryManager_::Validate()\n");
   for(sInt cls=0;cls<KC_COUNT;cls++)
   {
     KObjectList *obj = &Objects[cls];
@@ -2430,6 +2469,7 @@ KMemoryManager_ *KMemoryManager = 0;
 
 void MemManagerInit()
 {
+  sDPrintF("MemManagerInit()\n");
   KMemoryManager = new KMemoryManager_;
   KMemoryManager->SetBudget(KC_BITMAP,192*1024*1024); // just a default value
   KMemoryManager->SetBudget(KC_MESH  ,96*1024*1024); // just a default value
@@ -2437,6 +2477,7 @@ void MemManagerInit()
 
 void MemManagerExit()
 {
+  sDPrintF("MemManagerExit()\n");
   delete KMemoryManager;
   KMemoryManager = 0;
 }
@@ -2533,6 +2574,7 @@ void __stdcall Exec_Misc_Trigger(KOp *op,KEnvironment *kenv,
   sF32 trigger,sF32 tresh,sF32 delay,sF32 duration,sInt flags,
   sF32 vel,sF32 mod,sInt sel,sF323 s,sF323 r,sF323 t,sU32 col,KSpline *spline)
 {
+  sDPrintF("Exec_Misc_Trigger(KOp *op,KEnvironment *kenv...\n");
   KEvent *ev;
   KOp *eop;
   TriggerMem *mem;
@@ -2605,6 +2647,7 @@ struct DelayMem : KInstanceMem
 
 void __stdcall Exec_Misc_Delay(KOp *op,KEnvironment *kenv,sInt flags,sInt sw,sF32 tresh,sF32 hyst,sF32 time0,sF32 time1,sF32 time2)
 {
+  sDPrintF("Exec_Misc_Delay(KOp *op,KEnvironment *kenv...\n");
   sF32 val;
   sF32 delta;
   DelayMem *mem;
@@ -2706,6 +2749,7 @@ void __stdcall Exec_Misc_Delay(KOp *op,KEnvironment *kenv,sInt flags,sInt sw,sF3
 
 void __stdcall Exec_Misc_If(KOp *op,KEnvironment *kenv,sInt sw,sInt val)
 {
+  sDPrintF("Exec_Misc_If(KOp *op,KEnvironment *kenv,sInt sw,sInt val)\n");
   KOp *child;
 
   sVERIFY(op->GetInputCount()>=1);
@@ -2726,6 +2770,7 @@ void __stdcall Exec_Misc_If(KOp *op,KEnvironment *kenv,sInt sw,sInt val)
 
 void __stdcall Exec_Misc_SetIf(KOp *op,KEnvironment *kenv,sInt sw,sInt val,sInt flags,sInt osw)
 {
+  sDPrintF("Exec_Misc_SetIf(KOp *op,KEnvironment *kenv,sInt sw,sInt val...\n");
   sVector v;
   sInt var;
   sInt compare;
@@ -2767,6 +2812,7 @@ void __stdcall Exec_Misc_SetIf(KOp *op,KEnvironment *kenv,sInt sw,sInt val,sInt 
 
 void __stdcall Exec_Misc_State(KOp *op,KEnvironment *kenv,sInt sw,sInt val,sInt cond,sInt condsw,sInt condval)
 {
+  sDPrintF("Exec_Misc_State(KOp *op,KEnvironment *kenv,sInt sw...\n");
   sInt ok;
 
   ok = 0;
@@ -2817,6 +2863,7 @@ void __stdcall Exec_Misc_State(KOp *op,KEnvironment *kenv,sInt sw,sInt val,sInt 
 
 void __stdcall Exec_Misc_Menu(KOp *op,KEnvironment *kenv,sInt sw,sInt max,sInt flags)
 {
+  sDPrintF("Exec_Misc_Menu(KOp *op,KEnvironment *kenv,sInt sw...\n");
   sInt i;
 
   i = 0;
@@ -2847,6 +2894,7 @@ struct PlaySampleMem : public KInstanceMem
 
 void __stdcall Exec_Misc_PlaySample(KOp *op,KEnvironment *kenv,sInt sw,sInt val,sF32 tresh,sInt sample,sF32 volume,sF32 retrigger,sF32 halfrange)
 {
+  sDPrintF("Exec_Misc_PlaySample(KOp *op,KEnvironment *kenv,sInt sw...\n");
   PlaySampleMem *mem;
   sInt ok,buf;
   sVector v;
@@ -2938,6 +2986,7 @@ KObject * __stdcall Init_Misc_Demo(KOp *op)
 
 void __stdcall Exec_Misc_Demo(KOp *op,KEnvironment *kenv)
 {
+  sDPrintF("Exec_Misc_Demo(KOp *op,KEnvironment *kenv)\n");
   sInt i;
   KOp *in;
 
