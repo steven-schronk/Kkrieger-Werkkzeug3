@@ -243,6 +243,7 @@ sInt KOp::Calc(KEnvironment *env,sInt flags)
 
 static sInt CallCode(sInt code,sInt *para,sInt count)
 {
+  sDPrintF("CallCode()\n");
   sInt result;
 #ifdef __GNUC__
 #if defined(__i386__)
@@ -301,6 +302,7 @@ static sInt CallCode(sInt code,sInt *para,sInt count)
 
 KObject *KOp::Call(KEnvironment *kenv)
 {
+  sDPrintF("Call()\n");
   sU32 data[KK_MAXINPUT+128];
   sInt p,pNoPara;
   sInt i,max;
@@ -487,6 +489,7 @@ KObject *KOp::Call(KEnvironment *kenv)
 
 void KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)
 {
+  sDPrintF("ExecWithNewMem()\n");
   KInstanceMem *oldnext,**oldlink;
 
   oldnext = kenv->NextInstance;
@@ -511,6 +514,7 @@ void KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)
 
 void KOp::Exec(KEnvironment *kenv)
 {
+  sDPrintF("Exec()\n");
   sU32 data[KK_MAXINPUT+128];
   sInt p;
   sInt i,max;
@@ -594,6 +598,7 @@ void KOp::Exec(KEnvironment *kenv)
 
 void KOp::ExecInputs(KEnvironment *kenv)
 {
+  sDPrintF("ExecInputs()\n");
   sInt i,max;
   KOp *op;
   
@@ -618,6 +623,7 @@ void KOp::ExecInputs(KEnvironment *kenv)
 
 void KOp::ExecInput(KEnvironment *kenv,sInt i)
 {
+  sDPrintF("ExecInput()\n");
   KOp *op;
 
   op = GetInput(i);
@@ -628,6 +634,7 @@ void KOp::ExecInput(KEnvironment *kenv,sInt i)
 
 void KOp::ExecEvent(KEnvironment *kenv,KEvent *event,sBool)
 {
+  sDPrintF("ExecEvent()\n");
   sVector save[8];
   KEvent *ce;
   sInt i;
@@ -700,6 +707,7 @@ void KOp::ExecEvent(KEnvironment *kenv,KEvent *event,sBool)
 
 void KOp::Change(sInt input)
 {
+  sDPrintF("Change()\n");
   sInt i;
 
   if(Changed) return;
@@ -727,6 +735,7 @@ void KOp::Change(sInt input)
 
 sBool KOp::CheckOutput(sInt kc)
 {
+  sDPrintF("CheckOutput()\n");
   if(!this) return sFALSE;
 #if sPLAYER
   if(!Cache || CacheFreed)
@@ -748,6 +757,7 @@ sBool KOp::CheckOutput(sInt kc)
 
 void KOp::UpdateVar(sInt start,sInt count)
 {
+  sDPrintF("UpdateVar()\n");
   sInt min,max;
   if(count)
   {
@@ -774,6 +784,7 @@ void KOp::UpdateVar(sInt start,sInt count)
 
 sBool AnimCodeWritesTo(sU8 *code,sInt offset)
 {
+  sDPrintF("AnimCodeWritesTo()\n");
   sU8 mask,val;
 
   while(*code!=KA_END)
@@ -795,6 +806,7 @@ sBool AnimCodeWritesTo(sU8 *code,sInt offset)
 #if sPLAYER
 void KOp::CalcUsed()
 {
+  sDPrintF("CalcUsed()\n");
   if(this && !--CacheCount && Cache && !CacheFreed)
   {
     if(Cache->ClassId == KC_BITMAP || Cache->ClassId == KC_MESH)
@@ -817,6 +829,7 @@ void KOp::CalcUsed()
 
 void KInstanceMem::DeleteChain()
 {
+  sDPrintF("DeleteChain()\n");
   KInstanceMem *next,*mem;
 
   next = this;
@@ -842,6 +855,7 @@ void KInstanceMem::DeleteChain()
 
 KEnvironment::KEnvironment()
 {
+  sDPrintF("KEnvironment()\n");
   sInt i;
 
   EventSpline = 0;
@@ -873,6 +887,7 @@ KEnvironment::KEnvironment()
 
 KEnvironment::~KEnvironment()
 {
+  sDPrintF("~KEnvironment()\n");
   InitView();
   InitFrame(0,0);
   ExitFrame();
@@ -884,6 +899,7 @@ KEnvironment::~KEnvironment()
 
 void KEnvironment::InitView()
 {
+  sDPrintF("InitView()\n");
   sInt i;
 
   for(i=0;i<DynamicEvents.Count;i++)
@@ -916,6 +932,7 @@ void KEnvironment::InitView()
 
 void KEnvironment::InitFrame(sInt timebeat,sInt timems)
 {
+  sDPrintF("InitFrame( %d, %d)\n", &timebeat, &timems);
   sInt i;
 
   sSetMem(Var,0,sizeof(Var));
@@ -975,6 +992,7 @@ void KEnvironment::InitFrame(sInt timebeat,sInt timems)
 
 void KEnvironment::ExitFrame()
 {
+  sDPrintF("ExitFrame()\n");
   sInt i;
   KEvent *ev;
 
@@ -1001,6 +1019,7 @@ void KEnvironment::ExitFrame()
 
 void KEnvironment::AddDynamicEvent(KEvent *event)
 {
+  sDPrintF("AddDynamicEvent()\n");
   *DynamicEvents.Add() = event;
 }
 
@@ -1030,6 +1049,7 @@ void KEnvironment::AddStaticEvent(KEvent *event)
 
 sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
 {
+  //sDPrintF("ExecuteAnim(\n", &op.);
   sInt pop;
   sInt cmd,cmd2;
   sInt index;
@@ -1051,6 +1071,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
   for(;;)
   {
     cmd2 = cmd = *bytecode++;
+    // sDPrintF("Bytecode: %d\n", cmd);
     if(cmd2>=0x80)
       cmd2 &= 0xf0;
     // if you change something here, remember to also change KDoc::Init

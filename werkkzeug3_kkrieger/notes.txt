@@ -15,11 +15,33 @@ struct KOp
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
 KOp represents the internal operation that is run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
-WerkOp is only found in Werkkzeug.  It is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
+WerkOp is only found in Werkkzeug and is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
 
 Geometry is created and modified in Werkkzeug using WerkOp objects.
 These are a wrapper for the actual ops known as KOps.
 WerkOps stores the position in the grid, width, name, etc.
+
+KOps can have animation ops as well. Each time an Op is executed, a search is performed for potential animation ops:
+WerkOpAnim *WinPara::FindOpAnim()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
+
+Werk Op Animation object is defined here:
+class WerkOpAnim
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.hpp
+
+Animation is performed by this call:
+sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.cpp
+
+Animation Op codes are displayed in the top left of the animation page (window):
+void WinAnimPage::OnPaint()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
+
+Each 2 or 4 character set of numbers represents a single Op.
+The first two characters represent the Op itself.
+The last two (if present) represent a parameter for the Op to work with.
+The Op codes are listed here:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
 DirectX Overlay - A dedicated area of video memory that can be overlayed on the primary surface
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genoverlay.cpp

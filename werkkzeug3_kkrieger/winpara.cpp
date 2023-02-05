@@ -81,6 +81,7 @@ WinPara::WinPara()
 
 sBool WinPara::OnCommand(sU32 cmd)
 {
+  sDPrintF("OnCommand: ");
   sInt result;
   sMenuFrame *mf;
   sDialogWindow *diag;
@@ -105,6 +106,7 @@ sBool WinPara::OnCommand(sU32 cmd)
   switch(cmd)
   {
   case CMD_PARA_CHANGE:
+    sDPrintF("CMD_PARA_CHANGE\n");
     if(Op)
     {
       Op->Change(0);
@@ -112,6 +114,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_CHANGEX:
+    sDPrintF("CMD_PARA_CHANGEX\n");
     if(Op)
     {
       Op->Change(1);
@@ -119,6 +122,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_DONEX:
+    sDPrintF("CMD_PARA_DONEX\n");
     if(Op)
     {
       if(!SetThisOp)
@@ -136,6 +140,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 */
   case CMD_PARA_UNDO:
+    sDPrintF("CMD_PARA_UNDO\n");
     if(Op)
     {
       sInt bytes = sMin(KK_MAXUNDODATA,Op->Op.GetDataWords()*4);
@@ -147,6 +152,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_REDO:
+    sDPrintF("CMD_PARA_REDO\n");
     if(Op)
     {
       sInt bytes = sMin(KK_MAXUNDODATA,Op->Op.GetDataWords()*4);
@@ -157,6 +163,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_SPECIAL + 0:
+    sDPrintF("CMD_PARA_SPECIAL\n");
     if(Op->Class->Id==0xd0)
     {
       sBool tex[4];
@@ -178,6 +185,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_ANIMOP:
+    sDPrintF("CMD_PARA_ANIMOP\n");
     if(App->AnimPageWin)
     {
       App->AnimPageWin->OnCommand(CMD_ANIMPAGE_GENCODE);
@@ -185,6 +193,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_SPLINEADD:
+    sDPrintF("CMD_PARA_SPLINEADD\n");
     diag = new sDialogWindow;
     NewSplineName[0] = 0;
     diag->InitString(NewSplineName,KK_NAME);
@@ -192,6 +201,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_SPLINEADD2:
+    sDPrintF("CMD_PARA_SPLINEADD2\n");
     oa = FindOpAnim();
     if(Op && oa && NewSplineName[0] && oa->Bytecode==KA_SPLINE && App->PageWin->Page)
     {
@@ -205,6 +215,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_SPLINESELECT:
+    sDPrintF("CMD_PARA_SPLINESELECT\n");
     if(App->PageWin->Page)
     {
       max = App->PageWin->Page->Splines->GetCount();
@@ -221,6 +232,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_SPLINEGOTO:
+    sDPrintF("CMD_PARA_SPLINEGOTO\n");
     oa = FindOpAnim();
     if(oa)
     {
@@ -234,11 +246,13 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_ANIMLINEAR:
+    sDPrintF("CMD_PARA_ANIMLINEAR\n");
     App->AnimPageWin->AddAnimOps(0,NewAnimInfo);
     SetOp(Op);
     return sTRUE;
 
   case CMD_PARA_ANIMNEW:
+    sDPrintF("CMD_PARA_ANIMNEW\n");
     diag = new sDialogWindow;
     NewSplineName[0] = 0;
     diag->InitString(NewSplineName,KK_NAME);
@@ -246,6 +260,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_ANIMNEW2:
+    sDPrintF("CMD_PARA_ANIMNEW2\n");
     if(NewSplineName[0] && App->PageWin->Page && Info[NewAnimInfo].Channels>=1)
     {
       spline = new WerkSpline;
@@ -266,11 +281,13 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_ANIMOLD:
+    sDPrintF("CMD_PARA_ANIMOLD\n");
     App->AnimPageWin->AddAnimOps("",NewAnimInfo);
     SetOp(Op);
     return sTRUE;
 
   case CMD_PARA_RELOAD:
+    sDPrintF("CMD_PARA_RELOAD\n");
     if(Op)
     {
       Op->Op.SetBlob(0,0);
@@ -279,6 +296,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_SETOP:
+    sDPrintF("CMD_PARA_SETOP\n");
     if(SetThisOp)
     {
       SetOpNow(SetThisOp);
@@ -287,6 +305,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_SPLINE_SORT:
+    sDPrintF("CMD_SPLINE_SORT\n");
     bs = GetBlobSpline();
     if(bs)
     {
@@ -297,6 +316,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_SPLINE_NORM:
+    sDPrintF("CMD_SPLINE_NORM\n");
     bs = GetBlobSpline();
     if(bs)
     {
@@ -307,6 +327,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_SPLINE_CHANGEMODE:
+    sDPrintF("CMD_SPLINE_CHANGEMODE\n");
     if(Op)
     {
       Op->Change(-1);
@@ -315,6 +336,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_SPLINE_SWAPTC:
+    sDPrintF("CMD_SPLINE_SWAPTC\n");
     bs = GetBlobSpline();
     if(bs)
     {
@@ -323,6 +345,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     }
     return sTRUE;
   case CMD_SPLINE_SETTARGET:
+    sDPrintF("CMD_SPLINE_SETTARGET\n");
     bs = GetBlobSpline();
     if(bs)
     {
@@ -335,6 +358,7 @@ sBool WinPara::OnCommand(sU32 cmd)
   switch(cmd&0xffffff00)
   {
   case CMD_PARA_CHCH:
+    sDPrintF("CMD_PARA_CHCH\n");
     if(Op)
     {
       sCopyMem(Op->Op.GetEditPtr(0),EditData,Op->Op.GetDataWords()*4);
@@ -350,6 +374,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_CHCHX:
+    sDPrintF("CMD_PARA_CHCHX\n");
     if(Op)
     {
       sCopyMem(Op->Op.GetEditPtr(0),EditData,Op->Op.GetDataWords()*4);
@@ -363,6 +388,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_PAGES:
+    sDPrintF("CMD_PARA_PAGES\n");
     CurrentPage = 0;
     Offset = val;
 /*
@@ -377,6 +403,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
     
   case CMD_PARA_PAGES2:
+    sDPrintF("CMD_PARA_PAGES2\n");
     if(App->OpBrowserWin)
     {
       App->OpBrowserWin->GetFileName(buffer,sizeof(buffer));
@@ -388,6 +415,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_PAGE:
+    sDPrintF("CMD_PARA_PAGE\n");
     CurrentPage = 0;
     if(val>=0 && val<App->Doc->Pages->GetCount())
     {
@@ -397,6 +425,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_FILTER:
+    sDPrintF("CMD_PARA_FILTER\n");
     StoreFilter = val;
     StoreFilterTemp = StoreFilter;
     PopupNew = 0;
@@ -408,6 +437,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_NAMES:
+    sDPrintF("CMD_PARA_NAMES\n");
     CurrentPage = 0;
     Offset = val;
     if(Op->Class->Links[val]!=KC_ANY && Op->Class->Links[val]!=0)
@@ -428,6 +458,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_GOTO:
+    sDPrintF("CMD_PARA_GOTO\n");
     CurrentPage = 0;
     op = App->Doc->FindName(Op->LinkName[val]);
     if(op)
@@ -438,6 +469,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_ANIM:
+    sDPrintF("CMD_PARA_ANIM\n");
     NewAnimInfo = val;
     mf = new sMenuFrame;
     mf->SendTo = this;
@@ -449,6 +481,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_OP:
+    sDPrintF("CMD_PARA_OP\n");
     page = CurrentPage;
     CurrentPage = 0;
     if(page && val>=0 && val<page->Ops->GetCount() && Offset>=0 && Offset<KK_MAXLINK)
@@ -482,6 +515,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_STRING:
+    sDPrintF("CMD_PARA_STRING\n");
     if(Op)
     {
       Op->Op.SetString(cmd&7,StringEditBuffer[cmd&7]);
@@ -490,6 +524,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_TEXT:
+    sDPrintF("CMD_PARA_TEXT\n");
     if(Op && TextControl[cmd&7])
     {
       Op->Op.SetString(cmd&7,TextControl[cmd&7]->GetText());
@@ -498,6 +533,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_SPLINESEL2:
+    sDPrintF("CMD_PARA_SPLINESEL2\n");
     oa = FindOpAnim();
     if(oa && oa->Bytecode==KA_SPLINE && App->PageWin->Page)
     {
@@ -507,6 +543,7 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_PARA_FILEREQ:
+    sDPrintF("CMD_PARA_FILTEREQ\n");
     if(sSystem->FileRequester(StringEditBuffer[cmd&7],sCOUNTOF(StringEditBuffer[cmd&7]),sFRF_OPEN))
     {
       Op->Op.SetString(cmd&7,StringEditBuffer[cmd&7]);
@@ -515,18 +552,23 @@ sBool WinPara::OnCommand(sU32 cmd)
     return sTRUE;
 
   case CMD_SPLINE_ADD:
+    sDPrintF("CMD_SPLINE_ADD\n");
     AddBlobSplineKey(val);
     return sTRUE;
   case CMD_SPLINE_REM:
+    sDPrintF("CMD_SPLINE_REM\n");
     RemBlobSplineKey(val);
     return sTRUE;
   case CMD_PIPE_ADD:
+    sDPrintF("CMD_PIPE_ADD\n");
     AddBlobPipeKey(val);
     return sTRUE;
   case CMD_PIPE_REM:
+    sDPrintF("CMD_PIPE_REM\n");
     RemBlobPipeKey(val);
     return sTRUE;
   case CMD_SPLINE_SELECT:
+    sDPrintF("CMD_SPLINE_SELECT\n");
     bs = GetBlobSpline();
     if(bs)
     {
@@ -536,6 +578,7 @@ sBool WinPara::OnCommand(sU32 cmd)
         bs->SetSelect(val);
     }
     OnCommand(CMD_PARA_CHANGE);
+      sDPrintF("CMD_PARA_CHANGE\n");
     return sTRUE;
   }
 
@@ -604,6 +647,7 @@ WerkOpAnim *WinPara::FindOpAnim()
       if(Op->AnimOps->Get(i)->Select)
       {
         oa = Op->AnimOps->Get(i);
+        // sDPrintF("OpBytecode Fragment: %d\n", &oa->Bytecode);
         j++;
       }
     }
@@ -624,6 +668,7 @@ WinParaInfo *WinPara::FindInfo(sInt offset)
 
 void WinPara::SetOp(WerkOp *op)
 {
+  sDPrintF("SetOp: %s\n", &op->Name);
   sVERIFY(SetThisOp==0);
   SetThisOp = op;
   sGui->Post(CMD_PARA_SETOP,this);
@@ -631,6 +676,7 @@ void WinPara::SetOp(WerkOp *op)
 
 void WinPara::SetOpNow(WerkOp *op)
 {
+  sDPrintF("SetOpNow: %s\n", &op->Name);
   sInt i,j;
   sChar *names[8]={"X","Y","Z","W","R","G","B","A"};
 //  WerkAnim *anim;
@@ -1554,6 +1600,7 @@ void WinAnimPage::OnKey(sU32 key)
 
 void WinAnimPage::OnPaint()
 {
+  sDPrintF("OnPaint(): ");
   sChar buffer[4096];
   sChar *d;
   sU8 *code;
@@ -1569,24 +1616,17 @@ void WinAnimPage::OnPaint()
     while(*code!=KA_END)
     {
       count = 1;
-      if(*code==KA_CONSTV)
-        count = 17;
-      if(*code==KA_CONSTC)
-        count = 5;
-      if(*code==KA_CONSTS)
-        count = 5;
-      if(*code>=0x80 || *code==KA_SPLINE)
-        count = 2;
-      if(*code==KA_LOADVAR)
-        count = 2;
-      if(*code==KA_LOADPARA1)
-        count = 2;
-      if(*code==KA_LOADPARA2)
-        count = 2;
-      if(*code==KA_LOADPARA3)
-        count = 2;
-      if(*code==KA_LOADPARA4)
-        count = 2;
+      if (*code == KA_CONSTV)                  { count = 17; sDPrintF("KA_CONSTV ");    }
+      if (*code == KA_CONSTC)                  { count = 5;  sDPrintF("KA_CONSTC ");    }
+      if (*code == KA_CONSTS)                  { count = 5;  sDPrintF("KA_CONSTS ");    }
+      if (*code >= 0x80 || *code == KA_SPLINE) { count = 2;  sDPrintF("KA_SPLINE ");    }
+      if (*code == KA_LOADVAR)                 { count = 2;  sDPrintF("KA_LOADVAR ");   }
+      if (*code == KA_LOADPARA1)               { count = 2;  sDPrintF("KA_LOADPARA1 "); }
+      if (*code == KA_LOADPARA2)               { count = 2;  sDPrintF("KA_LOADPARA2 "); }
+      if (*code == KA_LOADPARA3)               { count = 2;  sDPrintF("KA_LOADPARA3 "); }
+      if (*code == KA_LOADPARA4)               { count = 2;  sDPrintF("KA_LOADPARA4 "); }
+
+      if(count == 1) { sDPrintF("NOOP "); }
 
       while(count)
       {
@@ -1597,10 +1637,13 @@ void WinAnimPage::OnPaint()
       }
       *d++ = ' ';
     }
+    sDPrintF("KA_END ");
     *d++ = '.';
     *d++ = 0;
+    sDPrintF("%s", &buffer);
     sPainter->Print(sGui->PropFont,Client.x0,Client.y0,buffer,sGui->Palette[sGC_TEXT]);
   }
+  sDPrintF("\n");
 }
 
 
