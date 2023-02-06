@@ -519,6 +519,8 @@ void KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)
 
 void KOp::Exec(KEnvironment *kenv)
 {
+  //sDPrintF("%s", WerkDoc::FindWerkClass(this->Command));
+  //sDPrintF("this->Command = %d\n", this->Command);
   sDPrintF("KOp::Exec(KEnvironment *kenv)\n");
   sU32 data[KK_MAXINPUT+128];
   sInt p;
@@ -789,7 +791,11 @@ void KOp::UpdateVar(sInt start,sInt count)
 
 sBool AnimCodeWritesTo(sU8 *code,sInt offset)
 {
-  sDPrintF("kdoc.cpp:AnimCodeWritesTo(sU8 *code,sInt %d)\n", offset);
+  if (false) {
+    sDPrintF("kdoc.cpp:AnimCodeWritesTo(sU8 %d,sInt %d)\n", *code, offset);
+  } else {
+    sDPrintF("kdoc.cpp:AnimCodeWritesTo(sU8 0x0, sInt %d)\n", offset);
+  }
   sU8 mask,val;
 
   while(*code!=KA_END)
@@ -1055,7 +1061,8 @@ void KEnvironment::AddStaticEvent(KEvent *event)
 
 sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
 {
-  sDPrintF("KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)\n");
+  sDPrintF("KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)\n", *bytecode);
+  sDPrintF("Animation Ops: ");
   sInt pop;
   sInt cmd,cmd2;
   sInt index;
@@ -1085,10 +1092,12 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
     switch(cmd2)
     {
     case KA_NOP:
+      sDPrintF("KA_NOP ");
       break;
     case KA_END:
       goto ende;
     case KA_LOADVAR:
+      sDPrintF("KA_LOADVAR ");
       index = *bytecode++;
       sVERIFY(index<KK_MAXVAR);
       *p = Var[index];
@@ -1096,6 +1105,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       op->UpdateVar(index,1);
       break;
     case KA_LOADPARA1:
+      sDPrintF("KA_LOADPARA1 ");
       index = *bytecode++;
       sVERIFY(index<op->GetDataWords());
       fval = ((sF32 *)op->DataEdit)[index];
@@ -1106,6 +1116,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p++;
       break;
     case KA_LOADPARA2:
+      sDPrintF("KA_LOADPARA2 ");
       index = *bytecode++;
       sVERIFY(index+1<op->GetDataWords());
       p->x = ((sF32 *)op->DataEdit)[index+0];
@@ -1115,6 +1126,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p++;
       break;
     case KA_LOADPARA3:
+      sDPrintF("KA_LOADPARA3 ");
       index = *bytecode++;
       sVERIFY(index+2<op->GetDataWords());
       p->x = ((sF32 *)op->DataEdit)[index+0];
@@ -1124,6 +1136,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p++;
       break;
     case KA_LOADPARA4:
+      sDPrintF("KA_LOADPARA4 ");
       index = *bytecode++;
       sVERIFY(index+3<op->GetDataWords());
       p->x = ((sF32 *)op->DataEdit)[index+0];
@@ -1133,42 +1146,50 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p++;
       break;
     case KA_SWIZZLEX:
+      sDPrintF("KA_SWIZZLEX ");
       p[-1].x = p[-1].x;
       p[-1].y = p[-1].x;
       p[-1].z = p[-1].x;
       p[-1].w = p[-1].x;
       break;
     case KA_SWIZZLEY:
+      sDPrintF("KA_SWIZZLEY ");
       p[-1].x = p[-1].y;
       p[-1].y = p[-1].y;
       p[-1].z = p[-1].y;
       p[-1].w = p[-1].y;
       break;
     case KA_SWIZZLEZ:
+      sDPrintF("KA_SWIZZLEZ ");
       p[-1].x = p[-1].z;
       p[-1].y = p[-1].z;
       p[-1].z = p[-1].z;
       p[-1].w = p[-1].z;
       break;
     case KA_SWIZZLEW:
+      sDPrintF("KA_SWIZZLEW ");
       p[-1].x = p[-1].w;
       p[-1].y = p[-1].w;
       p[-1].z = p[-1].w;
       p[-1].w = p[-1].w;
       break;
     case KA_ADD:
+      sDPrintF("KA_ADD ");
       p--;
       p[-1].Add4(*p);
       break;
     case KA_SUB:
+      sDPrintF("KA_SUB ");
       p--;
       p[-1].Sub4(*p);
       break;
     case KA_MUL:
+      sDPrintF("KA_MUL ");
       p--;
       p[-1].Mul4(*p);
       break;
     case KA_DIV:
+      sDPrintF("KA_DIV ");
       p--;
       p[-1].x /= p->x;
       p[-1].y /= p->y;
@@ -1176,6 +1197,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p[-1].w /= p->w;
       break;
     case KA_MOD:
+      sDPrintF("KA_MOD ");
       p--;
       p[-1].x = sFMod(p[-1].x,p->x);
       p[-1].y = sFMod(p[-1].y,p->y);
@@ -1183,41 +1205,49 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p[-1].w = sFMod(p[-1].w,p->w);
       break;
     case KA_NEG:
+      sDPrintF("KA_NEG ");
       p[-1].x = -p[-1].x;
       p[-1].y = -p[-1].y;
       p[-1].z = -p[-1].z;
       p[-1].w = -p[-1].w;
       break;
     case KA_INVERT:
+      sDPrintF("KA_INVERT ");
       p[-1].x = 1-p[-1].x;
       p[-1].y = 1-p[-1].y;
       p[-1].z = 1-p[-1].z;
       p[-1].w = 1-p[-1].w;
       break;
     case KA_SIN:
+      sDPrintF("KA_SIN ");
       p[-1].x = p[-1].y = p[-1].z = p[-1].w = sFSin(p[-1].x*sPI2F);
       break;
     case KA_COS:
+      sDPrintF("KA_COS ");
       p[-1].x = p[-1].y = p[-1].z = p[-1].w = sFCos(p[-1].x*sPI2F);
       break;
     case KA_PULSE:
+      sDPrintF("KA_PULSE ");
       fval = sFMod(p[-1].x,1.0);
       if(fval < 0.0f)
         fval += 1.0f;
       p[-1].x = p[-1].y = p[-1].z = p[-1].w = fval<0.5f ? 1.0f : 0.0f;
       break;
     case KA_RAMP:
+      sDPrintF("KA_RAMP ");
       fval = sFMod(p[-1].x,1.0f);
       if(fval < 0.0f)
         fval += 1.0f;
       p[-1].x = p[-1].y = p[-1].z = p[-1].w = fval;
       break;
     case KA_CONSTV:
+      sDPrintF("KA_CONSTV ");
       *p = *(sVector *)bytecode;
       bytecode+=16;
       p++;
       break;
     case KA_CONSTC:
+      sDPrintF("KA_CONSTC ");
       p->x = (*bytecode++)/255.0f;
       p->y = (*bytecode++)/255.0f;
       p->z = (*bytecode++)/255.0f;
@@ -1225,6 +1255,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p++;
       break;
     case KA_CONSTS:
+      sDPrintF("KA_CONSTS ");
       fval = *(sF32 *)bytecode;
       bytecode+=4;
       p->x = fval;
@@ -1234,6 +1265,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p++;
       break;
     case KA_SPLINE:
+      sDPrintF("KA_SPLINE ");
       i = *(sU16 *)bytecode;
       bytecode+=2;
       fval = p[-1].x;
@@ -1245,16 +1277,19 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
 #endif
       break;
     case KA_EVENTSPLINE:
+      sDPrintF("KA_EVENTSPLINE ");
       fval = p[-1].x;
       p[-1].Init();
       if(EventSpline)
         EventSpline->Eval(fval,p[-1]);
       break;
     case KA_MATRIX:
+      sDPrintF("KA_MATRIX ");
       mat = (sMatrix *) &Var[KV_MATRIX_I];
       p[-1].Rotate4(*mat);
       break;
     case KA_NOISE:
+      sDPrintF("KA_NOISE ");
       fval = sFMod(p[-1].x,1.0);
       if(fval < 0.0f)
         fval += 1.0f;
@@ -1263,6 +1298,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       p[-1].x = p[-1].y = p[-1].z = p[-1].w = i / 65535.0f;
       break;
     case KA_EASE:
+      sDPrintF("KA_EASE ");
       {
         sF32 ei,eo,d;
         ei = *(sF32 *)bytecode; bytecode+=4;
@@ -1318,6 +1354,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       break;
 
     case KA_STOREVAR:
+      sDPrintF("KA_STOREVAR ");
       index = *bytecode++;
       sVERIFY(index<KK_MAXVAR);
       p--;
@@ -1333,7 +1370,9 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       break;
 
     case KA_STOREPARAFLOAT:
+      sDPrintF("KA_STOREPARAFLOAT ");
     case KA_CHANGEPARAFLOAT:
+      sDPrintF("KA_CHANGEPARAFLOAT ");
       index = *bytecode++;
       sVERIFY(index<op->GetDataWords());
       p--;
@@ -1347,7 +1386,9 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       if(cmd2==KA_CHANGEPARAFLOAT) changed|=cp;
       break;
     case KA_STOREPARAINT:
+      sDPrintF("KA_STOREPARAINT ");
     case KA_CHANGEPARAINT:
+      sDPrintF("KA_CHANGEPARAINT ");
       index = *bytecode++;
       sVERIFY(index<op->GetDataWords());
       p--;
@@ -1360,7 +1401,9 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
       if(cmd2==KA_CHANGEPARAINT) changed|=cp;
       break;
     case KA_STOREPARABYTE:
+      sDPrintF("KA_STOREPARABYTE ");
     case KA_CHANGEPARABYTE:
+      sDPrintF("KA_CHANGEPARABYTE ");
       index = *bytecode++;
       sVERIFY(index<op->GetDataWords());
       p--;
@@ -1383,7 +1426,7 @@ sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
     sVERIFY(p<stack+2+STACKMAX);
   }
 ende:
-
+  sDPrintF("KA_END\n");
   sVERIFY(p==stack+2);
   if(changed)
   {
@@ -1399,7 +1442,7 @@ ende:
 
 sInt CalcCmdSize(sU8 *bytecode)
 {
-  sDPrintF("CalcCmdSize(sU8 * bytecode)\n");
+  sDPrintF("CalcCmdSize(sU8 %d)\n", *bytecode);
   static sU8 CmdSize[] =
   {
       0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 0x00-0x0f
@@ -1416,7 +1459,7 @@ sInt CalcCmdSize(sU8 *bytecode)
 
 sInt CalcCodeSize(sU8 *bytecode)
 {
-  sDPrintF("CalcCodeSize(sU8 *bytecode)\n");
+  sDPrintF("CalcCodeSize(sU8 %d)\n", *bytecode);
   sU8 *data,j;
 
   data = bytecode;
@@ -1617,7 +1660,7 @@ static sBool DistributeAnimR(KOp *start)
 
 void KDoc::Init(const sU8 *&dataPtr)
 {
-  sDPrintF("KDoc::Init(const sU8 *&dataPtr)\n");
+  sDPrintF("KDoc::Init(const sU8 %d)\n", dataPtr);
   const sU8 *data;
   sChar *pack;
   sInt i,j,k,in,nOps,nSplines,typeByte,delta,nClasses,max;
@@ -2234,7 +2277,7 @@ void KOp::Uncache()
 
 void KOp::SetBlob(const sU8 *data,sInt size)
 {
-  sDPrintF("KOp::SetBlob(const sU8 *data,sInt %d)\n", size);
+  sDPrintF("KOp::SetBlob(const sU8 %08x,sInt %d)\n", data, size);
 #if !sPLAYER
   if(BlobData)
     delete[] BlobData;

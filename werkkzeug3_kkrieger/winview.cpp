@@ -2058,6 +2058,7 @@ void WinView::ShowIPP(sViewport &view,WerkOp *op,KEnvironment *kenv)
 
 void WinView::ShowDemo(sViewport &view,WerkOp *op,KEnvironment *kenv)
 {
+  sDPrintF("ShowDemo WerokOp = %s\n", op->Name);
   App->SetStat(STAT_VIEW,"Image Post Processing");
   sVERIFY(op && op->Op.Cache && op->Op.Cache->ClassId == KC_DEMO);
 
@@ -2067,6 +2068,7 @@ void WinView::ShowDemo(sViewport &view,WerkOp *op,KEnvironment *kenv)
 
   {
     sZONE(ExecTree);
+    
     op->Op.Exec(kenv);
   }
 
