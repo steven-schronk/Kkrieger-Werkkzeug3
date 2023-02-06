@@ -15,11 +15,39 @@ struct KOp
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
 KOp represents the internal operation that is run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
-WerkOp is only found in Werkkzeug.  It is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
+WerkOp is only found in Werkkzeug and is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
 
 Geometry is created and modified in Werkkzeug using WerkOp objects.
 These are a wrapper for the actual ops known as KOps.
 WerkOps stores the position in the grid, width, name, etc.
+
+KOps can have animation ops as well. Each time an Op is executed, a search is performed for potential animation ops:
+WerkOpAnim *WinPara::FindOpAnim()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
+
+Werk Op Animation object is defined here:
+class WerkOpAnim
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.hpp
+
+Animation is performed by this call:
+This is always called on each Op.  If there is no animation, the call returns.
+Otherwise it continues to execute each animation instruction.
+sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.cpp
+
+Animation Op codes are displayed in the top left of the animation page (window):
+void WinAnimPage::OnPaint()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
+
+Each 2 or 4 character set of numbers represents a single Op.
+The first two characters represent the Op itself.
+The last two (if present) represent a parameter for the Op to work with.
+The Op codes are listed here:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
+
+When a demo is playing OnPaint is called for each frame, the WerkOps always starts from this root Op: root
+void WinView::ShowDemo(sViewport &view,WerkOp *op,KEnvironment *kenv)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
 DirectX Overlay - A dedicated area of video memory that can be overlayed on the primary surface
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genoverlay.cpp
@@ -51,7 +79,8 @@ This happens when the operator above it is not compatible.
 Some operators have a filmstrip on the right side that moves downward.
 This indicates that this operator causes some form of animation.
 
-Some operators do not have either an input or an output. If the input is not available, the top of the box will be clipped at an angle. If output from the operator is not available, the bottom of the box will be clipped at an angle.
+Some operators do not have either an input or an output. If the input is not available, the top of the box will be clipped at an angle.
+If output from the operator is not available, the bottom of the box will be clipped at an angle.
 
 When the user clicks on a Cube operator this is called:
 void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op)
@@ -105,9 +134,12 @@ Application starts here.
 int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
-All opcodes used by a demo.
+All opcodes used by a demo are listed here.
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_demo\demo_oplist.cpp
 Note: These opcodes are listed in Hex but stored as a integer in the KOp and WerkOp classes.
+This method can be used to decode an Op's type from a itself if getting to it's corresponding WerkOp is too difficult.
+WerkClass *FindWerkClass(sInt id)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
 
 Configuration file for Werkkzeug is loaded here:
 sBool WerkkzeugApp::LoadConfig()
@@ -230,13 +262,13 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_int
 
 ------
 
-I noticed something unusual in the code at this location:
+I noticed something unusual in the code at this location:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp:1706
 
 #pragma lekktor(on)
 
 Everything after that is grayed out as though it is not part of the build. Couldn't figure out how the data from the .kx file makes it into player_intro.exe program.
-Turns out lekktor is a misspelled German word for lektor. (Remember they add an extra 'k' to the names of things.) That word means lecturer which translates into techspeak as logger.
+Turns out lekktor is a misspelled German word for lektor. (Remember they add an extra 'k' to the names of things.) That word means lecturer which translates into techspeak as logger.
 
 When you turn that off, you can debug those lines after a rebuild.
 
