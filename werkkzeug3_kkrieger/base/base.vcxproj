@@ -132,7 +132,7 @@
   <ItemGroup>
     <CustomBuild Include="..\depack2.asm">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"nasm.exe" -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"yasm.exe" -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)%(Extension)</Message>
@@ -142,7 +142,7 @@
     </CustomBuild>
     <CustomBuild Include="..\depacker.asm">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"nasm.exe" -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"yasm.exe" -f bin -o "$(OutDir)%(Filename).bin" "%(FullPath)"
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).bin;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)%(Extension)</Message>
@@ -152,7 +152,7 @@
     </CustomBuild>
     <CustomBuild Include="..\_viruz2a.asm">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"nasm.exe" -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"yasm.exe" -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)"
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)%(Extension)</Message>
@@ -162,7 +162,7 @@
     </CustomBuild>
     <CustomBuild Include="base_data.asm">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"nasm.exe" -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)" -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"yasm.exe" -f win32 -o"$(OutDir)%(Filename).obj" "%(FullPath)" -DDEPACKER=\"$(OutDir)depacker.bin\" -DDEPACK2=\"$(OutDir)depack2.bin\"
 </Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)depacker.bin;$(OutDir)depack2.bin;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
