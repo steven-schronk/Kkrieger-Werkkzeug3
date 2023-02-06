@@ -72,6 +72,7 @@ Operators have three marks on the left side of their box in the UI:
 Red   - Top Operator is selected
 Black - Middle - Has been compiled in the past or has been selected in this session?
 Green - Bottom Operator is compiled and running OK
+Operators are colored based on their use. There are texture, materials, mesh, scene, screen operators.
 
 When an operator's background turns red it indicates that something is wrong with the operator.
 This happens when the operator above it is not compatible.
@@ -236,6 +237,18 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 Load Textures Into DirectX
 sInt sSystem_::AddTexture(sInt xs,sInt ys,sInt format,sU16 *data,sInt mipcount,sInt miptresh)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
+
+When creating a new scene, the order that things are created matters:
+Start with 2D Texture operators to create a new texture.
+Combine the textures into a Material operator which define how the textures and light are combined and how the model is shaded.
+Add meshes second. A mesh is a group of verticies defined using mesh operators. This defines verticies, edges and faces. Materials can be applied to a mesh.
+Multiple scenes are combined on the timeline 
+Many meshes are combined into a Scene.
+Then next are the camera operators.
+
+The camera operator specifies from how the user views the scene.
+
+Time metrics are 256 Fractions make up a Beat and 4 Beats make up a Bar.
 
 -------
 
