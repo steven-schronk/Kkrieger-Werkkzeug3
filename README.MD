@@ -35,6 +35,8 @@ Just add the NASM and YASM folders to your path and then build.
 
 All of this code is released either under a BSD license or put in the public domain as stated per project.
 
+Documentation for the tool is located [here](docs/readme.md)
+
 ----
 
 https://en.wikipedia.org/wiki/.kkrieger
@@ -42,4 +44,5 @@ https://en.wikipedia.org/wiki/.kkrieger
 https://en.wikipedia.org/wiki/Demoscene
 
 https://www.youtube.com/watch?v=bD1wWY1YD-M
+
 
