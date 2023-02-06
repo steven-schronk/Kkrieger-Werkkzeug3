@@ -248,7 +248,11 @@ Then next are the camera operators.
 
 The camera operator specifies from how the user views the scene.
 
-Time metrics are 256 Fractions make up a Beat and 4 Beats make up a Bar.
+The Timeline is just a different way of viweing the Time operators. Time metrics are 256 Fractions make up a Beat and 4 Beats make up a Bar. During the specified time range, everything above the Time Pperator is rendered. At the same time there is a channel 0 variable that moves from 0 to 1 during the timespan. The 0 channel can be applied to any axis, multipled by a specified value, and a start value can be applied. You can select different types of movement like linear, sine, triangle, ramp, rectangular movement, and others from the dropdown.
+
+There are 255 different chanels that can be used in total.
+
+Time operators can be placed almost anywhere on the Pages.
 
 -------
 
