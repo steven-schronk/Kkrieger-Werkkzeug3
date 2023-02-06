@@ -2,9 +2,9 @@ name: build_werkkzeug3
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "trace" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "trace" ]
 
 env:
   SOLUTION_FILE_PATH: .
