@@ -17,6 +17,8 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 KOp represents the internal operation that is run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
 WerkOp is only found in Werkkzeug and is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
 
+Ops can be linked in one of two ways. The most common would be to stack one operator on top of another. If a red line is drawn between them they are not compatible. The othe way to link them is using the parameter UI by choosing the Op to link. Using the parameter method the user has better contol over how they are linked together.
+
 Geometry is created and modified in Werkkzeug using WerkOp objects.
 These are a wrapper for the actual ops known as KOps.
 WerkOps stores the position in the grid, width, name, etc.
