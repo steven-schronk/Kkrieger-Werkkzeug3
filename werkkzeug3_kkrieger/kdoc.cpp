@@ -519,9 +519,7 @@ void KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)
 
 void KOp::Exec(KEnvironment *kenv)
 {
-  //sDPrintF("%s", WerkDoc::FindWerkClass(this->Command));
-  //sDPrintF("this->Command = %d\n", this->Command);
-  sDPrintF("KOp::Exec(KEnvironment *kenv)\n");
+  sDPrintF("KOp::Exec(KEnvironment *kenv, %s)\n", this->Name);
   sU32 data[KK_MAXINPUT+128];
   sInt p;
   sInt i,max;
@@ -1061,7 +1059,7 @@ void KEnvironment::AddStaticEvent(KEvent *event)
 
 sInt KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)
 {
-  sDPrintF("KEnvironment::ExecuteAnim(struct KOp *op,sU8 *bytecode)\n", *bytecode);
+  sDPrintF("KEnvironment::ExecuteAnim(struct KOp %s, sU8 %p)\n", op->Name, *bytecode);
   sDPrintF("Animation Ops: ");
   sInt pop;
   sInt cmd,cmd2;
@@ -2064,6 +2062,7 @@ sInt KDoc::CountOps(KOp *start)
 void KOp::Init(sU32 convention)
 {
   sDPrintF("KOp::Init(sU32 %d)\n", convention);
+
   sInt size;
   sU32 *mem;
   sInt i;

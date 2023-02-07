@@ -1,5 +1,5 @@
 // This file is distributed under a BSD license. See LICENSE.txt for details.
-
+#include <cstring>
 #include "werkkzeug.hpp"
 #include "kdoc.hpp"
 #include "appbrowser.hpp"
@@ -5083,6 +5083,8 @@ sBool WerkDoc::Read(sU32 *&data)
       op->Page->Orig->Add(op);
 
     sReadString(data,op->Name,KK_NAME);         // name
+
+    strcpy(op->Op.Name, op->Name);
 
     // links
     max = sMin(OPC_GETLINK(conv),OPC_GETLINK(op->Op.Convention));

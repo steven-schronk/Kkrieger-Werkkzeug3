@@ -406,6 +406,7 @@ extern KHandler KHandlers[];
 struct KOp                        // Operator
 {
   friend class KEnvironment;
+  sChar Name[KK_NAME];
   sInt Command;                   // class of operator
   sInt Result;                    // class of result
   KObject *Cache;                 // result pointers, depending on class
