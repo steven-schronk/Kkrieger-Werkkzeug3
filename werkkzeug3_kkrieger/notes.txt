@@ -324,7 +324,13 @@ void sVector::Read(sU32 *&p)
 
 Double right clicking an object in the 3Dviewer shows the geometry in wireframe.
 
--------
+----
+
+Lekktor from the German word “Lektor” which means editor, as in person who edits books, not text editor. Takes the kkrieger_player program and instruments it with detailed code coverage tracking. In a second pass, it would take the code coverage information gathered in the first pass and eliminate all the paths that were never taken. Since all the content generation is deterministic and happens at the start of the program, you’d just need to launch the game once in instrumented mode, take the dumped coverage information, then run Lekktor again to write the “dead-stripped” source files and recompile.
+
+Removes any branches in the code that are not taken during the run. This would normally not be done in production software, but in sizecoding the goal is to produce the smallest executeable possible.
+
+----
 
 Order Of Execution For Annotated Intro Scene
 
