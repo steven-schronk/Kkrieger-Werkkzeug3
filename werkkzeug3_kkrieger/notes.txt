@@ -323,3 +323,453 @@ void sVector::Read(sU32 *&p)
 ------
 
 Double right clicking an object in the 3Dviewer shows the geometry in wireframe.
+
+-------
+
+Order Of Execution For Annotated Intro Scene
+
+KObject::KObject()
+DirectMaterial: sources not found
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 512x256
+KObject::KObject()
+Create Rendertarget 512x256
+KObject::KObject()
+Create Rendertarget 512x256
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 1024x512
+KObject::KObject()
+Create Rendertarget 1024x512
+KObject::KObject()
+Create Rendertarget 1024x512
+Create Texture 4x4
+Create Texture 4x4
+MemManagerInit()
+KMemoryManager_::KMemoryManager_()
+KMemoryManager_::SetBudget(sInt 1,sInt 201326592)
+KMemoryManager_::SetBudget(sInt 6,sInt 100663296)
+Create Rendertarget 2048x1024
+Create ZBuffer 2048x1024
+Create Texture 32x32
+Create Texture 128x128
+Create Texture 256x128
+Create Texture 256x128
+Create Texture 256x128
+Create Texture 256x128
+Create Texture 256x128
+Create Texture 256x128
+KEvent::Init()
+KObject::KObject()
+KObject::KObject()
+Create Texture 16x16
+Create Texture 16x16
+Create Texture 16x16
+Create Texture 16x16
+KObject::KObject()
+KObject::KObject()
+sBrowserApp::sBrowserApp()
+sBrowserTree()
+KEnvironment()
+KEnvironment::InitFrame(sInt  1693232, sInt  1693236)
+*** Loading <werkkzeug.config> (332 bytes)
+KMemoryManager_::SetBudget(sInt 1,sInt 201326592)
+KMemoryManager_::SetBudget(sInt 6,sInt 100663296)sImplementFileMenu(sU32 cmd...
+*** Loading <c:/Users/eclipse/source/repos/Kkrieger-Werkkzeug3/werkkzeug3_kkrieger/data/intro_annotated2.k> (9196 bytes)
+KOp::Init(sU32 100663309)
+KOp::SetBlob(const sU8 00000000,sInt 0)
+...
+KEvent::Init()
+KEvent::Init()
+actual load done
+KEnvironment::InitView()
+KInstanceMem::DeleteChain()
+KOp::Change(sInt -1)
+...
+KEnvironment::InitView()
+KInstanceMem::DeleteChain()
+*** Loading <simu3d.v2m> failed
+KMemoryManager_::GetBudget(sInt 1)
+KMemoryManager_::GetBudget(sInt 6)
+*** Saving <werkkzeug.config> (332 bytes)
+KMemoryManager_::Validate()
+KEnvironment::InitFrame(sInt  1698064, sInt  1698068)
+KEnvironment::AddStaticEvent(KEvent *event)
+KInstanceMem::DeleteChain()
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::ExitFrame()
+...
+WinPara::SetOp: Vroot
+KMemoryManager_::Validate()
+KEnvironment::InitFrame(sInt  1698064, sInt  1698068)
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::ExitFrame()
+WinPara::OnCommand: CMD_PARA_SETOP
+WinPara::SetOpNow: Vroot
+KMemoryManager_::Validate()
+KEnvironment::InitFrame(sInt  1698064, sInt  1698068)
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::ExitFrame()
+WinAnimPage::OnPaint(): KA_END .
+...
+...
+--------------------------------------------------------------------------------
+...
+...
+WinAnimPage::OnPaint(): KA_END .								<- Start drawing new frame
+KEnvironment::InitView()
+KInstanceMem::DeleteChain()
+KMemoryManager_::Validate()
+KEnvironment::InitFrame(sInt  1698064, sInt  1698068)
+KEnvironment::AddStaticEvent(KEvent *event)
+KInstanceMem::DeleteChain()
+KEnvironment::AddStaticEvent(KEvent *event)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Vroot, sU8 )				<- Vroot
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp UDemo, sU8 )				<- UDemo
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp event1, sU8 )				<- event1
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp , sU8 )
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Sscene1, sU8 )				<- Sscene1
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp QViewport, sU8 )			<- QViewport 
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp NAdd, sU8 )				<- NAdd
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp JScene, sU8 )				<- JScene
+Animation Ops: KA_LOADVAR KOp::UpdateVar(sInt 0,sInt 1)
+KA_STOREPARAFLOAT KA_CHANGEPARAFLOAT KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp GMatLink, sU8 )			<- GMatLink 
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp DTourus, sU8 )				<- DTourus
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6566338,sInt *para,sInt 7)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Pmat_cell, sU8 )			<- Pmap_cell 
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Itex_cell, sU8 )			<- Itex_cell 
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp FText, sU8 )				<- FTex
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp CCell, sU8 )				<- CCell
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Mystery call to ASM
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 1
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6557588,sInt *para,sInt 14)
+KObject::KObject()
+KOp::SetBlob(const sU8 00000000,sInt 0)
+KEnvironment::Pop(sInt 0)										<- Pop 2
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6565838,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop 3
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6567698,sInt *para,sInt 1)
+Create Texture 512x512
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 4
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6567813,sInt *para,sInt 4)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 5
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6555568,sInt *para,sInt 11)
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 6 (NAdd)
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp KLight, sU8 )				<- KLight
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6545918,sInt *para,sInt 11)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 1 (NAdd)
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6552508,sInt *para,sInt 3)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop QViewport
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6553543,sInt *para,sInt 27)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop Sscene1
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6565838,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop Sscene1
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6550548,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop event1
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6553798,sInt *para,sInt 2)
+KEnvironment::Pop(sInt 0)										<- Pop UDemo
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp event2, sU8 )				<- event2
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp , sU8 )					
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Tscene2, sU8 )				<- Tscene2
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp RViewPort, sU8 )			<- RViewPort
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp OAdd, sU8 )				<- OAdd
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp LLight, sU8 )				<- LLight
+Animation Ops: KA_LOADVAR KOp::UpdateVar(sInt 0,sInt 1)
+KA_STOREPARAFLOAT KA_CHANGEPARAFLOAT KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp HMatlink, sU8 )			<- HMatLink
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp ECube, sU8 )				<- ECube
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6549038,sInt *para,sInt 13)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop ECube
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Calc(KEnvironment *env,sInt flags)
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6567813,sInt *para,sInt 4)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop HMatlink
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6555568,sInt *para,sInt 11)
+KObject::KObject()
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop LLight
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp MLight, sU8 )				<- MLight
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6545918,sInt *para,sInt 11)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop MLight
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6552508,sInt *para,sInt 3)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop OAdd
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6553543,sInt *para,sInt 27)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop RViewPort
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6565838,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop Tscene2
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6550548,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop Tscene3
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6553798,sInt *para,sInt 2)
+KEnvironment::Pop(sInt 0)										<- Pop event2
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6558908,sInt *para,sInt 1)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop UDemo
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6565838,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop vroot
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+ShowDemo WerokOp = Vroot										<- ShowDemo
+KOp::Exec(KEnvironment *kenv, Vroot)
+KEnvironment::ExecuteAnim(struct KOp Vroot, sU8 )				<- Vroot
+Animation Ops: KA_END
+KOp::ExecInputs(KEnvironment *kenv)
+KOp::Exec(KEnvironment *kenv, UDemo)
+KEnvironment::ExecuteAnim(struct KOp UDemo, sU8 )				<- UDemo
+Animation Ops: KA_END
+Exec_Misc_Demo(KOp *op,KEnvironment *kenv)
+KOp::ExecInput(KEnvironment *kenv,sInt 0)
+KOp::Exec(KEnvironment *kenv, event1)
+KEnvironment::ExecuteAnim(struct KOp event1, sU8 )				<- event1
+Animation Ops: KA_END
+KDoc.cpp:CallCode(sInt 6564228,sInt *para,sInt 3)
+KOp::ExecEvent(KEnvironment *kenv,KEvent *event,sBool)
+KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)
+KOp::Exec(KEnvironment *kenv, )
+KEnvironment::ExecuteAnim(struct KOp , sU8 )
+Animation Ops: KA_END
+KOp::Exec(KEnvironment *kenv, Sscene1)
+KEnvironment::ExecuteAnim(struct KOp Sscene1, sU8 )				<- Sscene1
+Animation Ops: KA_END
+KOp::ExecInputs(KEnvironment *kenv)
+KOp::Exec(KEnvironment *kenv, QViewport)
+KEnvironment::ExecuteAnim(struct KOp QViewport, sU8 )			<- QViewport
+Animation Ops: KA_END
+KDoc.cpp:CallCode(sInt 6548853,sInt *para,sInt 27)
+KOp::Exec(KEnvironment *kenv, NAdd)
+KEnvironment::ExecuteAnim(struct KOp NAdd, sU8 )				<- NAdd
+Animation Ops: KA_END
+KOp::Exec(KEnvironment *kenv, JScene)
+KEnvironment::ExecuteAnim(struct KOp JScene, sU8 )				<- JScene
+Animation Ops: KA_LOADVAR KOp::UpdateVar(sInt 0,sInt 1)
+KA_STOREPARAFLOAT KA_CHANGEPARAFLOAT KA_END
+KDoc.cpp:CallCode(sInt 6565983,sInt *para,sInt 12)
+KEnvironment::Pop(sInt 0)										<- POP JScene
+KOp::Exec(KEnvironment *kenv, KLight)							<- KLight
+KEnvironment::ExecuteAnim(struct KOp KLight, sU8 )				<- KLight
+Animation Ops: KA_END
+KDoc.cpp:CallCode(sInt 6556163,sInt *para,sInt 13)
+KEnvironment::Pop(sInt 0)										<- POP NAdd
+KEnvironment::Pop(sInt 0)										<- POP QViewport
+Create static vertex-Buffer (2097152 bytes) id 4
+Create static index-Buffer (1572864 bytes) id 5
+KEnvironment::Pop(sInt 0)										<- POP Sscene1							
+KEnvironment::Pop(sInt 0)										<- POP Sscene1
+KEnvironment::Pop(sInt 0)										<- POP event1
+KEnvironment::Pop(sInt 0)										<- POP UDemo
+KOp::ExecInput(KEnvironment *kenv,sInt 1)
+KOp::Exec(KEnvironment *kenv, event2)
+KEnvironment::ExecuteAnim(struct KOp event2, sU8 )				<- event2
+Animation Ops: KA_END
+KDoc.cpp:CallCode(sInt 6564228,sInt *para,sInt 3)
+KEnvironment::Pop(sInt 0)										<- POP event2
+KEnvironment::Pop(sInt 0)										<- POP UDemo
+KEnvironment::Pop(sInt 0)										<- POP Vroot
+KEnvironment::ExitFrame()
+
+Animation starts from the root node. Then moves up one KOp at a time following the leftmost path.
+If the Op has an animation Op, execute those from the left to right column starting at the top and moving downward to the terminal Op. Then continue until the grid is complete.
+Some Ops call out to other ops as a parameter. For example a MatLink Op has a parameter for Material. When this parameter is present, it calls the linked Op and continues to follow from there.
+KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Initialize or perform work that Op does
+Create new KObject.
+Update KOp variable. KOp::UpdateVar(sInt 0,sInt 0)
+Call KOp object.
+KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Initialize or perform work that Op does
+Create several new KObjects.
+When the end of that branch of the tree is called, walk back down the tree to find an unexecuted branch. Follow that branch wherever it leads.

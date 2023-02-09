@@ -276,29 +276,41 @@ static sInt CallCode(sInt code,sInt *para,sInt count)
   );
 #endif
 #else
+
+  /*
+  EAX — Accumulator for operandsand results data
+  EBX — Pointer to data in the DS segment
+  ECX — Counter for string and loop operations
+  EDX — I / O pointer
+  ESI — Pointer to data in the segment pointed to by the DS register; source pointer for string operations
+  EDI — Pointer to data (or destination) in the segment pointed to by the ES register; destination pointer for string operations
+  ESP — Stack pointer (in the SS segment)
+  EBP — Pointer to data on the stack (in the SS segment)
+  */
+
   __asm
   {
-    mov eax,code
-    mov esi,para
-    mov ecx,count
-    push ebp
-    mov ebp,esp
-    sub esp,ecx
-    sub esp,ecx
-    sub esp,ecx
-    sub esp,ecx
-    mov edi,esp
-    rep movsd
+    mov eax,code   ; move value of code into eax (accumulation)
+    mov esi,para   ; move value of para into esi - source pointer for string operatons
+    mov ecx,count  ; move value of count into ecx - counter for strings and loops
+    push ebp       ; push ebp value onto the stack
+    mov ebp,esp    ; move value stack pointer into ebp where ebp = pointer to data on stack
+    sub esp,ecx    ; ecx = ecx - esp
+    sub esp,ecx    ; ecx = ecx - esp
+    sub esp,ecx    ; ecx = ecx - esp
+    sub esp,ecx    ; ecx = ecx - esp
+    mov edi,esp    ; move esp to edi
+    rep movsd      ; repeat while ecx not zero  dword = 32bit
 
-    call eax
+    call eax       ; call subroutine pointed to by eax
 
-    mov esp,ebp
-    pop ebp
-    mov result,eax
+    mov esp,ebp    ; move value of ebp into esp
+    pop ebp        ; pop ebp value off of stack
+    mov result,eax ; move value of eax to result
   }
 #endif
 
-  return result; 
+  return result;
 }
 
 #pragma warning(default : 4731)
