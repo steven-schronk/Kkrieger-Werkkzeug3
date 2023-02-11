@@ -196,17 +196,17 @@
   <ItemGroup>
     <CustomBuild Include="presets.asm">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw.exe -f win32 -o "$(OutDir)%(Filename).obj" %(FullPath) -D_DEBUG
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">yasm.exe -f win32 -o "$(OutDir)%(Filename).obj" %(FullPath) -D_DEBUG
 </Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">presets.v2b;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw.exe -f win32 -o "$(OutDir)%(Filename).obj" %(FullPath) -D_DEBUG
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">yasm.exe -f win32 -o "$(OutDir)%(Filename).obj" %(FullPath) -D_DEBUG
 </Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">presets.v2b;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">nasmw.exe -f win32 -o "$(OutDir)%(Filename).obj" %(FullPath) -D_DEBUG
+      <Command Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">yasm.exe -f win32 -o "$(OutDir)%(Filename).obj" %(FullPath) -D_DEBUG
 </Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">presets.v2b;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
@@ -216,15 +216,15 @@
     <None Include="v2logo2003.bmp" />
     <CustomBuild Include="..\synth.asm">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">yasm -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">yasm -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">nasmw -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
+      <Command Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">yasm -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)"
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='SingleChn Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
     </CustomBuild>

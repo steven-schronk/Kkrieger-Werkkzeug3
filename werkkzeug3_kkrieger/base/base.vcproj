@@ -114,7 +114,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f bin -o &quot;$(OutDir)\$(InputName).bin&quot; &quot;$(InputPath)&quot;
+						CommandLine="yasm -f bin -o &quot;$(OutDir)\$(InputName).bin&quot; &quot;$(InputPath)&quot;
 "
 						Outputs="&quot;$(OutDir)\$(InputName).bin&quot;"/>
 				</FileConfiguration>
@@ -123,7 +123,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f bin -o &quot;$(OutDir)\$(InputName).bin&quot; &quot;$(InputPath)&quot;
+						CommandLine="yasm -f bin -o &quot;$(OutDir)\$(InputName).bin&quot; &quot;$(InputPath)&quot;
 "
 						Outputs="&quot;$(OutDir)\$(InputName).bin&quot;"/>
 				</FileConfiguration>
@@ -135,7 +135,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f bin -o &quot;$(OutDir)\$(InputName).bin&quot; &quot;$(InputPath)&quot;
+						CommandLine="yasm -f bin -o &quot;$(OutDir)\$(InputName).bin&quot; &quot;$(InputPath)&quot;
 "
 						Outputs="&quot;$(OutDir)\$(InputName).bin&quot;"/>
 				</FileConfiguration>
@@ -144,7 +144,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f bin -o &quot;$(OutDir)\$(InputName).bin&quot; &quot;$(InputPath)&quot;
+						CommandLine="yasm -f bin -o &quot;$(OutDir)\$(InputName).bin&quot; &quot;$(InputPath)&quot;
 "
 						Outputs="&quot;$(OutDir)\$(InputName).bin&quot;"/>
 				</FileConfiguration>
@@ -230,7 +230,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
+						CommandLine="yasm -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
 "
 						Outputs="&quot;$(OutDir)/$(InputName).obj&quot;"/>
 				</FileConfiguration>
@@ -239,7 +239,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
+						CommandLine="yasm -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
 "
 						Outputs="&quot;$(OutDir)/$(InputName).obj&quot;"/>
 				</FileConfiguration>
@@ -322,7 +322,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="$(InputFileName)"
-					CommandLine="nasmw -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot; -DDEPACKER=\&quot;$(OutDir)/depacker.bin\&quot; -DDEPACK2=\&quot;$(OutDir)/depack2.bin\&quot;
+					CommandLine="yasm -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot; -DDEPACKER=\&quot;$(OutDir)/depacker.bin\&quot; -DDEPACK2=\&quot;$(OutDir)/depack2.bin\&quot;
 "
 					AdditionalDependencies="&quot;$(OutDir)/depacker.bin&quot;;&quot;$(OutDir)/depack2.bin&quot;"
 					Outputs="&quot;$(OutDir)/$(InputName).obj&quot;"/>
@@ -332,7 +332,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="$(InputFileName)"
-					CommandLine="nasmw -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot; -DDEPACKER=\&quot;$(OutDir)/depacker.bin\&quot; -DDEPACK2=\&quot;$(OutDir)/depack2.bin\&quot;
+					CommandLine="yasm -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot; -DDEPACKER=\&quot;$(OutDir)/depacker.bin\&quot; -DDEPACK2=\&quot;$(OutDir)/depack2.bin\&quot;
 "
 					AdditionalDependencies="&quot;$(OutDir)/depacker.bin&quot;;&quot;$(OutDir)/depack2.bin&quot;"
 					Outputs="&quot;$(OutDir)/$(InputName).obj&quot;"/>

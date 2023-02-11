@@ -224,8 +224,8 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="nasmw -f bin -o $(OutDir)\$(InputName).bin $(InputPath)"
-						CommandLine="nasmw -f bin -o $(OutDir)\$(InputName).bin $(InputPath)&#x0D;&#x0A;"
+						Description="yasm -f bin -o $(OutDir)\$(InputName).bin $(InputPath)"
+						CommandLine="yasm -f bin -o $(OutDir)\$(InputName).bin $(InputPath)&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).bin"
 					/>
 				</FileConfiguration>
@@ -234,8 +234,8 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="nasmw -f bin -o $(OutDir)\$(InputName).bin $(InputPath)"
-						CommandLine="nasmw -f bin -o $(OutDir)\$(InputName).bin $(InputPath)&#x0D;&#x0A;"
+						Description="yasm -f bin -o $(OutDir)\$(InputName).bin $(InputPath)"
+						CommandLine="yasm -f bin -o $(OutDir)\$(InputName).bin $(InputPath)&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).bin"
 					/>
 				</FileConfiguration>
@@ -249,7 +249,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f rdf -o $(OutDir)\$(InputName).rdf $(InputPath)&#x0D;&#x0A;"
+						CommandLine="yasm -f rdf -o $(OutDir)\$(InputName).rdf $(InputPath)&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).rdf"
 					/>
 				</FileConfiguration>
@@ -259,7 +259,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f rdf -o $(OutDir)\$(InputName).rdf $(InputPath)&#x0D;&#x0A;"
+						CommandLine="yasm -f rdf -o $(OutDir)\$(InputName).rdf $(InputPath)&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).rdf"
 					/>
 				</FileConfiguration>
@@ -289,7 +289,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o $(OutDir)\$(InputName).obj $(InputPath) -DPACKNAME=&quot;\&quot;$(OutDir)\depacker.rdf\&quot;&quot; -DPACKNAME2=&quot;\&quot;$(OutDir)\depack2.bin\&quot;&quot;&#x0D;&#x0A;"
+						CommandLine="yasm -f win32 -o $(OutDir)\$(InputName).obj $(InputPath) -DPACKNAME=&quot;\&quot;$(OutDir)\depacker.rdf\&quot;&quot; -DPACKNAME2=&quot;\&quot;$(OutDir)\depack2.bin\&quot;&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="$(OutDir)\depacker.rdf;$(OutDir)\depack2.bin"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
@@ -300,7 +300,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o $(OutDir)\$(InputName).obj $(InputPath) -DPACKNAME=&quot;\&quot;$(OutDir)\depacker.rdf\&quot;&quot; -DPACKNAME2=&quot;\&quot;$(OutDir)\depack2.bin\&quot;&quot;&#x0D;&#x0A;"
+						CommandLine="yasm -f win32 -o $(OutDir)\$(InputName).obj $(InputPath) -DPACKNAME=&quot;\&quot;$(OutDir)\depacker.rdf\&quot;&quot; -DPACKNAME2=&quot;\&quot;$(OutDir)\depack2.bin\&quot;&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="$(OutDir)\depacker.rdf;$(OutDir)\depack2.bin"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
@@ -327,7 +327,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o $(OutDir)\$(InputName).obj $(InputPath)&#x0D;&#x0A;"
+						CommandLine="yasm -f win32 -o $(OutDir)\$(InputName).obj $(InputPath)&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
 				</FileConfiguration>
@@ -337,7 +337,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o $(OutDir)\$(InputName).obj $(InputPath)&#x0D;&#x0A;"
+						CommandLine="yasm -f win32 -o $(OutDir)\$(InputName).obj $(InputPath)&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
 				</FileConfiguration>

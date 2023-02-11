@@ -173,11 +173,11 @@
   <ItemGroup>
     <CustomBuild Include="..\synth.asm">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nasmw.exe -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)" -D_DEBUG
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">yasm.exe -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)" -D_DEBUG
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)%(Extension)</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nasmw.exe -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)" -D_DEBUG
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">yasm.exe -f win32 -o "$(OutDir)%(Filename).obj" "%(FullPath)" -D_DEBUG
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)%(Filename).obj;%(Outputs)</Outputs>
     </CustomBuild>

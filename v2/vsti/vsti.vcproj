@@ -301,7 +301,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw.exe -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; $(InputPath) -D_DEBUG&#x0D;&#x0A;"
+						CommandLine="yasm.exe -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; $(InputPath) -D_DEBUG&#x0D;&#x0A;"
 						AdditionalDependencies="presets.v2b"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
@@ -312,7 +312,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw.exe -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; $(InputPath) -D_DEBUG&#x0D;&#x0A;"
+						CommandLine="yasm.exe -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; $(InputPath) -D_DEBUG&#x0D;&#x0A;"
 						AdditionalDependencies="presets.v2b"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
@@ -323,7 +323,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw.exe -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; $(InputPath) -D_DEBUG&#x0D;&#x0A;"
+						CommandLine="yasm.exe -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; $(InputPath) -D_DEBUG&#x0D;&#x0A;"
 						AdditionalDependencies="presets.v2b"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
@@ -548,7 +548,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						CommandLine="yasm -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
 				</FileConfiguration>
@@ -558,7 +558,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						CommandLine="yasm -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
 				</FileConfiguration>
@@ -568,7 +568,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						CommandLine="yasm -f win32 -o &quot;$(OutDir)\$(InputName).obj&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 						Outputs="$(OutDir)\$(InputName).obj"
 					/>
 				</FileConfiguration>
