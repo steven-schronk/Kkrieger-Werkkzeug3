@@ -28,7 +28,7 @@ jobs:
       - name: Build GenThree
         run: |
           $env:Path += ";" + $pwd.Path + "\yasm-1.3.0\;";
-          msbuild 'genthree/genthree.sln' /p:configuration=Debug /p:platform=x86;
+          msbuild 'genthree/genthree.sln' /p:configuration=Debug /p:platform=Win32;
 
       # - run: Get-ChildItem -Recurse
         
