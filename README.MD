@@ -15,7 +15,6 @@ The game music and sounds are produced by a multifunctional synthesizer called V
 ```
   kkrunchy/             - Executable compression tool for Windows.
   ktg/                  - OpenKTG texture generation tool.
-  nasm-0.99.05-win32/   - Netwide Assembler for x86 architecture.
   v2/                   - Multifunctional synthesizer produces music in realtime.
   werkkzeug3_kkrieger/
     fried/              - Farbrausch Image Encoder/Decoder
