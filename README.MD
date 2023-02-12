@@ -30,7 +30,7 @@ The game music and sounds are produced by a multifunctional synthesizer called V
 
 This version of the project should build without much fuss on Visual Studio 2022 Community. It has not been tested with previous versions of Visual Studio or other platforms.
 
-Just add the NASM and YASM folders to your path and then build.
+Just add YASM folder to your PATH and then build.
 
 All of this code is released either under a BSD license or put in the public domain as stated per project.
 
