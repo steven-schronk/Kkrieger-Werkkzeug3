@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "genthree", "genthree.vcxproj", "{05906D05-9172-C12E-7EFA-BD6E2C2D751F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Player Debug|Win32 = Player Debug|Win32
+		Player Release|Win32 = Player Release|Win32
+		Release|Win32 = Release|Win32
+		VTune|Win32 = VTune|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.Debug|Win32.Build.0 = Debug|Win32
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.Player Debug|Win32.ActiveCfg = Player Debug|Win32
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.Player Debug|Win32.Build.0 = Player Debug|Win32
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.Player Release|Win32.ActiveCfg = Player Release|Win32
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.Player Release|Win32.Build.0 = Player Release|Win32
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.Release|Win32.ActiveCfg = Release|Win32
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.Release|Win32.Build.0 = Release|Win32
+		{05906D05-9172-C12E-7EFA-BD6E2C2D751F}.VTune|Win32.ActiveCfg = VTune|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
