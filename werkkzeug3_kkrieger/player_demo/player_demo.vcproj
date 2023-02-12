@@ -173,7 +173,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
+						CommandLine="yasm -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
 "
 						Outputs="&quot;$(OutDir)/$(InputName).obj&quot;"/>
 				</FileConfiguration>
@@ -182,7 +182,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="$(InputFileName)"
-						CommandLine="nasmw -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
+						CommandLine="yasm -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
 "
 						Outputs="&quot;$(OutDir)/$(InputName).obj&quot;"/>
 				</FileConfiguration>

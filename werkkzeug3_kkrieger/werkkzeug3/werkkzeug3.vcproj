@@ -342,7 +342,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="$(InputFileName)"
-					CommandLine="nasmw -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
+					CommandLine="yasm -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
 "
 					AdditionalDependencies="&quot;../player_demo/release/player_demo.exe&quot;; &quot;../player_kkrieger/release/player_kkrieger.exe&quot;; &quot;../player_demo/release/player_demo.exe&quot;"
 					Outputs="&quot;$(OutDir)/$(InputName).obj&quot;"/>
@@ -352,7 +352,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="$(InputFileName)"
-					CommandLine="nasmw -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
+					CommandLine="yasm -f win32 -o&quot;$(OutDir)/$(InputName).obj&quot; &quot;$(InputPath)&quot;
 "
 					AdditionalDependencies="&quot;../player_demo/release/player_demo.exe&quot;; &quot;../player_kkrieger/release/player_kkrieger.exe&quot;; &quot;../player_demo/release/player_demo.exe&quot;; &quot;../player_intro/release/player_intro.exe&quot;"
 					Outputs="&quot;$(OutDir)/$(InputName).obj&quot;"/>
