@@ -23,12 +23,12 @@ jobs:
       - name: Build Werkkzeug
         run: |
           $env:Path += ";" + $pwd.Path + "\yasm-1.3.0\;";
-          msbuild 'werkkzeug3_kkrieger/wz3projects.sln' /p:configuration=Debug /p:platform=x86;
+          msbuild 'werkkzeug3_kkrieger/wz3projects.sln' /p:configuration=Debug /p:platform=x86; /p:Version=${{ github.sha }}
 
       - name: Build GenThree
         run: |
           $env:Path += ";" + $pwd.Path + "\yasm-1.3.0\;";
-          msbuild 'genthree/genthree.sln' /p:configuration=Debug /p:platform=Win32;
+          msbuild 'genthree/genthree.sln' /p:configuration=Debug /p:platform=Win32; /p:Version=${{ github.sha }}
 
       # - run: Get-ChildItem -Recurse
         
