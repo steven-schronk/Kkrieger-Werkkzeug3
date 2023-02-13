@@ -42,6 +42,7 @@
     <OutDir>Debug\</OutDir>
     <IntDir>Debug\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>Release\</OutDir>
@@ -68,6 +69,15 @@
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
+    <CustomBuildStep>
+      <Command>cd $(SolutionDir)\werkkzeug3
+$(ProjectDir)\$(Configuration)\shadercompile.exe --out-header effect_jpegps.hpp  effect_jpeg.psh
+$(ProjectDir)\$(Configuration)\shadercompile.exe --out-header effect_jpegvs.hpp  effect_jpeg.vsh</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>effect_jpegps.hpp;effect_jpegvs.hpp;%(Outputs)</Outputs>
+      <Message>Custom Shader Compile For Werkkzeug Headers</Message>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
