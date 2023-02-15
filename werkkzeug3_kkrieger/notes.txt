@@ -14,8 +14,22 @@ Operators - Individual instructions for creating geometry, textures, etc.
 struct KOp
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
-KOp represents the internal operation that is run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
+Every different type of KOp has a calling convention based on what type of work it provides.
+This includes inputs, links, normal parameters, and splines.
+The convention is stored as a 32 bit unsigned int
+sU32 Convention;                          // calling convention: 0xm00slipp (modify,0,strings,links,inputs,para)
+
+KOp represents the internal operation that's run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
 WerkOp is only found in Werkkzeug and is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
+
+Ops can be linked in one of two ways. The most common would be to stack one operator on top of another. If a red line is drawn between them they are not compatible. The other way to link them is using the parameter UI by choosing the Op to link. Using the parameter method the user has better control over how they are linked together.
+
+Internally Ops have a count of minimum inputs and minimum outputs. If the two Ops don't match up an error will be marked on the page but the program will continue.
+The maximum number of links available between two ops is set here:
+#define KK_MAXLINK    16          // linked inputs
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
+
+Store Ops creates a handle to some data with a specified name. This allows you to access data from more than one location on the a Werkkzeug page. One Op that accesses that data is the MatLink KOp. The Material field contains the name of the saved data. To the right of the Material options there is an arrow "->". When clicked the user is taken to the reference and it flashes in dark green on the Page.
 
 Geometry is created and modified in Werkkzeug using WerkOp objects.
 These are a wrapper for the actual ops known as KOps.
@@ -25,7 +39,9 @@ KOps can have animation ops as well. Each time an Op is executed, a search is pe
 WerkOpAnim *WinPara::FindOpAnim()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
 
-Werk Op Animation object is defined here:
+WerkOps can be hidden and can be bypassed.
+
+WerkOp Animation object is defined here:
 class WerkOpAnim
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.hpp
 
@@ -72,6 +88,7 @@ Operators have three marks on the left side of their box in the UI:
 Red   - Top Operator is selected
 Black - Middle - Has been compiled in the past or has been selected in this session?
 Green - Bottom Operator is compiled and running OK
+Operators are colored based on their use. There are texture, materials, mesh, scene, screen operators.
 
 When an operator's background turns red it indicates that something is wrong with the operator.
 This happens when the operator above it is not compatible.
@@ -79,8 +96,13 @@ This happens when the operator above it is not compatible.
 Some operators have a filmstrip on the right side that moves downward.
 This indicates that this operator causes some form of animation.
 
-Some operators do not have either an input or an output. If the input is not available, the top of the box will be clipped at an angle.
-If output from the operator is not available, the bottom of the box will be clipped at an angle.
+Some operators do not have either an input or an output. If the input is not available, the top of the box will be clipped at an angle. If output from the operator is not available, the bottom of the box will be clipped at an angle.
+
+Ops can be connected together to share data. Those connections are managed in the WerkPage class.
+The connections occur in two passes as the links between the ops are discovered in Connect1() and then those links are followed in the correct order in Connect2().
+void WerkPage::Connect1()
+void WerkPage::Connect2()
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
 
 When the user clicks on a Cube operator this is called:
 void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op)
@@ -114,7 +136,7 @@ Display texture bitmap in the UI:
 void WinView::ShowBitmap(sViewport &view,class GenBitmap *tex)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
-Displaying a mesh such as a cylindar, sphere, etc in the UI:
+Displaying a mesh such as a cylinder, sphere, etc in the UI:
 void WinView::ShowMesh(sViewport &view,GenMesh *mesh,KEnvironment *kenv)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
@@ -237,6 +259,22 @@ Load Textures Into DirectX
 sInt sSystem_::AddTexture(sInt xs,sInt ys,sInt format,sU16 *data,sInt mipcount,sInt miptresh)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
+When creating a new scene, the order that things are created matters:
+Start with 2D Texture operators to create a new texture.
+Combine the textures into a Material operator which define how the textures and light are combined and how the model is shaded.
+Add meshes second. A mesh is a group of vertices defined using mesh operators. This defines vertices, edges and faces. Materials can be applied to a mesh.
+Multiple scenes are combined on the timeline 
+Many meshes are combined into a Scene.
+Then next are the camera operators.
+
+The camera operator specifies from how the user views the scene.
+
+The Timeline is just a different way of viewing the Time operators. Time metrics are 256 Fractions make up a Beat and 4 Beats make up a Bar. During the specified time range, everything above the Time Operator is rendered. At the same time there is a channel 0 variable that moves from 0 to 1 during the timespan. The 0 channel can be applied to any axis, multiplied by a specified value, and a start value can be applied. You can select different types of movement like linear, sine, triangle, ramp, rectangular movement, and others from the drop down.
+
+There are 255 different channels that can be used in total.
+
+Time operators can be placed almost anywhere on the Pages.
+
 -------
 
 player_intro will open up and play a file only if you turn on compatibility with Windows 98.
@@ -259,6 +297,22 @@ Compilation Notes:
 The build contains a forced Header file that is the System Configuration file.
 
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_intro\intro_config.hpp
+
+------
+
+Werkkzeug Editor Features
+
+The application constantly logs events that occur. View the events by clicking View -> Log or CTRL+L
+
+If a demo will not run correctly, it could be that there are missing pieces that are required for build. These can be viewed by clicking View -> Find Bugs.
+
+------
+
+Some of the Ops will not work unless they are in a reasonable order.
+
+Texture -> Material
+
+Cube ->  MatLink (To Material) -> Transform
 
 ------
 
@@ -304,3 +358,459 @@ void sVector::Read(sU32 *&p)
 ------
 
 Double right clicking an object in the 3Dviewer shows the geometry in wireframe.
+
+----
+
+Lekktor from the German word “Lektor” which means editor, as in person who edits books, not text editor. Takes the kkrieger_player program and instruments it with detailed code coverage tracking. In a second pass, it would take the code coverage information gathered in the first pass and eliminate all the paths that were never taken. Since all the content generation is deterministic and happens at the start of the program, you’d just need to launch the game once in instrumented mode, take the dumped coverage information, then run Lekktor again to write the “dead-stripped” source files and recompile.
+
+Removes any branches in the code that are not taken during the run. This would normally not be done in production software, but in sizecoding the goal is to produce the smallest executable possible.
+
+----
+
+Order Of Execution For Annotated Intro Scene
+
+KObject::KObject()
+DirectMaterial: sources not found
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 512x256
+KObject::KObject()
+Create Rendertarget 512x256
+KObject::KObject()
+Create Rendertarget 512x256
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 16x16
+KObject::KObject()
+Create Rendertarget 1024x512
+KObject::KObject()
+Create Rendertarget 1024x512
+KObject::KObject()
+Create Rendertarget 1024x512
+Create Texture 4x4
+Create Texture 4x4
+MemManagerInit()
+KMemoryManager_::KMemoryManager_()
+KMemoryManager_::SetBudget(sInt 1,sInt 201326592)
+KMemoryManager_::SetBudget(sInt 6,sInt 100663296)
+Create Rendertarget 2048x1024
+Create ZBuffer 2048x1024
+Create Texture 32x32
+Create Texture 128x128
+Create Texture 256x128
+Create Texture 256x128
+Create Texture 256x128
+Create Texture 256x128
+Create Texture 256x128
+Create Texture 256x128
+KEvent::Init()
+KObject::KObject()
+KObject::KObject()
+Create Texture 16x16
+Create Texture 16x16
+Create Texture 16x16
+Create Texture 16x16
+KObject::KObject()
+KObject::KObject()
+sBrowserApp::sBrowserApp()
+sBrowserTree()
+KEnvironment()
+KEnvironment::InitFrame(sInt  1693232, sInt  1693236)
+*** Loading <werkkzeug.config> (332 bytes)
+KMemoryManager_::SetBudget(sInt 1,sInt 201326592)
+KMemoryManager_::SetBudget(sInt 6,sInt 100663296)sImplementFileMenu(sU32 cmd...
+*** Loading <c:/Users/eclipse/source/repos/Kkrieger-Werkkzeug3/werkkzeug3_kkrieger/data/intro_annotated2.k> (9196 bytes)
+KOp::Init(sU32 100663309)
+KOp::SetBlob(const sU8 00000000,sInt 0)
+...
+KEvent::Init()
+KEvent::Init()
+actual load done
+KEnvironment::InitView()
+KInstanceMem::DeleteChain()
+KOp::Change(sInt -1)
+...
+KEnvironment::InitView()
+KInstanceMem::DeleteChain()
+*** Loading <simu3d.v2m> failed
+KMemoryManager_::GetBudget(sInt 1)
+KMemoryManager_::GetBudget(sInt 6)
+*** Saving <werkkzeug.config> (332 bytes)
+KMemoryManager_::Validate()
+KEnvironment::InitFrame(sInt  1698064, sInt  1698068)
+KEnvironment::AddStaticEvent(KEvent *event)
+KInstanceMem::DeleteChain()
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::ExitFrame()
+...
+WinPara::SetOp: Vroot
+KMemoryManager_::Validate()
+KEnvironment::InitFrame(sInt  1698064, sInt  1698068)
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::ExitFrame()
+WinPara::OnCommand: CMD_PARA_SETOP
+WinPara::SetOpNow: Vroot
+KMemoryManager_::Validate()
+KEnvironment::InitFrame(sInt  1698064, sInt  1698068)
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::AddStaticEvent(KEvent *event)
+KEnvironment::ExitFrame()
+WinAnimPage::OnPaint(): KA_END .
+...
+...
+--------------------------------------------------------------------------------
+...
+...
+WinAnimPage::OnPaint(): KA_END .								<- Start drawing new frame
+KEnvironment::InitView()
+KInstanceMem::DeleteChain()
+KMemoryManager_::Validate()
+KEnvironment::InitFrame(sInt  1698064, sInt  1698068)
+KEnvironment::AddStaticEvent(KEvent *event)
+KInstanceMem::DeleteChain()
+KEnvironment::AddStaticEvent(KEvent *event)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Vroot, sU8 )				<- Vroot
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp UDemo, sU8 )				<- UDemo
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp event1, sU8 )				<- event1
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp , sU8 )
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Sscene1, sU8 )				<- Sscene1
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp QViewport, sU8 )			<- QViewport 
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp NAdd, sU8 )				<- NAdd
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp JScene, sU8 )				<- JScene
+Animation Ops: KA_LOADVAR KOp::UpdateVar(sInt 0,sInt 1)
+KA_STOREPARAFLOAT KA_CHANGEPARAFLOAT KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp GMatLink, sU8 )			<- GMatLink 
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp DTourus, sU8 )				<- DTourus
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6566338,sInt *para,sInt 7)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Pmat_cell, sU8 )			<- Pmap_cell 
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Itex_cell, sU8 )			<- Itex_cell 
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp FText, sU8 )				<- FTex
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp CCell, sU8 )				<- CCell
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Mystery call to ASM
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 1
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6557588,sInt *para,sInt 14)
+KObject::KObject()
+KOp::SetBlob(const sU8 00000000,sInt 0)
+KEnvironment::Pop(sInt 0)										<- Pop 2
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6565838,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop 3
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6567698,sInt *para,sInt 1)
+Create Texture 512x512
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 4
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6567813,sInt *para,sInt 4)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 5
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6555568,sInt *para,sInt 11)
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 6 (NAdd)
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp KLight, sU8 )				<- KLight
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6545918,sInt *para,sInt 11)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop 1 (NAdd)
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6552508,sInt *para,sInt 3)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop QViewport
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6553543,sInt *para,sInt 27)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop Sscene1
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6565838,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop Sscene1
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6550548,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop event1
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6553798,sInt *para,sInt 2)
+KEnvironment::Pop(sInt 0)										<- Pop UDemo
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp event2, sU8 )				<- event2
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp , sU8 )					
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp Tscene2, sU8 )				<- Tscene2
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp RViewPort, sU8 )			<- RViewPort
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp OAdd, sU8 )				<- OAdd
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp LLight, sU8 )				<- LLight
+Animation Ops: KA_LOADVAR KOp::UpdateVar(sInt 0,sInt 1)
+KA_STOREPARAFLOAT KA_CHANGEPARAFLOAT KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp HMatlink, sU8 )			<- HMatLink
+Animation Ops: KA_END
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp ECube, sU8 )				<- ECube
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6549038,sInt *para,sInt 13)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop ECube
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Calc(KEnvironment *env,sInt flags)
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6567813,sInt *para,sInt 4)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop HMatlink
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6555568,sInt *para,sInt 11)
+KObject::KObject()
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop LLight
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Calc(KEnvironment *env,sInt flags)
+KEnvironment::ExecuteAnim(struct KOp MLight, sU8 )				<- MLight
+Animation Ops: KA_END
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6545918,sInt *para,sInt 11)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop MLight
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 0)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6552508,sInt *para,sInt 3)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop OAdd
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6553543,sInt *para,sInt 27)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop RViewPort
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6565838,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop Tscene2
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6550548,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop Tscene3
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6553798,sInt *para,sInt 2)
+KEnvironment::Pop(sInt 0)										<- Pop event2
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6558908,sInt *para,sInt 1)
+KObject::KObject()
+KEnvironment::Pop(sInt 0)										<- Pop UDemo
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+KOp::UpdateVar(sInt 0,sInt 1)
+KOp::Call(KEnvironment *kenv)
+KDoc.cpp:CallCode(sInt 6565838,sInt *para,sInt 1)
+KEnvironment::Pop(sInt 0)										<- Pop vroot
+KMemoryManager_::Use(KOp *op)
+sInt GetObjectSize(KObject *obj)
+KMemoryManager_::Manage()
+ShowDemo WerokOp = Vroot										<- ShowDemo
+KOp::Exec(KEnvironment *kenv, Vroot)
+KEnvironment::ExecuteAnim(struct KOp Vroot, sU8 )				<- Vroot
+Animation Ops: KA_END
+KOp::ExecInputs(KEnvironment *kenv)
+KOp::Exec(KEnvironment *kenv, UDemo)
+KEnvironment::ExecuteAnim(struct KOp UDemo, sU8 )				<- UDemo
+Animation Ops: KA_END
+Exec_Misc_Demo(KOp *op,KEnvironment *kenv)
+KOp::ExecInput(KEnvironment *kenv,sInt 0)
+KOp::Exec(KEnvironment *kenv, event1)
+KEnvironment::ExecuteAnim(struct KOp event1, sU8 )				<- event1
+Animation Ops: KA_END
+KDoc.cpp:CallCode(sInt 6564228,sInt *para,sInt 3)
+KOp::ExecEvent(KEnvironment *kenv,KEvent *event,sBool)
+KOp::ExecWithNewMem(KEnvironment *kenv,KInstanceMem **link)
+KOp::Exec(KEnvironment *kenv, )
+KEnvironment::ExecuteAnim(struct KOp , sU8 )
+Animation Ops: KA_END
+KOp::Exec(KEnvironment *kenv, Sscene1)
+KEnvironment::ExecuteAnim(struct KOp Sscene1, sU8 )				<- Sscene1
+Animation Ops: KA_END
+KOp::ExecInputs(KEnvironment *kenv)
+KOp::Exec(KEnvironment *kenv, QViewport)
+KEnvironment::ExecuteAnim(struct KOp QViewport, sU8 )			<- QViewport
+Animation Ops: KA_END
+KDoc.cpp:CallCode(sInt 6548853,sInt *para,sInt 27)
+KOp::Exec(KEnvironment *kenv, NAdd)
+KEnvironment::ExecuteAnim(struct KOp NAdd, sU8 )				<- NAdd
+Animation Ops: KA_END
+KOp::Exec(KEnvironment *kenv, JScene)
+KEnvironment::ExecuteAnim(struct KOp JScene, sU8 )				<- JScene
+Animation Ops: KA_LOADVAR KOp::UpdateVar(sInt 0,sInt 1)
+KA_STOREPARAFLOAT KA_CHANGEPARAFLOAT KA_END
+KDoc.cpp:CallCode(sInt 6565983,sInt *para,sInt 12)
+KEnvironment::Pop(sInt 0)										<- POP JScene
+KOp::Exec(KEnvironment *kenv, KLight)							<- KLight
+KEnvironment::ExecuteAnim(struct KOp KLight, sU8 )				<- KLight
+Animation Ops: KA_END
+KDoc.cpp:CallCode(sInt 6556163,sInt *para,sInt 13)
+KEnvironment::Pop(sInt 0)										<- POP NAdd
+KEnvironment::Pop(sInt 0)										<- POP QViewport
+Create static vertex-Buffer (2097152 bytes) id 4
+Create static index-Buffer (1572864 bytes) id 5
+KEnvironment::Pop(sInt 0)										<- POP Sscene1							
+KEnvironment::Pop(sInt 0)										<- POP Sscene1
+KEnvironment::Pop(sInt 0)										<- POP event1
+KEnvironment::Pop(sInt 0)										<- POP UDemo
+KOp::ExecInput(KEnvironment *kenv,sInt 1)
+KOp::Exec(KEnvironment *kenv, event2)
+KEnvironment::ExecuteAnim(struct KOp event2, sU8 )				<- event2
+Animation Ops: KA_END
+KDoc.cpp:CallCode(sInt 6564228,sInt *para,sInt 3)
+KEnvironment::Pop(sInt 0)										<- POP event2
+KEnvironment::Pop(sInt 0)										<- POP UDemo
+KEnvironment::Pop(sInt 0)										<- POP Vroot
+KEnvironment::ExitFrame()
+
+Animation starts from the root node. Then moves up one KOp at a time following the leftmost path.
+If the Op has an animation Op, execute those from the left to right column starting at the top and moving downward to the terminal Op. Then continue until the grid is complete.
+Some Ops call out to other ops as a parameter. For example a MatLink Op has a parameter for Material. When this parameter is present, it calls the linked Op and continues to follow from there.
+KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Initialize or perform work that Op does
+Create new KObject.
+Update KOp variable. KOp::UpdateVar(sInt 0,sInt 0)
+Call KOp object.
+KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Initialize or perform work that Op does
+Create several new KObjects.
+When the end of that branch of the tree is called, walk back down the tree to find an unexecuted branch. Follow that branch wherever it leads.
