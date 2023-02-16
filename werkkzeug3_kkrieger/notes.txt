@@ -7,6 +7,23 @@ Werkkzeug 3 & KKrieger Project Notes -------------------------------------
 Main window for Werkkzeug is in this class:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\appbrowser.cpp
 
+The Main window is broken into smaller windows with specific purposes. This class is known as the GuiManager and contains all the other windows.
+
+The window with the KOps (WerkkOps) is called the Operator Window
+class sOpWindow : public sGuiWindow
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.hpp
+
+The Werkkzeug log is called the Report Window:
+class sReportWindow : public sGuiWindow
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.hpp
+
+The widgets (controls) for Werkkzeug are managed in the "controls and buttons" section.
+There are controls for editing any datatype such as strings, integers, floats, hex, RGB, etc.
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.hpp
+
+Each WerkOp has a different menu configuration that specifies the parameters for the Op. The configuration for those buttons, input boxes and other widgets are in methods that start with "Edit_" in this class:
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
+
 File selector class is:
 sBrowserTree
 
@@ -19,10 +36,16 @@ This includes inputs, links, normal parameters, and splines.
 The convention is stored as a 32 bit unsigned int
 sU32 Convention;                          // calling convention: 0xm00slipp (modify,0,strings,links,inputs,para)
 
+To conserve space in the final output the KOps are packed into arrangements that take the most advantage of their functionality. The packing is encoded in this function:
+sBool WerkExport::Export(WerkDoc *doc,sU8 *&dataPtr)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
+
 KOp represents the internal operation that's run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
 WerkOp is only found in Werkkzeug and is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
 
-Ops can be linked in one of two ways. The most common would be to stack one operator on top of another. If a red line is drawn between them they are not compatible. The other way to link them is using the parameter UI by choosing the Op to link. Using the parameter method the user has better control over how they are linked together.
+Ops can be linked in one of two ways. The most common would be to stack one operator on top of another. They are not compatible if the receiving end Op has a red background. The other way to link them is using the parameter UI by choosing the Op to link. Using the parameter method the user has better control over how they are linked together.
+
+Every WerkOp has a WerkClass which stores specifics about how the Ops interface with each other. WerkClass specifies the name of each Operator. Maintains the values for number of inputs.
 
 Internally Ops have a count of minimum inputs and minimum outputs. If the two Ops don't match up an error will be marked on the page but the program will continue.
 The maximum number of links available between two ops is set here:
@@ -32,14 +55,16 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 Store Ops creates a handle to some data with a specified name. This allows you to access data from more than one location on the a Werkkzeug page. One Op that accesses that data is the MatLink KOp. The Material field contains the name of the saved data. To the right of the Material options there is an arrow "->". When clicked the user is taken to the reference and it flashes in dark green on the Page.
 
 Geometry is created and modified in Werkkzeug using WerkOp objects.
-These are a wrapper for the actual ops known as KOps.
-WerkOps stores the position in the grid, width, name, etc.
+This class is a wrapper for the actual ops known as KOps.
+WerkOps stores the position in the grid, width, name, etc. Also stores specifics about a KOp that would only be seen in Werkkzeug such as if an Op is activated, connected properly to another KOp, etc.
 
 KOps can have animation ops as well. Each time an Op is executed, a search is performed for potential animation ops:
 WerkOpAnim *WinPara::FindOpAnim()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
 
 WerkOps can be hidden and can be bypassed.
+
+When a WerkOp is being displayed by double clicking on it, you can sometimes get hints draw on on the screen to show how another Op affects this Op. For example, click on a mesh such as a Cube, then click on a transform that affects the cube and a yellow hint will be drawn to show the offset caused by the transform.
 
 WerkOp Animation object is defined here:
 class WerkOpAnim
@@ -61,7 +86,7 @@ The last two (if present) represent a parameter for the Op to work with.
 The Op codes are listed here:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
-When a demo is playing OnPaint is called for each frame, the WerkOps always starts from this root Op: root
+When a demo is playing OnPaint is called for each frame, the WerkOps always start from this root Op: root
 void WinView::ShowDemo(sViewport &view,WerkOp *op,KEnvironment *kenv)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
@@ -134,6 +159,10 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cp
 
 Display texture bitmap in the UI:
 void WinView::ShowBitmap(sViewport &view,class GenBitmap *tex)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
+
+Werkkzeug often draws hints on the screen to keep the user oriented. They take the form of crosses, arrow tips, camera pivot, lines, etc. These are drawn in this call:
+void WinView::ShowHints(sU32 flags,sMaterialEnv *env)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
 Displaying a mesh such as a cylinder, sphere, etc in the UI:
