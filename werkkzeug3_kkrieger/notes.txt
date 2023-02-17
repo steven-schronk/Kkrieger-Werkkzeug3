@@ -110,18 +110,18 @@ void WinPara::SetOpNow(WerkOp *op)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
 
 Operators have three marks on the left side of their box in the UI:
-Red   - Top Operator is selected
-Black - Middle - Has been compiled in the past or has been selected in this session?
-Green - Bottom Operator is compiled and running OK
-Operators are colored based on their use. There are texture, materials, mesh, scene, screen operators.
+Red   - Shows which operator you are editing.
+Black - Middle mark displays which WerkOps have been built.
+Green - Bottom mark shows which WerkOps are being displayed.
+
+Operator backgrounds are colored based on their use. There are texture, materials, mesh, scene, screen operators.
 
 When an operator's background turns red it indicates that something is wrong with the operator.
-This happens when the operator above it is not compatible.
+This happens when the operator has inputs that are not compatible with the outputs from the other operator.
 
-Some operators have a filmstrip on the right side that moves downward.
-This indicates that this operator causes some form of animation.
+Some operators have a filmstrip on the right side that moves downward. This indicates that this operator causes some form of animation.
 
-Some operators do not have either an input or an output. If the input is not available, the top of the box will be clipped at an angle. If output from the operator is not available, the bottom of the box will be clipped at an angle.
+Some operators do not have an input or an output. If the input is not available, the top of the box will be clipped at an angle. If output from the operator is not available, the bottom of the box will be clipped at an angle.
 
 Ops can be connected together to share data. Those connections are managed in the WerkPage class.
 The connections occur in two passes as the links between the ops are discovered in Connect1() and then those links are followed in the correct order in Connect2().
@@ -303,6 +303,14 @@ The Timeline is just a different way of viewing the Time operators. Time metrics
 There are 255 different channels that can be used in total.
 
 Time operators can be placed almost anywhere on the Pages.
+
+Function keys move from one editor to another:
+F1 - KOps
+F2 - Timeline
+F3 - Spline
+F4 - Scene
+F5 - Restart animation from the beginning
+F6 - Start & Stop Animation
 
 -------
 
