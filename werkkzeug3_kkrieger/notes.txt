@@ -7,9 +7,9 @@ Werkkzeug 3 & KKrieger Project Notes -------------------------------------
 Main window for Werkkzeug is in this class:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\appbrowser.cpp
 
-The Main window is broken into smaller windows with specific purposes. This class is known as the GuiManager and contains all the other windows.
+The Main window is broken into smaller windows with specific purposes. This class is known as the GuiManager and contains all the smaller windows.
 
-The window with the KOps (WerkkOps) is called the Operator Window
+The window with the KOps (WerkkOps) is called the Operator Window or a Page.
 class sOpWindow : public sGuiWindow
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.hpp
 
@@ -41,7 +41,7 @@ sBool WerkExport::Export(WerkDoc *doc,sU8 *&dataPtr)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
 
 KOp represents the internal operation that's run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
-WerkOp is only found in Werkkzeug and is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
+WerkOp is only found in Werkkzeug and is a wrapper around the KOp that has additional parameters for the UI like, grid position, size, width, etc.
 
 Ops can be linked in one of two ways. The most common would be to stack one operator on top of another. They are not compatible if the receiving end Op has a red background. The other way to link them is using the parameter UI by choosing the Op to link. Using the parameter method the user has better control over how they are linked together.
 
@@ -58,13 +58,13 @@ Geometry is created and modified in Werkkzeug using WerkOp objects.
 This class is a wrapper for the actual ops known as KOps.
 WerkOps stores the position in the grid, width, name, etc. Also stores specifics about a KOp that would only be seen in Werkkzeug such as if an Op is activated, connected properly to another KOp, etc.
 
-KOps can have animation ops as well. Each time an Op is executed, a search is performed for potential animation ops:
+KOps can have animation Ops as well. Each time an Op is executed, a search is performed for potential animation Ops:
 WerkOpAnim *WinPara::FindOpAnim()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
 
-WerkOps can be hidden and can be bypassed.
+WerkOps can be hidden and bypassed.
 
-When a WerkOp is being displayed by double clicking on it, you can sometimes get hints draw on on the screen to show how another Op affects this Op. For example, click on a mesh such as a Cube, then click on a transform that affects the cube and a yellow hint will be drawn to show the offset caused by the transform.
+When a WerkOp is being displayed by double clicking on it, you can sometimes get hints to draw on on the screen that show how another Op affects this Op. For example, click on a mesh such as a Cube, then click on a transform that affects the Cube and a yellow hint will be drawn to show the offset caused by the transform.
 
 WerkOp Animation object is defined here:
 class WerkOpAnim
@@ -110,18 +110,18 @@ void WinPara::SetOpNow(WerkOp *op)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
 
 Operators have three marks on the left side of their box in the UI:
-Red   - Shows which operator you are editing.
+Red   - Shows which WerkOp you are editing.
 Black - Middle mark displays which WerkOps have been built.
 Green - Bottom mark shows which WerkOps are being displayed.
 
 Operator backgrounds are colored based on their use. There are texture, materials, mesh, scene, screen operators.
 
-When an operator's background turns red it indicates that something is wrong with the operator.
-This happens when the operator has inputs that are not compatible with the outputs from the other operator.
+When an Operator's background turns red it indicates that something is wrong with the Operator.
+This happens when the Operator has inputs that are not compatible with the outputs from the other Operator.
 
-Some operators have a filmstrip on the right side that moves downward. This indicates that this operator causes some form of animation.
+Some Operators have a filmstrip on the right side that moves downward. This indicates that this Operator causes some form of animation.
 
-Some operators do not have an input or an output. If the input is not available, the top of the box will be clipped at an angle. If output from the operator is not available, the bottom of the box will be clipped at an angle.
+Some Operators do not have an input or an output. If the input is not available, the top of the box will be clipped at an angle. If no output from the operator available, the bottom of the box will be clipped at an angle.
 
 Ops can be connected together to share data. Those connections are managed in the WerkPage class.
 The connections occur in two passes as the links between the ops are discovered in Connect1() and then those links are followed in the correct order in Connect2().
@@ -133,11 +133,11 @@ When the user clicks on a Cube operator this is called:
 void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
 
-Each time a parameter for a cube us adjusted this is called:
+Each time a parameter for a Cube us adjusted this is called:
 GenMesh * __stdcall Mesh_Cube(sInt tx,sInt ty,sInt tz,sInt flags,sFSRT srt)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\genmesh.cpp
 
-Called each time the window is painted:
+Called each time the main window is painted:
 void sGuiManager::OnPaint()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.cpp
 
@@ -185,10 +185,10 @@ Application starts here.
 int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
-All opcodes used by a demo are listed here.
+All Ops available to be used by a demo are listed here.
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_demo\demo_oplist.cpp
-Note: These opcodes are listed in Hex but stored as a integer in the KOp and WerkOp classes.
-This method can be used to decode an Op's type from a itself if getting to it's corresponding WerkOp is too difficult.
+Note: These Ops are listed in Hex but stored as a integer in the KOp and WerkOp classes.
+This method can be used to decode an Ops type if getting to its corresponding WerkOp is too difficult.
 WerkClass *FindWerkClass(sInt id)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
 
@@ -212,7 +212,7 @@ sU8 *sSystem_::LoadFile(const sChar *name,sInt &size)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 All data contained in file is cast to a sU8 datatype before writing to disk.
 
-File for demo is opened here in werkkzeug3:
+File for demo is opened here in Werkkzeug:
 sU8 *sDiskItem::Load()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_diskitem.cpp
 
@@ -284,21 +284,21 @@ Starting DirectSound - Sample Format - starts thread for sound
 sBool sSystem_::InitDS()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
-Load Textures Into DirectX
+Loading textures Into DirectX is done here:
 sInt sSystem_::AddTexture(sInt xs,sInt ys,sInt format,sU16 *data,sInt mipcount,sInt miptresh)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
 When creating a new scene, the order that things are created matters:
-Start with 2D Texture operators to create a new texture.
-Combine the textures into a Material operator which define how the textures and light are combined and how the model is shaded.
-Add meshes second. A mesh is a group of vertices defined using mesh operators. This defines vertices, edges and faces. Materials can be applied to a mesh.
-Multiple scenes are combined on the timeline 
-Many meshes are combined into a Scene.
-Then next are the camera operators.
+	Start with 2D Texture operators to create a new texture.
+	Combine the textures into a Material operator which define how the textures and light are combined and how the model is shaded.
+	Add meshes next. A mesh is a group of vertices defined using mesh operators. This defines vertices, edges and faces. Materials can be applied to a mesh.
+	Multiple scenes are combined on the timeline 
+	Many meshes are combined into a Scene.
+	Camera operators are created last.
 
-The camera operator specifies from how the user views the scene.
+The camera operator specifies how the user views the scene. Cameras become activated and deactivated on the Timeline.
 
-The Timeline is just a different way of viewing the Time operators. Time metrics are 256 Fractions make up a Beat and 4 Beats make up a Bar. During the specified time range, everything above the Time Operator is rendered. At the same time there is a channel 0 variable that moves from 0 to 1 during the timespan. The 0 channel can be applied to any axis, multiplied by a specified value, and a start value can be applied. You can select different types of movement like linear, sine, triangle, ramp, rectangular movement, and others from the drop down.
+The Timeline is just a different way of viewing the Time operators. Time metrics are: 256 Fractions make up a Beat and 4 Beats make up a Bar. During the specified time range, everything above the Time Operator is rendered. At the same time there is a channel 0 variable that moves from 0 to 1 during the timespan. The 0 channel can be applied to any axis, multiplied by a specified value, and a start value can be applied. You can select different types of movement like linear, sine, triangle, ramp, rectangular movement, and others from the drop down.
 
 There are 255 different channels that can be used in total.
 
@@ -312,7 +312,23 @@ F4 - Scene
 F5 - Restart animation from the beginning
 F6 - Start & Stop Animation
 
--------
+----
+
+Changes in the UI are known as CMD or Commands. They are posted into global variables with this call:
+void sGuiManager::Post(sU32 cmd,sGuiWindow *win)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.cpp
+
+The Commands are stored in arrays until they are all pulled out one at a time.
+
+Each time a new frame is drawn, the Commands that have been posted are sent here:
+sBool sGuiManager::Send(sU32 cmd,sGuiWindow *win)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_gui.cpp
+
+If Commands are found they are handled here:
+sBool WinPara::OnCommand(sU32 cmd)
+C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
+
+----
 
 player_intro will open up and play a file only if you turn on compatibility with Windows 98.
 Only seems to work with debris_chaos.kx and intro.kx files.
@@ -322,20 +338,20 @@ player_intro.exe C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kk
 
 Keep default options. Wait until the progress bar has completed, then press the spacebar.
 
--------
+----
 
 Compilation Notes:
 
 /01 	Minimal Size
 /GY[-]  Function level linking (only links in functions that are needed).
 
-------
+----
 
 The build contains a forced Header file that is the System Configuration file.
 
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_intro\intro_config.hpp
 
-------
+----
 
 Werkkzeug Editor Features
 
@@ -343,7 +359,7 @@ The application constantly logs events that occur. View the events by clicking V
 
 If a demo will not run correctly, it could be that there are missing pieces that are required for build. These can be viewed by clicking View -> Find Bugs.
 
-------
+----
 
 Some of the Ops will not work unless they are in a reasonable order.
 
@@ -351,7 +367,7 @@ Texture -> Material
 
 Cube ->  MatLink (To Material) -> Transform
 
-------
+----
 
 I noticed something unusual in the code at this location:
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp:1706
@@ -363,7 +379,7 @@ Turns out lekktor is a misspelled German word for lektor. (Remember they add an 
 
 When you turn that off, you can debug those lines after a rebuild.
 
-------
+----
 
 When reading the binary data from a project file some bit shift magic is happening:
 
@@ -379,7 +395,7 @@ sU32 *&data
 
 data += OPC_GETDATA(conv);
 
-------
+----
 
 Reading sections of an sF32 (float type):
 
@@ -392,7 +408,7 @@ void sVector::Read(sU32 *&p)
   p+=4;
 }
 
-------
+----
 
 Double right clicking an object in the 3Dviewer shows the geometry in wireframe.
 
@@ -402,7 +418,39 @@ Lekktor from the German word “Lektor” which means editor, as in person who edits
 
 Removes any branches in the code that are not taken during the run. This would normally not be done in production software, but in sizecoding the goal is to produce the smallest executable possible.
 
-----
+---------------------------------------------------------
+					KOp Catalog
+---------------------------------------------------------
+
+Name: Select Cube
+
+Mask Each Boolean:
+	8 'v' = vertices
+	8 'f' = faces
+	8 'e' = edges
+
+Modes Select One:
+	add     = 
+	sub     = 
+	set     = 
+	set not = 
+
+Boolean face->vertex
+	
+Center  x, y, z
+Size	x, y, z
+
+-----
+
+Name: Transform
+
+Select Each Boolean:
+	8 'v' = vertices
+	3 float x Scale, Rotate, Translate
+
+
+---------------------------------------------------------
+---------------------------------------------------------
 
 Order Of Execution For Annotated Intro Scene
 
@@ -842,8 +890,8 @@ KEnvironment::Pop(sInt 0)										<- POP Vroot
 KEnvironment::ExitFrame()
 
 Animation starts from the root node. Then moves up one KOp at a time following the leftmost path.
-If the Op has an animation Op, execute those from the left to right column starting at the top and moving downward to the terminal Op. Then continue until the grid is complete.
-Some Ops call out to other ops as a parameter. For example a MatLink Op has a parameter for Material. When this parameter is present, it calls the linked Op and continues to follow from there.
+If the Op has an animation Op, execute those from the left to right column starting at the top and moving downward to the terminal Op. Then continues until the grid is complete.
+Some Ops call out to other Ops as a parameter. For example a MatLink Op has a parameter for Material. When this parameter is present, it calls the linked Op and continues to follow from there.
 KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Initialize or perform work that Op does
 Create new KObject.
 Update KOp variable. KOp::UpdateVar(sInt 0,sInt 0)
