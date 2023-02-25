@@ -276,7 +276,7 @@ Geometry is loaded into the video card here:
 sInt sSystem_::GeoAdd(sInt fvf,sInt prim)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
-Size of buffers is hard set to large number.
+Size of vertex and index buffers is hard set to large number.
 #define MAX_DYNVBSIZE (64*0x8000)   /*    65,535 */
 #define MAX_DYNIBSIZE (3*2*0x40000) /* 1,572,864 */
 
