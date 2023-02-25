@@ -779,3 +779,30 @@ Call KOp object.
 KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Initialize or perform work that Op does
 Create several new KObjects.
 When the end of that branch of the tree is called, walk back down the tree to find an unexecuted branch. Follow that branch wherever it leads.
+
+--------------------------------------------------------------------------------
+
+Every WerkClass has a standard calling convention stored in an unsigned int.
+
+Name         "Cylinder"
+ID            0x82
+Output        KC_MESH
+MinInput      0
+MaxInput      0
+Convention    0x06000005
+Column        COL_NEW
+Shortcut      'z'
+Packing       "bbbbb"      // sChar* "iiffbc" type information for packing
+Edit Handler  Edit_Mesh_Cylinder
+InitHandler   Mesh_Cylinder
+ExecHandler   Exec_Misc_Nop
+Inputs Array  { 0 }
+Links Array   { 0 }
+
+unsigned int Convention;                          // calling convention: 0xm00slipp (modify,0,strings,links,inputs,para)
+
+sInt inline OPC_GETDATA(sU32 x)   {return (x&0x000000ff);}
+sInt inline OPC_GETINPUT(sU32 x)  {return (x&0x00000f00)>>8;}
+sInt inline OPC_GETLINK(sU32 x)   {return (x&0x0000f000)>>12;}
+sInt inline OPC_GETSTRING(sU32 x) {return (x&0x00070000)>>16;}
+sInt inline OPC_GETSPLINE(sU32 x) {return (x&0x00700000)>>20;} // i assume that 2 bit are enough, tho
