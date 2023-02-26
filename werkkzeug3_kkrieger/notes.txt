@@ -899,3 +899,10 @@ Call KOp object.
 KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Initialize or perform work that Op does
 Create several new KObjects.
 When the end of that branch of the tree is called, walk back down the tree to find an unexecuted branch. Follow that branch wherever it leads.
+
+K Files:
+Files are loaded here,
+sU8 *sSystem_::LoadFile(const sChar *name,sInt &size) on line 5222 of _start.cpp
+
+Files are created and written to here,
+sBool sSystem_::SaveFile(const sChar *name,const sU8 *data,sInt size)on line 5322 in _start.cpp
