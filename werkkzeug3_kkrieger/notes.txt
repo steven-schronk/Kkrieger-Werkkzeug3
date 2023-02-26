@@ -17,13 +17,13 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 KOp represents the internal operation that is run to create the desired effect. KOps are found both on the player side and the Werkkzeug side.
 WerkOp is only found in Werkkzeug and is a wrapper around the KOp that has additional parameters for the UI like, position, size, width, etc.
 
-Ops can be linked in one of two ways. The most common would be to stack one operator on top of another. If a red line is drawn between them they are not compatible. The othe way to link them is using the parameter UI by choosing the Op to link. Using the parameter method the user has better contol over how they are linked together.
+Ops can be linked in one of two ways. The most common would be to stack one operator on top of another. If a red line is drawn between them they are not compatible. The only way to link them is using the parameter UI by choosing the Op to link. Using the parameter method the user has better control over how they are linked together.
 
 Geometry is created and modified in Werkkzeug using WerkOp objects.
-These are a wrapper for the actual ops known as KOps.
+These are a wrapper for the actual Ops known as KOps.
 WerkOps stores the position in the grid, width, name, etc.
 
-KOps can have animation ops as well. Each time an Op is executed, a search is performed for potential animation ops:
+KOps can have animation Ops as well. Each time an Op is executed, a search is performed for potential animation Ops:
 WerkOpAnim *WinPara::FindOpAnim()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winpara.cpp
 
@@ -76,16 +76,16 @@ Black - Middle - Has been compiled in the past or has been selected in this sess
 Green - Bottom Operator is compiled and running OK
 Operators are colored based on their use. There are texture, materials, mesh, scene, screen operators.
 
-When an operator's background turns red it indicates that something is wrong with the operator.
-This happens when the operator above it is not compatible.
+When an Operator's background turns red it indicates that something is wrong with the operator.
+This happens when the Operator above it is not compatible.
 
-Some operators have a filmstrip on the right side that moves downward.
-This indicates that this operator causes some form of animation.
+Some Operators have a filmstrip on the right side that moves downward.
+This indicates that this Operator causes some form of animation.
 
-Some operators do not have either an input or an output. If the input is not available, the top of the box will be clipped at an angle.
-If output from the operator is not available, the bottom of the box will be clipped at an angle.
+Some Operators do not have either an input or an output. If the input is not available, the top of the box will be clipped at an angle.
+If output from the Operator is not available, the bottom of the box will be clipped at an angle.
 
-When the user clicks on a Cube operator this is called:
+When the user clicks on a Cube Operator this is called:
 void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
 
@@ -105,7 +105,10 @@ Central point for handling different types of window actions:
 sBool sAppHandler(sInt code,sDInt value)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug3\wz3_main.cpp
 
-Glues everything together: logic, events, operators, splines, memory, time, camera
+KEnvironment contains the objects required to run a KOp.
+This environment is global and is shared between all of the KOps.
+It contains raw memory, a stack, stack address pointers and more.
+Also acts as central location for several concerns: logic, events, operators, splines, memory, time, camera
 class KEnvironment;
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
@@ -117,7 +120,7 @@ Display texture bitmap in the UI:
 void WinView::ShowBitmap(sViewport &view,class GenBitmap *tex)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
-Displaying a mesh such as a cylindar, sphere, etc in the UI:
+Displaying a mesh such as a cylinder, sphere, etc in the UI:
 void WinView::ShowMesh(sViewport &view,GenMesh *mesh,KEnvironment *kenv)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\winview.cpp
 
@@ -137,9 +140,10 @@ Application starts here.
 int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
-All opcodes used by a demo are listed here.
+All Opcodes used by a demo are listed here.
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_demo\demo_oplist.cpp
-Note: These opcodes are listed in Hex but stored as a integer in the KOp and WerkOp classes.
+Note: These Opcodes are listed in Hex but stored as a integer in the KOp and WerkOp classes.
+Every WerkClass has a standard calling convention stored in an unsigned int.
 This method can be used to decode an Op's type from a itself if getting to it's corresponding WerkOp is too difficult.
 WerkClass *FindWerkClass(sInt id)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
@@ -243,18 +247,18 @@ C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 When creating a new scene, the order that things are created matters:
 Start with 2D Texture operators to create a new texture.
 Combine the textures into a Material operator which define how the textures and light are combined and how the model is shaded.
-Add meshes second. A mesh is a group of verticies defined using mesh operators. This defines verticies, edges and faces. Materials can be applied to a mesh.
+Add meshes second. A mesh is a group of vertices defined using mesh operators. This defines vertices, edges and faces. Materials can be applied to a mesh.
 Multiple scenes are combined on the timeline 
 Many meshes are combined into a Scene.
 Then next are the camera operators.
 
-The camera operator specifies from how the user views the scene.
+The Camera Operator specifies from how the user views the scene.
 
-The Timeline is just a different way of viweing the Time operators. Time metrics are 256 Fractions make up a Beat and 4 Beats make up a Bar. During the specified time range, everything above the Time Pperator is rendered. At the same time there is a channel 0 variable that moves from 0 to 1 during the timespan. The 0 channel can be applied to any axis, multipled by a specified value, and a start value can be applied. You can select different types of movement like linear, sine, triangle, ramp, rectangular movement, and others from the dropdown.
+The Timeline is just a different way of viewing the Time Operators. Time metrics are 256 Fractions make up a Beat and 4 Beats make up a Bar. During the specified time range, everything above the Time Operator is rendered. At the same time there is a channel 0 variable that moves from 0 to 1 during the time span. The 0 channel can be applied to any axis, multiplied by a specified value, and a start value can be applied. You can select different types of movement like linear, sine, triangle, ramp, rectangular movement, and others from the dropdown.
 
-There are 255 different chanels that can be used in total.
+There are 255 different channels that can be used in total.
 
-Time operators can be placed almost anywhere on the Pages.
+Time Operators can be placed almost anywhere on the Pages.
 
 -------
 
@@ -328,7 +332,7 @@ Double right clicking an object in the 3Dviewer shows the geometry in wireframe.
 
 Lekktor from the German word “Lektor” which means editor, as in person who edits books, not text editor. Takes the kkrieger_player program and instruments it with detailed code coverage tracking. In a second pass, it would take the code coverage information gathered in the first pass and eliminate all the paths that were never taken. Since all the content generation is deterministic and happens at the start of the program, you’d just need to launch the game once in instrumented mode, take the dumped coverage information, then run Lekktor again to write the “dead-stripped” source files and recompile.
 
-Removes any branches in the code that are not taken during the run. This would normally not be done in production software, but in sizecoding the goal is to produce the smallest executeable possible.
+Removes any branches in the code that are not taken during the run. This would normally not be done in production software, but in sizecoding the goal is to produce the smallest executable possible.
 
 ----
 
@@ -779,30 +783,3 @@ Call KOp object.
 KDoc.cpp:CallCode(sInt 6560533,sInt *para,sInt 13)				<- Initialize or perform work that Op does
 Create several new KObjects.
 When the end of that branch of the tree is called, walk back down the tree to find an unexecuted branch. Follow that branch wherever it leads.
-
---------------------------------------------------------------------------------
-
-Every WerkClass has a standard calling convention stored in an unsigned int.
-
-Name         "Cylinder"
-ID            0x82
-Output        KC_MESH
-MinInput      0
-MaxInput      0
-Convention    0x06000005
-Column        COL_NEW
-Shortcut      'z'
-Packing       "bbbbb"      // sChar* "iiffbc" type information for packing
-Edit Handler  Edit_Mesh_Cylinder
-InitHandler   Mesh_Cylinder
-ExecHandler   Exec_Misc_Nop
-Inputs Array  { 0 }
-Links Array   { 0 }
-
-unsigned int Convention;                          // calling convention: 0xm00slipp (modify,0,strings,links,inputs,para)
-
-sInt inline OPC_GETDATA(sU32 x)   {return (x&0x000000ff);}
-sInt inline OPC_GETINPUT(sU32 x)  {return (x&0x00000f00)>>8;}
-sInt inline OPC_GETLINK(sU32 x)   {return (x&0x0000f000)>>12;}
-sInt inline OPC_GETSTRING(sU32 x) {return (x&0x00070000)>>16;}
-sInt inline OPC_GETSPLINE(sU32 x) {return (x&0x00700000)>>20;} // i assume that 2 bit are enough, tho

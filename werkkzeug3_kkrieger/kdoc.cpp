@@ -278,33 +278,33 @@ static sInt CallCode(sInt code,sInt *para,sInt count)
 #else
 
   /*
-  EAX — Accumulator for operandsand results data
-  EBX — Pointer to data in the DS segment
-  ECX — Counter for string and loop operations
-  EDX — I / O pointer
-  ESI — Pointer to data in the segment pointed to by the DS register; source pointer for string operations
-  EDI — Pointer to data (or destination) in the segment pointed to by the ES register; destination pointer for string operations
-  ESP — Stack pointer (in the SS segment)
-  EBP — Pointer to data on the stack (in the SS segment)
+  eax — Accumulator for operandsand results data
+  ebx — Pointer to data in the DS (variables) segment
+  ecx — Counter for string and loop operations
+  edx — I/O pointer
+  esi — Pointer to data in the segment pointed to by the DS register; source pointer for string operations
+  edi — Pointer to data (or destination) in the segment pointed to by the ES register; destination pointer for string operations
+  esp — Stack pointer (in the SS segment)
+  ebp — Pointer to data on the stack (in the SS segment)
   */
 
   __asm
   {
-    mov eax,code   ; move value of code into eax (accumulation)
-    mov esi,para   ; move value of para into esi - source pointer for string operatons
-    mov ecx,count  ; move value of count into ecx - counter for strings and loops
+    mov eax,code   ; move pointer to the function that handles this Op into eax accumulation register - get function call from callee to this function
+    mov esi,para   ; move pointer to the parameters into esi - source pointer for string operatons
+    mov ecx,count  ; move count of parameters into ecx - counter for strings and loops
     push ebp       ; push ebp value onto the stack
     mov ebp,esp    ; move value stack pointer into ebp where ebp = pointer to data on stack
+    sub esp,ecx    ; ecx = ecx - esp - adjusting stack pointer to put into correct position
     sub esp,ecx    ; ecx = ecx - esp
     sub esp,ecx    ; ecx = ecx - esp
     sub esp,ecx    ; ecx = ecx - esp
-    sub esp,ecx    ; ecx = ecx - esp
-    mov edi,esp    ; move esp to edi
+    mov edi,esp    ; move esp to edi - move stack pointer to edi register 
     rep movsd      ; repeat while ecx not zero  dword = 32bit
 
     call eax       ; call subroutine pointed to by eax
 
-    mov esp,ebp    ; move value of ebp into esp
+    mov esp,ebp    ; replace stack pointer to its original location to continue
     pop ebp        ; pop ebp value off of stack
     mov result,eax ; move value of eax to result
   }
@@ -337,10 +337,16 @@ KObject *KOp::Call(KEnvironment *kenv)
 
   if(Convention&(OPC_KOP|OPC_ALTINIT))
   {
+    if (Convention & OPC_KOP)
+      sDPrintF("\tConvention: KOP\n");
+    if (Convention &  OPC_ALTINIT)
+      sDPrintF("\tConvention: ALT_INIT\n");
+
     data[p++] = (sU32) this;
   }
   if(Convention&OPC_KENV)
   {
+    sDPrintF("\tPush KENV in INIT\n");
     data[p++] = (sU32) kenv;
   }
 
@@ -348,6 +354,9 @@ KObject *KOp::Call(KEnvironment *kenv)
 
 // inputs
   max = OPC_GETINPUT(Convention);
+
+  sDPrintF("\tMax Inputs: %d\n", max);
+
   for(i=0;i<max;i++)
   {
     op = GetInput(i);
@@ -370,14 +379,19 @@ KObject *KOp::Call(KEnvironment *kenv)
 // links
 
   max = OPC_GETLINK(Convention);
+  sDPrintF("\tMax Links: %d\n", max);
+
   for(i=0;i<max;i++)
   {
+    sDPrintF("\t\tLink Num: %d\n", i);
     if(Convention & OPC_DONTCALLLINK)
     {
+      sDPrintF("\t\t\tDo Not Call Link\n");
       data[p++] = (sU32) Link[i];
     }
     else
     {
+      sDPrintF("\t\t\tCall Link\n");
       o = (Link[i] ? Link[i]->Cache : 0);
       if(o)
         o->AddRef();
@@ -388,30 +402,40 @@ KObject *KOp::Call(KEnvironment *kenv)
 // normal parameters
 
   max = OPC_GETDATA(Convention);
-  for(i=0;i<max;i++)
-    data[p++] = *GetAnimPtrU(i);
-
+  sDPrintF("\tNormal Parameters: %d\n", max);
+  for(i=0;i<max;i++){
+    sU32 dat = *GetAnimPtrU(i);
+    sDPrintF("\t\tParameter %d: %d\n", i, dat);
+    data[p++] = dat;
+  }
 // strings
 
   max = OPC_GETSTRING(Convention);
-  for(i=0;i<max;i++)
+  sDPrintF("\tString Count: %d\n", max);
+  for(i=0;i<max;i++){
+    sDPrintF("\t\tString %d: %d\n", i, (sU32)GetString(i));
     data[p++] = (sU32) GetString(i);
-
+  }
 // splines
 
   max = OPC_GETSPLINE(Convention);
-  for(i=0;i<max;i++)
+  sDPrintF("\tSpline Count: %d\n", max);
+  for(i=0;i<max;i++){
+    sDPrintF("\t\tSpline %d: %d\n", i, (sU32)GetSpline(i));
     data[p++] = (sU32) GetSpline(i);
-
+  }
 // outputcount
 
-  if(Convention&OPC_OUTPUTCOUNT)
-    data[p++] = OutputCount;
+  if(Convention & OPC_OUTPUTCOUNT) {
+      sDPrintF("\tOutput Count: %d\n", OutputCount);
+      data[p++] = OutputCount;
+  }
 
 // unlimited inputs
 
   if(Convention&OPC_VARIABLEINPUT)
   {
+    sDPrintF("\tVariable Inputs: True\n");
     data[p++] = InputCount;
     for(i=0;i<InputCount;i++)
     {
@@ -423,6 +447,9 @@ KObject *KOp::Call(KEnvironment *kenv)
       else
         error = 1;
     }
+  }
+  else {
+    sDPrintF("\tVariable Inputs: False\n");
   }
 
 // call!
@@ -448,9 +475,12 @@ KObject *KOp::Call(KEnvironment *kenv)
   if(!error)
   {
     if(Convention&OPC_ALTINIT)
-      p = pNoPara;
+      p = pNoPara; /* number of parameters stored as data */
 
-    result = (KObject *)CallCode((sInt)InitHandler,(sInt *)data,p);
+    sInt* pData = (sInt*)data; // pointer to the beginning of the (now decoded) data
+    // InitHandler is a pointer to the function that will handle this type of KOp
+
+    result = (KObject *)CallCode((sInt)InitHandler, pData, p);
   }
 #else
   {
@@ -466,6 +496,7 @@ KObject *KOp::Call(KEnvironment *kenv)
 #if !sINTRO
   if(result==0)
   {
+    sDPrintF("\tKOp FAILED!\n");
     max = OPC_GETINPUT(Convention);
     for(i=0;i<max;i++)
     {

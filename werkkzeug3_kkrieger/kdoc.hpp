@@ -145,6 +145,23 @@ sBool AnimCodeWritesTo(sU8 *code,sInt offset);  // find if offset is changed by 
 
 /****************************************************************************/
 
+/*
+    Making the final output as small as possible is a goal for this project.
+    Ops have several different calling conventions to preserve as much space as possible
+    while leaving the Op flexible for different datatypes and call configurations.
+
+    An sU32 is a 32 bit unsigned integer. The bits are broken down into smaller sections and then split back apart using these OPC_GET... calls.
+
+    The data section occupies the rightmost 8 bits.
+    Inputs for Ops occupy the next 4 bits that are shifted over by the width of the data section.
+    Ops potentially have a link to another Op on the grid or in an animation, etc.
+    The link section occupies 4 bits and is then shifted by the width of the inputs and the data.
+    Ops may have a string stored as a single ASCII character. These bits are shifted off to the right.
+    Ops may have a link to a spline that occupies two bits. These bits are shifted off to the right.
+
+    When decoded only the significant bits for that section on the right are read and the rest are ignored.
+*/
+
 // calling convention bitmasks, in the order of parameters
 
 sInt inline OPC_GETDATA(sU32 x)   {return (x&0x000000ff);}
