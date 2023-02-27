@@ -119,7 +119,8 @@ Operator backgrounds are colored based on their use. There are texture, material
 When an Operator's background turns red it indicates that something is wrong with the Operator.
 This happens when the Operator has inputs that are not compatible with the outputs from the other Operator.
 
-Some Operators have a filmstrip on the right side that moves downward. This indicates that this Operator causes some form of animation.
+Some Operators have a filmstrip on the right side that moves downward.
+This indicates that this Operator causes some form of animation.
 
 Some Operators do not have an input or an output. If the input is not available, the top of the box will be clipped at an angle. If no output from the operator available, the bottom of the box will be clipped at an angle.
 
@@ -129,7 +130,7 @@ void WerkPage::Connect1()
 void WerkPage::Connect2()
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
 
-When the user clicks on a Cube operator this is called:
+When the user clicks on a Cube Operator this is called:
 void Edit_Mesh_Cube(WerkkzeugApp *app,WerkOp *op)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkops.cpp
 
@@ -149,7 +150,10 @@ Central point for handling different types of window actions:
 sBool sAppHandler(sInt code,sDInt value)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug3\wz3_main.cpp
 
-Glues everything together: logic, events, operators, splines, memory, time, camera
+KEnvironment contains the objects required to run a KOp.
+This environment is global and is shared between all of the KOps.
+It contains raw memory, a stack, stack address pointers and more.
+Also acts as central location for several concerns: logic, events, operators, splines, memory, time, camera
 class KEnvironment;
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\kdoc.hpp
 
@@ -185,10 +189,11 @@ Application starts here.
 int APIENTRY WinMain(HINSTANCE inst,HINSTANCE prev,LPSTR cmdline,int show)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\_start.cpp
 
-All Ops available to be used by a demo are listed here.
+All Opcodes used by a demo are listed here.
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\player_demo\demo_oplist.cpp
-Note: These Ops are listed in Hex but stored as a integer in the KOp and WerkOp classes.
-This method can be used to decode an Ops type if getting to its corresponding WerkOp is too difficult.
+Note: These Opcodes are listed in Hex but stored as a integer in the KOp and WerkOp classes.
+Every WerkClass has a standard calling convention stored in an unsigned int.
+This method can be used to decode an Op's type from a itself if getting to it's corresponding WerkOp is too difficult.
 WerkClass *FindWerkClass(sInt id)
 C:\Users\eclipse\source\repos\Kkrieger-Werkkzeug3\werkkzeug3_kkrieger\werkkzeug.cpp
 
@@ -302,7 +307,7 @@ The Timeline is just a different way of viewing the Time operators. Time metrics
 
 There are 255 different channels that can be used in total.
 
-Time operators can be placed almost anywhere on the Pages.
+Time Operators can be placed almost anywhere on the Pages.
 
 Function keys move from one editor to another:
 F1 - KOps
@@ -414,7 +419,7 @@ Double right clicking an object in the 3Dviewer shows the geometry in wireframe.
 
 ----
 
-Lekktor from the German word ìLektorî which means editor, as in person who edits books, not text editor. Takes the kkrieger_player program and instruments it with detailed code coverage tracking. In a second pass, it would take the code coverage information gathered in the first pass and eliminate all the paths that were never taken. Since all the content generation is deterministic and happens at the start of the program, youíd just need to launch the game once in instrumented mode, take the dumped coverage information, then run Lekktor again to write the ìdead-strippedî source files and recompile.
+Lekktor from the German word ‚ÄúLektor‚Äù which means editor, as in person who edits books, not text editor. Takes the kkrieger_player program and instruments it with detailed code coverage tracking. In a second pass, it would take the code coverage information gathered in the first pass and eliminate all the paths that were never taken. Since all the content generation is deterministic and happens at the start of the program, you‚Äôd just need to launch the game once in instrumented mode, take the dumped coverage information, then run Lekktor again to write the ‚Äúdead-stripped‚Äù source files and recompile.
 
 Removes any branches in the code that are not taken during the run. This would normally not be done in production software, but in sizecoding the goal is to produce the smallest executable possible.
 
