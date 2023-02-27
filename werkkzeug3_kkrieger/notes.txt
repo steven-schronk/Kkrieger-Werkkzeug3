@@ -901,8 +901,19 @@ Create several new KObjects.
 When the end of that branch of the tree is called, walk back down the tree to find an unexecuted branch. Follow that branch wherever it leads.
 
 K Files:
-Files are loaded here,
-sU8 *sSystem_::LoadFile(const sChar *name,sInt &size) on line 5222 of _start.cpp
+	Files are loaded here,
+	sU8 *sSystem_::LoadFile(const sChar *name,sInt &size) on line 5222 of _start.cpp
+	
+	Files are created and written to here,
+	sBool sSystem_::SaveFile(const sChar *name,const sU8 *data,sInt size)on line 5322 in _start.cpp
 
-Files are created and written to here,
-sBool sSystem_::SaveFile(const sChar *name,const sU8 *data,sInt size)on line 5322 in _start.cpp
+Retrieving Kops to Draw:
+	winview.cpp is where we first start to allocate space for vertex/index buffers and retrieve Kops to fill these buffer. 
+	
+	1. winview.cpp line 335 "void WinView::OnPaint3d(sViewport &viewPort)": This function creates "WerkOp *ShowObject" which stores the object handle for the current object to draw based on the Kops. 
+	2. winview.cpp line 470 "ShowObject = ShowObject->GetInput(0);" is called to intialize the object. 
+	3. wekkzeug.hpp line 234 "WerkOp *GetInput(sInt i)": This function calls  "KOp *GetInput(sInt i)" which returns a KOp from the Input array. The KOp class includes a corresponding WerkOp which is then returned by this function.
+	4. kdoc.hpp line 489 "KOp *GetInput(sInt i)": This is the function that returns a single KOp from the input array.
+	5. kdoc.hpp line 495 "sInt GetInputCount() {return InputCount;}": This function returns the number of input KOps.
+	6. kdoc.hpp line 516 "void AddInput(KOp *op);": This is mostly sepeculation, but since KOps seem to be stored in the Input array, and retrived via GetInput(), it would make sense for AddInput to add a KOp to the list of opertations to exectute. 
+	
