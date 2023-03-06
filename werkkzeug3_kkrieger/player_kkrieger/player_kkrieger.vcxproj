@@ -129,6 +129,7 @@
     <ClCompile Include="..\materials\materialdirect.cpp" />
     <ClCompile Include="..\materials\rtmanager.cpp" />
     <ClCompile Include="..\shadercodegen.cpp" />
+    <ClCompile Include="..\werkclass.cpp" />
     <ClCompile Include="..\_lekktor.cpp" />
     <ClCompile Include="..\_start.cpp" />
     <ClCompile Include="..\_types.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="..\materials\materialdirect.hpp" />
     <ClInclude Include="..\materials\rtmanager.hpp" />
     <ClInclude Include="..\shadercodegen.hpp" />
+    <ClInclude Include="..\werkclass.hpp" />
     <ClInclude Include="..\_lekktor.hpp" />
     <ClInclude Include="..\_start.hpp" />
     <ClInclude Include="..\_startdx.hpp" />

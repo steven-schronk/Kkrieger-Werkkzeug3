@@ -1600,7 +1600,9 @@ void WinAnimPage::OnKey(sU32 key)
 
 void WinAnimPage::OnPaint()
 {
+#if LOG_FRAMES
   sDPrintF("WinAnimPage::OnPaint(): ");
+#endif
   sChar buffer[4096];
   sChar *d;
   sU8 *code;

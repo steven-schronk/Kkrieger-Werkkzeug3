@@ -5,6 +5,7 @@
 
 #include "_types.hpp"
 #include "_start.hpp"
+#include "werkclass.hpp"
 
 /****************************************************************************/
 

@@ -71,6 +71,7 @@
     <ClCompile Include="..\materials\materialdirect.cpp">
       <Filter>materials</Filter>
     </ClCompile>
+    <ClCompile Include="..\werkclass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\materials\material11.hpp">
@@ -131,6 +132,7 @@
     <ClInclude Include="..\materials\materialdirect.hpp">
       <Filter>materials</Filter>
     </ClInclude>
+    <ClInclude Include="..\werkclass.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\_viruz2a.asm">

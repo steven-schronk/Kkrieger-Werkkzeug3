@@ -169,7 +169,9 @@ void sBrowserTree::OnKey(sU32 key)
 
 void sBrowserTree::OnPaint()
 {
+#if LOG_FRAMES
   sDPrintF("sBrowserTree::OnPaint()\n");
+#endif
   sInt pos;
   sRect r;
 

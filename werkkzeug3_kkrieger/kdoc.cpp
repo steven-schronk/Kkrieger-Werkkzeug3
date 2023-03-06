@@ -1,7 +1,6 @@
 // This file is distributed under a BSD license. See LICENSE.txt for details.
 
 #include "kdoc.hpp"
-
 #include "genbitmap.hpp"
 #include "genmaterial.hpp"
 #include "genmesh.hpp"
@@ -91,7 +90,9 @@ static sInt OpPerf[256];
 
 sInt KOp::Calc(KEnvironment *env,sInt flags)
 {
+#if LOG_FRAMES
   sDPrintF("KOp::Calc(KEnvironment *env,sInt flags)\n");
+#endif
   sInt i;
   sInt pops;
   sInt changed;
@@ -249,6 +250,9 @@ sInt KOp::Calc(KEnvironment *env,sInt flags)
 static sInt CallCode(sInt code,sInt *para,sInt count)
 {
   sDPrintF("KDoc.cpp:CallCode(sInt %d,sInt *para,sInt %d)\n", code, count);
+  //WerkClass2* wc = FindWerkClass2(code);
+  //sDPrintF("||||%p|||||\n", wc);
+
   sInt result;
 #ifdef __GNUC__
 #if defined(__i386__)
@@ -984,7 +988,11 @@ void KEnvironment::InitView()
 
 void KEnvironment::InitFrame(sInt timebeat,sInt timems)
 {
+
+#if LOG_FRAMES
   sDPrintF("KEnvironment::InitFrame(sInt  %d, sInt  %d)\n", &timebeat, &timems);
+#endif // LOG_FRAMES
+  
   sInt i;
 
   sSetMem(Var,0,sizeof(Var));
@@ -1044,7 +1052,9 @@ void KEnvironment::InitFrame(sInt timebeat,sInt timems)
 
 void KEnvironment::ExitFrame()
 {
+#if LOG_FRAMES
   sDPrintF("KEnvironment::ExitFrame()\n");
+#endif
   sInt i;
   KEvent *ev;
 
@@ -2500,7 +2510,9 @@ void KMemoryManager_::Remove(KOp *op)
 
 void KMemoryManager_::Manage()
 {
+#if LOG_MEM_DEGUG
   sDPrintF("KMemoryManager_::Manage()\n");
+#endif
   sInt cls,i;
   KObjectList *obj;
   static sU8 validateCounter = 0;
@@ -2537,7 +2549,9 @@ void KMemoryManager_::Manage()
 
 void KMemoryManager_::Validate()
 {
+#if LOG_MEM_DEGUG
   sDPrintF("KMemoryManager_::Validate()\n");
+#endif
   for(sInt cls=0;cls<KC_COUNT;cls++)
   {
     KObjectList *obj = &Objects[cls];

@@ -79,6 +79,7 @@
     <ClCompile Include="intro_oplist.cpp" />
     <ClCompile Include="..\kdoc.cpp" />
     <ClCompile Include="..\mainplayer.cpp" />
+    <ClCompile Include="..\werkclass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\materials\material11.hpp">
@@ -148,6 +149,7 @@
     <ClInclude Include="intro_config.hpp" />
     <ClInclude Include="..\kdoc.hpp" />
     <ClInclude Include="..\player_demo\resource.h" />
+    <ClInclude Include="..\werkclass.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\player_demo\demo_resource.rc" />

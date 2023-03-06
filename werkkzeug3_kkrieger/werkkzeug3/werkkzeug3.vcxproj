@@ -147,6 +147,7 @@
     <ClCompile Include="..\kkriegergame.cpp" />
     <ClCompile Include="..\novaplayer.cpp" />
     <ClCompile Include="..\script.cpp" />
+    <ClCompile Include="..\werkclass.cpp" />
     <ClCompile Include="..\werkkzeug.cpp" />
     <ClCompile Include="..\werkops.cpp" />
     <ClCompile Include="..\wincalc.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="..\kkriegergame.hpp" />
     <ClInclude Include="..\novaplayer.hpp" />
     <ClInclude Include="..\script.hpp" />
+    <ClInclude Include="..\werkclass.hpp" />
     <ClInclude Include="..\werkkzeug.hpp" />
     <ClInclude Include="..\wincalc.hpp" />
     <ClInclude Include="..\winnova.hpp" />

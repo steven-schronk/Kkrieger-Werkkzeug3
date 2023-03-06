@@ -85,6 +85,7 @@
     <ClCompile Include="..\_iob.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="..\werkclass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\materials\material11.hpp">
@@ -160,6 +161,7 @@
     <ClInclude Include="..\_iob.hpp">
       <Filter>System</Filter>
     </ClInclude>
+    <ClInclude Include="..\werkclass.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="demo_resource.rc" />
